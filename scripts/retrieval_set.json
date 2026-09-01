@@ -1,400 +1,402 @@
 {
   "_comment": "66 hand written retrieval queries, 3 per source across 22 sources, 12 of them in Indonesian. The only denominator for Hit Rate and MRR, see D49. Labeled per source, never per chunk id, see D28. Generated from retrieval_worksheet.md by scripts/worksheet_to_json.py, never edited by hand. Frozen once complete, see D41.",
-  "frozen": false,
+  "frozen": true,
+  "frozen_on": "2026-09-02",
+  "checksum": "a82d16a36130a592c94cf700786e6f3ef535775466babe8fc1a91e1db2a93b7e",
   "queries": [
     {
       "id": "about-firza-1",
-      "query": "",
+      "query": "What university did he graduate from?",
       "source": "About Firza",
       "lang": "en"
     },
     {
       "id": "about-firza-2",
-      "query": "",
+      "query": "Does he know any Japanese?",
       "source": "About Firza",
       "lang": "en"
     },
     {
       "id": "about-firza-3",
-      "query": "",
+      "query": "Dia pernah memimpin organisasi mahasiswa?",
       "source": "About Firza",
       "lang": "id"
     },
     {
       "id": "career-timeline-1",
-      "query": "",
+      "query": "Which company did he join first?",
       "source": "Career Timeline",
       "lang": "en"
     },
     {
       "id": "career-timeline-2",
-      "query": "",
+      "query": "How many employers has he had so far?",
       "source": "Career Timeline",
       "lang": "en"
     },
     {
       "id": "career-timeline-3",
-      "query": "",
+      "query": "Urutan tempat kerjanya dari yang paling awal?",
       "source": "Career Timeline",
       "lang": "id"
     },
     {
       "id": "hypefast-1",
-      "query": "",
+      "query": "Who is he working for these days?",
       "source": "Experience: Data Engineer at Hypefast",
       "lang": "en"
     },
     {
       "id": "hypefast-2",
-      "query": "",
+      "query": "Has he shipped a recommendation engine that real users hit?",
       "source": "Experience: Data Engineer at Hypefast",
       "lang": "en"
     },
     {
       "id": "hypefast-3",
-      "query": "",
+      "query": "Sekarang dia menangani berapa merek?",
       "source": "Experience: Data Engineer at Hypefast",
       "lang": "id"
     },
     {
       "id": "idstar-cipta-teknologi-1",
-      "query": "",
+      "query": "Where did he handle really large daily volumes?",
       "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
       "lang": "en"
     },
     {
       "id": "idstar-cipta-teknologi-2",
-      "query": "",
+      "query": "Has he used Snowflake professionally?",
       "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
       "lang": "en"
     },
     {
       "id": "idstar-cipta-teknologi-3",
-      "query": "",
+      "query": "Dia pernah mengerjakan proyek telekomunikasi?",
       "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
       "lang": "id"
     },
     {
       "id": "telkom-indonesia-1",
-      "query": "",
+      "query": "Did he ever intern at a state owned company?",
       "source": "Experience: Data Scientist Internship at Telkom Indonesia",
       "lang": "en"
     },
     {
       "id": "telkom-indonesia-2",
-      "query": "",
+      "query": "Has he touched anything blockchain related?",
       "source": "Experience: Data Scientist Internship at Telkom Indonesia",
       "lang": "en"
     },
     {
       "id": "telkom-indonesia-3",
-      "query": "",
+      "query": "Magang data science-nya di mana?",
       "source": "Experience: Data Scientist Internship at Telkom Indonesia",
       "lang": "id"
     },
     {
       "id": "pt-arindo-cipta-perkasa-1",
-      "query": "",
+      "query": "Any factory or manufacturing background?",
       "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
       "lang": "en"
     },
     {
       "id": "pt-arindo-cipta-perkasa-2",
-      "query": "",
+      "query": "Has he done scheduling optimisation work?",
       "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
       "lang": "en"
     },
     {
       "id": "pt-arindo-cipta-perkasa-3",
-      "query": "",
+      "query": "Dia pernah magang di bidang produksi?",
       "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
       "lang": "id"
     },
     {
       "id": "banopolis-inovasi-kendara-1",
-      "query": "",
+      "query": "Did he ever work on a ride hailing product?",
       "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
       "lang": "en"
     },
     {
       "id": "banopolis-inovasi-kendara-2",
-      "query": "",
+      "query": "Any experience on the business side rather than engineering?",
       "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
       "lang": "en"
     },
     {
       "id": "banopolis-inovasi-kendara-3",
-      "query": "",
+      "query": "Dia pernah magang business development?",
       "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
       "lang": "id"
     },
     {
       "id": "video-platform-data-analysis-1",
-      "query": "",
+      "query": "Has he analysed user retention for a video product?",
       "source": "Project: Video Platform Data Analysis",
       "lang": "en"
     },
     {
       "id": "video-platform-data-analysis-2",
-      "query": "",
+      "query": "Any work involving gaming content?",
       "source": "Project: Video Platform Data Analysis",
       "lang": "en"
     },
     {
       "id": "video-platform-data-analysis-3",
-      "query": "",
+      "query": "Dia pernah menganalisis platform video?",
       "source": "Project: Video Platform Data Analysis",
       "lang": "id"
     },
     {
       "id": "affiliate-commission-perform-1",
-      "query": "",
+      "query": "Has he investigated why revenue dropped somewhere?",
       "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
       "lang": "en"
     },
     {
       "id": "affiliate-commission-perform-2",
-      "query": "",
+      "query": "Any work on affiliate programmes?",
       "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
       "lang": "en"
     },
     {
       "id": "affiliate-commission-perform-3",
-      "query": "",
+      "query": "Did he propose how to win back what was lost?",
       "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
       "lang": "en"
     },
     {
       "id": "content-strategy-revenue-pro-1",
-      "query": "",
+      "query": "Has he made a deck for an influencer business?",
       "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
       "lang": "en"
     },
     {
       "id": "content-strategy-revenue-pro-2",
-      "query": "",
+      "query": "Any revenue forecasting for a small venture?",
       "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
       "lang": "en"
     },
     {
       "id": "content-strategy-revenue-pro-3",
-      "query": "",
+      "query": "Did he study where competitors were thin?",
       "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
       "lang": "en"
     },
     {
       "id": "ecommerce-strategic-valuatio-1",
-      "query": "",
+      "query": "Has he ever valued a company?",
       "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
       "lang": "en"
     },
     {
       "id": "ecommerce-strategic-valuatio-2",
-      "query": "",
+      "query": "Any DCF modelling experience?",
       "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
       "lang": "en"
     },
     {
       "id": "ecommerce-strategic-valuatio-3",
-      "query": "",
+      "query": "Did he project how a business would look in half a decade?",
       "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
       "lang": "en"
     },
     {
       "id": "nuclear-energy-policy-discou-1",
-      "query": "",
+      "query": "Any work on energy policy?",
       "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
       "lang": "en"
     },
     {
       "id": "nuclear-energy-policy-discou-2",
-      "query": "",
+      "query": "Has he mapped how public debate connects across actors?",
       "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
       "lang": "en"
     },
     {
       "id": "nuclear-energy-policy-discou-3",
-      "query": "",
+      "query": "Did he store anything in MongoDB?",
       "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
       "lang": "en"
     },
     {
       "id": "regional-writing-ecosystem-i-1",
-      "query": "",
+      "query": "Has he built a composite index?",
       "source": "Project: Regional Writing Ecosystem Index (PCA)",
       "lang": "en"
     },
     {
       "id": "regional-writing-ecosystem-i-2",
-      "query": "",
+      "query": "Any dimensionality reduction work?",
       "source": "Project: Regional Writing Ecosystem Index (PCA)",
       "lang": "en"
     },
     {
       "id": "regional-writing-ecosystem-i-3",
-      "query": "",
+      "query": "Did he work with a think tank?",
       "source": "Project: Regional Writing Ecosystem Index (PCA)",
       "lang": "en"
     },
     {
       "id": "social-media-scraping-integr-1",
-      "query": "",
+      "query": "Can he pull data from TikTok and Instagram?",
       "source": "Project: Social Media Scraping Integration",
       "lang": "en"
     },
     {
       "id": "social-media-scraping-integr-2",
-      "query": "",
+      "query": "Has he built something that resumes after a crash?",
       "source": "Project: Social Media Scraping Integration",
       "lang": "en"
     },
     {
       "id": "social-media-scraping-integr-3",
-      "query": "",
+      "query": "Dia bisa mengambil data dari lima platform sosial?",
       "source": "Project: Social Media Scraping Integration",
       "lang": "id"
     },
     {
       "id": "google-news-scraping-gemini-1",
-      "query": "",
+      "query": "Any always on news collection system?",
       "source": "Project: Google News Scraping + Gemini AI Aggregation",
       "lang": "en"
     },
     {
       "id": "google-news-scraping-gemini-2",
-      "query": "",
+      "query": "Has he used Google Custom Search?",
       "source": "Project: Google News Scraping + Gemini AI Aggregation",
       "lang": "en"
     },
     {
       "id": "google-news-scraping-gemini-3",
-      "query": "",
+      "query": "Which client needed economic headlines watched continuously?",
       "source": "Project: Google News Scraping + Gemini AI Aggregation",
       "lang": "en"
     },
     {
       "id": "debt-collection-analytics-ag-1",
-      "query": "",
+      "query": "Has he worked with call centre data?",
       "source": "Project: Debt Collection Analytics & Agent Productivity",
       "lang": "en"
     },
     {
       "id": "debt-collection-analytics-ag-2",
-      "query": "",
+      "query": "Any project where the real problem turned out to be data quality?",
       "source": "Project: Debt Collection Analytics & Agent Productivity",
       "lang": "en"
     },
     {
       "id": "debt-collection-analytics-ag-3",
-      "query": "",
+      "query": "Did he work for a bank collections team?",
       "source": "Project: Debt Collection Analytics & Agent Productivity",
       "lang": "en"
     },
     {
       "id": "heavy-equipment-preventive-m-1",
-      "query": "",
+      "query": "Any dashboards for mining?",
       "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
       "lang": "en"
     },
     {
       "id": "heavy-equipment-preventive-m-2",
-      "query": "",
+      "query": "Has he tracked equipment part lifecycles?",
       "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
       "lang": "en"
     },
     {
       "id": "heavy-equipment-preventive-m-3",
-      "query": "",
+      "query": "Dia pernah bikin dashboard untuk alat berat?",
       "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
       "lang": "id"
     },
     {
       "id": "tableau-for-data-analysis-10-1",
-      "query": "",
+      "query": "Has he taught anything?",
       "source": "Project: Tableau for Data Analysis 101 Course",
       "lang": "en"
     },
     {
       "id": "tableau-for-data-analysis-10-2",
-      "query": "",
+      "query": "Has he put together teaching material for students?",
       "source": "Project: Tableau for Data Analysis 101 Course",
       "lang": "en"
     },
     {
       "id": "tableau-for-data-analysis-10-3",
-      "query": "",
+      "query": "Any Tableau training work?",
       "source": "Project: Tableau for Data Analysis 101 Course",
       "lang": "en"
     },
     {
       "id": "government-statistics-data-p-1",
-      "query": "",
+      "query": "Has he worked with public sector data offices?",
       "source": "Project: Government Statistics Data Platform Implementation",
       "lang": "en"
     },
     {
       "id": "government-statistics-data-p-2",
-      "query": "",
+      "query": "Did he map out where official figures live?",
       "source": "Project: Government Statistics Data Platform Implementation",
       "lang": "en"
     },
     {
       "id": "government-statistics-data-p-3",
-      "query": "",
+      "query": "Did he deliver something for a ministry?",
       "source": "Project: Government Statistics Data Platform Implementation",
       "lang": "en"
     },
     {
       "id": "mobile-app-analytics-data-pi-1",
-      "query": "",
+      "query": "Has he brought several app marketing tools into one place?",
       "source": "Project: Mobile App Analytics Data Pipeline",
       "lang": "en"
     },
     {
       "id": "mobile-app-analytics-data-pi-2",
-      "query": "",
+      "query": "Any Terraform in his projects?",
       "source": "Project: Mobile App Analytics Data Pipeline",
       "lang": "en"
     },
     {
       "id": "mobile-app-analytics-data-pi-3",
-      "query": "",
+      "query": "Dia pernah menyatukan data dari beberapa sumber aplikasi mobile?",
       "source": "Project: Mobile App Analytics Data Pipeline",
       "lang": "id"
     },
     {
       "id": "personal-portfolio-website-w-1",
-      "query": "",
+      "query": "Did he build his own website?",
       "source": "Project: Personal Portfolio Website with RAG Chat",
       "lang": "en"
     },
     {
       "id": "personal-portfolio-website-w-2",
-      "query": "",
+      "query": "How does his chat assistant avoid being tricked?",
       "source": "Project: Personal Portfolio Website with RAG Chat",
       "lang": "en"
     },
     {
       "id": "personal-portfolio-website-w-3",
-      "query": "",
+      "query": "Can his assistant actually do things, not only answer?",
       "source": "Project: Personal Portfolio Website with RAG Chat",
       "lang": "en"
     },
     {
       "id": "telco-customer-churn-predict-1",
-      "query": "",
+      "query": "Has he compared several classifiers on one dataset?",
       "source": "Project: Telco Customer Churn Prediction (Streamlit)",
       "lang": "en"
     },
     {
       "id": "telco-customer-churn-predict-2",
-      "query": "",
+      "query": "Any Streamlit app deployed publicly?",
       "source": "Project: Telco Customer Churn Prediction (Streamlit)",
       "lang": "en"
     },
     {
       "id": "telco-customer-churn-predict-3",
-      "query": "",
+      "query": "Dia pernah membuat model prediksi churn?",
       "source": "Project: Telco Customer Churn Prediction (Streamlit)",
       "lang": "id"
     }
