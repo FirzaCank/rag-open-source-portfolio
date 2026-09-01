@@ -15,8 +15,7 @@ import http.server
 import os
 import subprocess
 
-# Cloud Run injects PORT and expects the container to listen on it. Anything else and the
-# revision is marked unhealthy no matter how healthy the GPU is.
+# Cloud Run injects PORT. Listen anywhere else and the revision is unhealthy however good the GPU.
 PORT = int(os.environ.get("PORT", "8080"))
 
 
@@ -54,8 +53,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def log_message(self, fmt, *args):
-        # Default BaseHTTPRequestHandler logging writes to stderr, which Cloud Logging reads as
-        # ERROR severity. Send it to stdout instead so a normal request is not an alert.
+        # The default logs to stderr, which Cloud Logging reads as ERROR. stdout keeps it quiet.
         print(fmt % args, flush=True)
 
 

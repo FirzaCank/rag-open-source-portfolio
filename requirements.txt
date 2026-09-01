@@ -1,0 +1,10 @@
+# Serving and local dev. Pinned, so the environment that produced a number can be rebuilt.
+
+# torch is absent and stays absent: serving needs a forward pass, not autograd. Training lives in
+# Colab, exporting ONNX in Phase 5c and GGUF in Phase 7. See D46 and D48.
+
+# Embeddings on ONNX Runtime, multilingual e5 base at 768 dim. Pulls onnxruntime and tokenizers.
+fastembed==0.8.0
+
+# Cosine over 76 chunks in memory. Not FAISS, 76 vectors need no index structure. See D22.
+numpy==2.2.6

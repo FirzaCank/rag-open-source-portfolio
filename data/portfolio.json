@@ -1,0 +1,633 @@
+{
+  "projects": [
+    {
+      "slug": "video-platform-data-analysis",
+      "title": "Video Platform Data Analysis",
+      "subtitle": "Behavior and growth deep dive for an AI gaming clip platform: activation levers that move retention and clip output.",
+      "client": "AI gaming clip platform",
+      "year": "2025",
+      "categories": [
+        "Data Analyst",
+        "Dashboard"
+      ],
+      "stack": [
+        "SQL",
+        "Python",
+        "Tableau",
+        "Pitch Deck"
+      ],
+      "detail": "\n## Context\n\nAn AI assistant for gaming creators that auto-turns long gameplay streams into highlight clips. It sits between gameplay capture and social distribution (TikTok, YouTube Shorts, Reels), so every onboarded creator either becomes a recurring clip source or churns silently. Growth had plateaued, and the founding team wanted to know whether the bottleneck was acquisition, activation, or content output per creator.\n\n## Problem\n\nInternal dashboards reported headline numbers but missed the cohort view. Three questions the team couldn't answer with confidence:\n\n- Which onboarding step quietly bleeds the most users before they generate a clip?\n- Do power creators behave differently from the median in week one of the AI clip generator?\n- Where does the funnel break for users who connect gameplay capture but never publish a clip?\n\nWithout that, every roadmap discussion turned into opinion.\n\n## Approach\n\nI scoped the analysis around the publish event (an AI-generated clip going live on a connected social account) as the activation proxy, then worked backward.\n\n1. Pulled a 90 day event extract via SQL from the platform's internal event store, then joined it with subscription state and the AI clip generation log.\n2. Cleaned the raw events before modeling: deduplicated and sessionized the event stream, filtered out internal test and bot accounts, reconciled mismatched join keys across the event ↔ subscription ↔ clip-log tables, and handled null and invalid timestamps (including timezone normalization).\n3. Built a Python notebook for cohort retention, funnel decay, and AI feature usage per persona (auto-clip, manual edit, batch export).\n4. Stress tested three persona splits (casual streamer, semi-pro, agency / multi-channel) against publish rate, AI clip generation frequency, and session cadence.\n5. Wrapped the findings in a Tableau workbook plus a 12 slide pitch deck for the leadership read-out.\n\n## Outcome\n\nThree things changed after the read-out:\n\n- A specific onboarding step was identified as the largest drop-off point and rewritten the next sprint.\n- Power creators showed a distinct day-one feature pattern that became a new in-product activation checklist.\n- The team agreed on a single north-star metric (creators publishing an AI-generated clip in week one) and retired four vanity charts.\n\nThe deck became the working document for the next two quarterly planning rounds.\n"
+    },
+    {
+      "slug": "commission-performance-review",
+      "title": "Affiliate Commission Performance Review & Recovery Plan",
+      "subtitle": "Root-cause analysis of a 34% commission revenue decline: funnel diagnosis, cohort retention, and a two-track recovery playbook for leadership.",
+      "client": "E-commerce affiliate platform",
+      "year": "2026",
+      "categories": [
+        "Data Analyst",
+        "Pitch Deck"
+      ],
+      "stack": [
+        "Python",
+        "Excel",
+        "PowerPoint",
+        "Funnel Analysis",
+        "Cohort Analysis"
+      ],
+      "detail": "\n## Context\n\nAn e-commerce affiliate operation earning commission through video content that drives marketplace transactions. Commission revenue had fallen four months straight - a ~34% cumulative drop. Leadership needed a clear diagnosis and recovery plan before the trend turned structural.\n\n## Problem\n\nThree questions before scoping any fix:\n\n- Where in the funnel (plays → impression → click → order) is volume actually leaking?\n- Is the decline a rate problem (CVR/CTR falling) or a volume problem (fewer plays/impressions)?\n- Are there internal levers (commission mix, SKU sourcing, retention) to recover revenue without external brand subsidies?\n\n## Data & preparation\n\nThe funnel (plays → impression → click → order), commission, and cohort data came from the platform's internal database exports. Before any analysis, I cleaned and reconciled the raw extracts:\n\n- Deduplicated transaction records and handled null/missing values across the funnel tables.\n- Reconciled funnel-stage counts whose sources didn't align (plays/impressions vs click/order systems), so each stage compared on a consistent base.\n- Normalized dates into consistent monthly cohorts (January–April).\n- Standardized commission rates and Rupiah amounts (direct vs indirect, standard ~2% vs extra ~4% tiers) into a single clean schema.\n\n## Approach\n\n1. Built a full-funnel comparison (January baseline vs April) across plays, impressions, clicks, and orders, isolating the bottleneck at each stage.\n2. Decomposed commission into direct vs indirect channels - indirect (clicking one SKU but buying another) carried 97% of revenue and 99% of the decline.\n3. Analyzed CTR and CVR independently: CTR was flat, confirming the problem was purchase intent (CVR had dropped meaningfully), not attention.\n4. Ran cohort retention across Jan–Mar cohorts, surfacing a significant collapse in month-1 retention - the most alarming structural signal.\n5. Found the commission-mix lever: a minority of orders earned the higher-tier rate, so shifting the mix toward better-tier SKUs could recover meaningful monthly revenue at existing volume.\n6. Packaged findings into a 10-slide executive deck with a two-track recovery plan (quick wins 0–60 days, structural levers 60–180 days) and three leadership asks.\n\n## Outcome\n\nThe deck became the working document for Q2 planning. Three decisions followed:\n\n- **Immediate:** Product approved a 3-day SKU refresh cycle (down from 7) to combat ad fatigue, and began testing personalized SKU recommendations to recover CVR.\n- **Short-term:** BD prioritized targeted-affiliate negotiations with priority brands to unlock higher commission tiers.\n- **Structural:** Growth scoped a retention program for the Jan–Mar cohorts before the active base shrank further.\n\nProjected recovery, if all three tracks execute: 50–70% of the monthly gap within two quarters.\n"
+    },
+    {
+      "slug": "content-strategy-revenue-deck",
+      "title": "Content Strategy & Revenue Projection Pitch Deck",
+      "subtitle": "Market gap analysis, podcast-to-workshop funnel strategy, and 3-month financial projection for a social media influencer's relationship content platform.",
+      "client": "Agency X",
+      "year": "2026",
+      "categories": [
+        "Pitch Deck",
+        "Data Analyst",
+        "Financial Analyst"
+      ],
+      "stack": [
+        "PowerPoint",
+        "Excel",
+        "Python",
+        "Market Analysis",
+        "Financial Modeling"
+      ],
+      "detail": "\n## Context\n\nAgency X wanted to build a relationship content platform around a social media influencer (established credibility in the personal-growth and relationship space) lined up as host. The influencer had strong engagement but content was limited to short-form snippets with no structured monetization. The opportunity: turn disposable content into a compounding platform generating recurring revenue through workshops and brand partnerships.\n\n## Problem\n\nThree strategic gaps to close before any execution plan:\n\n- **Depth vs. reach:** The category has massive demand but most content lives as 60-second clips without context. How to go deep without losing reach?\n- **No conversion funnel:** Offline workshops existed in the market but lacked digital funnels to convert casual viewers into paying participants.\n- **Monetization without erosion:** Any revenue model had to avoid feeling transactional, preserving the trust-based audience relationship.\n\n## Approach\n\n1. Conducted a market gap analysis of the Indonesian relationship content landscape using secondary research - industry reports, public social-media benchmarks, and competitor content audits - identifying that the category is high-demand but under-optimized, with audiences actively seeking structured, meaningful content beyond entertainment.\n2. Defined a target audience - urban professionals aged 23–35 (Gen Z & Millennials) in Tier 1 cities: relationship-aware, growth-oriented, with proven willingness to pay for wellness and self-help.\n3. Designed a podcast-to-workshop funnel: video-first podcast content for Instagram & TikTok discovery (top), repurposed 30–60 min conversations as high-impact clips (middle), offline workshops as the high-value conversion layer.\n4. Built a platform strategy prioritizing Instagram and TikTok for daily attention and discovery, with YouTube as a low-effort long-form archive.\n5. Modeled a conservative 3-month projection: a small-group pilot workshop series with light sponsorship, targeting positive unit economics from day one.\n6. Created a phased 12-month roadmap: launch & test (0–3 mo), cadence & conversion with pilot workshop (3–6 mo), scale with monthly workshops and brand partnerships (6–12 mo).\n\n## Outcome\n\nThe deck was accepted as the strategic blueprint for launching the content platform. Key decisions:\n\n- **Immediate:** Greenlit a biweekly video podcast distributed across Instagram and TikTok.\n- **Short-term:** Scoped a small-group (10 pax) pilot workshop to validate pricing and willingness to pay.\n- **Strategic:** Reframed the influencer's trajectory from sporadic brand deals to a sustainable relationship platform with compounding value.\n"
+    },
+    {
+      "slug": "ecommerce-pitch-deck-valuation",
+      "title": "E-commerce Strategic Valuation & Growth Outlook",
+      "subtitle": "Financial-analyst-led 5-year forecast, DCF, and regional comparable valuation framing the margin re-rating thesis.",
+      "client": "Indonesian e-commerce platform",
+      "year": "2025",
+      "categories": [
+        "Financial Analyst",
+        "Pitch Deck"
+      ],
+      "stack": [
+        "Excel",
+        "PowerPoint",
+        "DCF",
+        "Comparable Analysis",
+        "Financial Modeling"
+      ],
+      "detail": "\n## Context\n\nA financial-analyst brief on a publicly listed Indonesian e-commerce platform. The thesis: margin expansion, not revenue growth, was the next leg of the story. The deck had to defend that with a credible bottom-up forecast, a DCF, and a regional-peer comparable read - in a format that holds up in an investment committee.\n\n## Problem\n\nThe narrative existed but the numbers were thin. Three gaps to close:\n\n- A bottom-up revenue forecast breaking out 3P vs 1P contribution.\n- A DCF anchored on plausible FCF and capex assumptions for 2024–2029.\n- A comparable set placing the platform next to the right regional peers and explaining the valuation gap.\n\n## Approach\n\n1. Sourced the inputs from the client alongside public filings and market data - the company's published financial statements, exchange/market figures, and regional peer disclosures - then built a five year P&L and FCF model in Excel with explicit drivers for take rate, gross margin, and capex intensity.\n2. Ran a DCF with WACC sensitivity and a terminal-growth band, generating a fair-value heat map.\n3. Pulled a SEA-marketplace peer set and benchmarked EV multiples, revenue growth, and EBITDA margin.\n4. Used Python to render supporting charts (FCF/capex stacks, sensitivity heat map, valuation-gap bars).\n5. Assembled an executive-summary deck plus a longer due-diligence appendix.\n\n## Outcome\n\nThe deck ran in two investor conversations and a partner briefing. The valuation-gap chart and the FCF sensitivity heat map anchored the discussion. The model was handed off as a working file so the client could refresh the case on each quarterly print.\n"
+    },
+    {
+      "slug": "nuclear-policy-dna-sna",
+      "title": "Nuclear Energy Policy Discourse Network Analysis",
+      "subtitle": "Scraping news + social media on Indonesia's nuclear policy, then Gemini-powered DNA + SNA + sentiment analysis dashboard.",
+      "client": "Policy Research Initiative",
+      "year": "2025",
+      "categories": [
+        "AI Engineer",
+        "Data Scientist",
+        "Data Engineer"
+      ],
+      "stack": [
+        "Gemini API",
+        "LLM Extraction",
+        "Prompt Engineering",
+        "Sentiment Analysis",
+        "MongoDB",
+        "NoSQL",
+        "pyvis",
+        "GCP"
+      ],
+      "detail": "\n## Context\n\nA policy research initiative on Indonesia's nuclear and EBET (new and renewable energy) debate. The team had a research design but no production-grade pipeline to collect, parse, and visualize the discourse at scale. The deliverable: a proof of concept combining Discourse Network Analysis (DNA), Social Network Analysis (SNA), and sentiment scoring across news and social platforms.\n\n## Problem\n\nClassical content analysis wouldn't scale to the volume needed. Four blockers:\n\n- Heterogeneous sources - news and social posts scraped from multiple sites, each with its own structure, pagination, and rate limits.\n- Articles spanned Indonesian and English with code-mixing, breaking off-the-shelf NLP.\n- Manual coding of actor, claim, stance, and sentiment was the bottleneck, not collection.\n- The team needed a defensible overview of where the conversation stands, not a dump of charts.\n\n## Approach\n\n1. Built scraping pipelines for news results (keywords: nuclear, EBET, RUU EBET variants) and relevant social posts, normalized into one MongoDB schema with source provenance.\n2. Used the Gemini API to extract actor, claim, stance, frame, and sentiment per item, with a prompt template tuned against a manually coded gold set to keep LLM output comparable to analyst coding.\n3. Built two network views - actor-to-claim (DNA) and actor-to-actor co-occurrence (SNA) - persisted as edge lists and merged with sentiment so each edge carries polarity.\n4. Rendered interactive networks (pyvis, Chart.js) plus sentiment timelines as a static HTML report bundle.\n5. Ran the pipeline on ~1,000 items across two snapshot windows to compare discourse shifts over time.\n\n## Outcome\n\nThe PoC produced a working DNA + SNA + sentiment dashboard and an end-to-end pipeline the team can rerun on new corpora. It gave a clear read on where Indonesia's nuclear policy conversation stands: two dominant coalition clusters, three recurring frames, and a sentiment skew that maps cleanly to which actor groups drive the debate. LLM extraction cut manual coding time by roughly an order of magnitude on the validation sample, and the live dashboard turned a one-off study into something the team can refresh as the debate evolves.\n"
+    },
+    {
+      "slug": "writer-density-index",
+      "title": "Regional Writing Ecosystem Index (PCA)",
+      "subtitle": "PCA-based composite model (68.2% variance) analyzing regional writing ecosystem strength across Indonesia.",
+      "client": "Cultural Policy Think Tank",
+      "year": "2024",
+      "categories": [
+        "Data Scientist",
+        "Data Analyst"
+      ],
+      "stack": [
+        "scikit-learn",
+        "PCA",
+        "Looker Studio",
+        "Statistical Analysis"
+      ],
+      "detail": "\n## Context\n\nA cultural policy think tank needed a defensible way to compare regional writing ecosystems across Indonesia. The think tank supplied its own internal dataset of regional indicators - certified writers, publishing activity, and literacy proxies - but had no single index that could rank provinces in a way policymakers would accept.\n\n## Problem\n\nSingle indicators told contradictory stories. Three issues:\n\n- Indicators were on different scales and units, so straight summation was meaningless.\n- Some variables were highly correlated, double-counting if left untreated.\n- The output had to be one composite score that survived academic review.\n\n## Approach\n\n1. Curated and cleaned the variable set across provinces, including LSP (certified writer/editor) counts at the regency level.\n2. Normalized variables with z-scores, then ran a correlation audit to flag redundancy.\n3. Applied PCA, selected the first two components from the scree plot and cumulative variance, and validated the loadings against domain expectation.\n4. Reconstructed a composite Writing Ecosystem Index from the component scores and ranked provinces.\n5. Packaged the methodology, index, and province ranking into a report and slide narrative for the think tank's policy audience.\n\n## Outcome\n\nThe first two principal components captured 68.2% of variance, with loadings mapping cleanly to a production axis and a professionalization axis. The index ranked provinces defensibly, and the composite score plus methodology became the analytical core of the public-facing report.\n"
+    },
+    {
+      "slug": "social-media-scraping-integration",
+      "title": "Social Media Scraping Integration",
+      "subtitle": "Unified scraper for 5 platforms (YouTube, TikTok, Instagram, Facebook, X) on Cloud Run with resumable batches.",
+      "client": "Marketing research agency",
+      "year": "2025",
+      "categories": [
+        "Data Engineer"
+      ],
+      "stack": [
+        "Python",
+        "Cloud Run",
+        "GCS",
+        "APIFY",
+        "Flask",
+        "Docker"
+      ],
+      "detail": "\n## Context\n\nA marketing research team needed continuous profile and content data from five social platforms to feed campaign benchmarking and influencer scoping. The existing setup was a patchwork of one-off notebooks per platform - each rerun needed manual stitching, and any mid-batch failure meant starting from scratch.\n\n## Problem\n\n- Five platforms, five auth models, rate limits, and content schemas - a separate script each meant five failure modes for ops.\n- Batches over a few thousand accounts routinely failed mid-run; without checkpointing, the whole run restarted, burning quota and time.\n- Output scattered across local CSVs with no consistent naming made downstream analysis brittle.\n\n## Approach\n\n1. Designed a three-layer modular architecture - parsers (URL normalization), collectors (platform API calls), models (canonical profile + content shape) - so adding a sixth platform is three small classes, not a pipeline refactor.\n2. Built a unified `SocialMediaService` orchestrator that walks the input CSV, dispatches to the right collector per row, normalizes the response, and writes a consistent layout (profiles vs content, partitioned by platform).\n3. Containerized and deployed two ways: a Cloud Run job for scheduled batches, and a Flask app for ad-hoc HTTP triggers with `/health` and `/metrics` endpoints.\n4. Added a GCS-backed `ProgressTracker` for resumable runs - if a batch dies on row 4,200 of 8,000, the next invocation resumes there instead of redoing the first half.\n5. Hardened the I/O layer with a `FileManager` + `GCSHelper` abstraction, so the same code path writes locally in dev and to a versioned GCS bucket in production.\n\n## Outcome\n\nThe team replaced five fragile notebooks with one reproducible job. Batches that needed babysitting now run unattended, and the resumable tracker makes partial failures cost minutes instead of hours. The shared output schema (one profiles file, one content file per platform) plugged straight into the agency's existing notebooks without glue code.\n"
+    },
+    {
+      "slug": "google-news-gemini-parser",
+      "title": "Google News Scraping + Gemini AI Aggregation",
+      "subtitle": "Always-on macro news scraping pipeline on Cloud Run combining Google CSE, APIFY, and Gemini parsing.",
+      "client": "Macro research desk",
+      "year": "2025",
+      "categories": [
+        "AI Engineer",
+        "Data Engineer"
+      ],
+      "stack": [
+        "Gemini API",
+        "LLM Extraction",
+        "Prompt Engineering",
+        "Python",
+        "Cloud Run",
+        "Google CSE",
+        "APIFY",
+        "Web Scraping"
+      ],
+      "detail": "\n## Context\n\nA small research desk tracking monetary policy and FX needed continuous coverage of Bank Indonesia, inflation, and rupiah-related news across Indonesian and English sources. Manual scanning was the bottleneck - by the time an analyst had read enough to brief the team, intraday signals were already stale.\n\n## Problem\n\nThree constraints shaped the build:\n\n- Coverage had to be intraday - a daily digest wasn't enough.\n- The Google CSE API caps results at 100 per query and deep paging at index 91, so a naive scheduler would miss articles or burn quota.\n- Search results return only titles, snippets, and links - article bodies had to be fetched separately, then parsed into structured fields analysts could query.\n\n## Approach\n\n1. Built a single-purpose Cloud Run scraper that hits the CSE API on a configurable window (5–60 min), filters by `after:` date plus a strict in-code timestamp check, and writes deduplicated records to monthly JSON files (`articles_YYYY-MM.json`) via a checkpoint store.\n2. Triggered it from Cloud Scheduler so cadence is decoupled from code; queries and intervals are env vars, so the team tunes coverage per topic without redeploying.\n3. Layered APIFY's Google Search Scraper actor on top for backfills and sweeps beyond the CSE quota. Both sources write the same normalized schema with a `source_kind` flag marking which path produced each row.\n4. Routed article bodies through a Gemini parsing step extracting actor, claim, stance, and a coarse sentiment tag, tuned against a small manually labeled gold set to keep output comparable to analyst coding.\n5. Persisted everything as date-partitioned JSON so analysts pull a window straight into pandas or a notebook - no intermediate database.\n\n## Outcome\n\nThe pipeline runs unattended, pushing structured news records into the research store at the chosen cadence. The desk swapped manual scanning for a queryable feed - rupiah, inflation, and BI policy queries share one parsing schema, so cross-topic comparisons that took hours become a single filter. The Gemini layer cut manual coding on the validation sample by roughly an order of magnitude, and the modular split (CSE for live, APIFY for backfill, Gemini for parse) lets each piece be swapped independently.\n"
+    },
+    {
+      "slug": "debt-collection-analytics",
+      "title": "Debt Collection Analytics & Agent Productivity",
+      "subtitle": "Ten months of call center data turned into a dashboard + narrative report that reframed a data-quality issue as the real performance lever.",
+      "client": "Banking collections agency",
+      "year": "2025",
+      "categories": [
+        "Data Analyst",
+        "Dashboard"
+      ],
+      "stack": [
+        "Python",
+        "Pandas",
+        "Excel",
+        "Looker Studio"
+      ],
+      "detail": "\n## Context\n\nA banking collections operation: hundreds of agents, a large-scale delinquent portfolio. Monthly reports arrived as separate Excel files with no unified view across agents, regions, or time - so questions like \"who are our consistent top performers\" or \"where is recovery coming from\" meant rebuilding the analysis from scratch every month.\n\n## Problem\n\n- Ten monthly Excel workbooks (Feb–Nov 2025), each with its own quirks: header drift, merged cells, inconsistent agent name spellings.\n- Alarming headline numbers - an extremely high unconnected rate and a success rate well below industry benchmarks - needed a defensible explanation, not just the metric.\n- One agent had anomalous numbers (zero connected calls but the highest \"paid count\") that would distort any naive ranking and undermine trust in the dashboard.\n\n## Approach\n\n1. Built a Python ETL that ingests each monthly workbook, normalizes the schema, harmonizes agent identifiers, and outputs two clean partitioned datasets per month.\n2. Layered a data-quality pass that flagged the anomalous agent for investigation rather than silently filtering it, keeping the ops conversation on top of clean data.\n3. Designed a Looker Studio dashboard with three lenses (portfolio health, agent productivity, regional breakdown) so executives, team leads, and ops each land on the view that fits their decision.\n4. Wrote the analysis as a narrative report - each finding paired with a root-cause hypothesis and a tiered recommendation (immediate / short-term / long-term).\n5. Benchmarked top vs bottom decile agents on contact rate, PTP conversion, and call duration to surface coachable behaviors instead of a generic \"improve performance\" message.\n\n## Outcome\n\nThe dashboard became the monthly review artifact - leadership, team leads, and the data team all working off the same numbers. The report reframed the 95.6% unconnected rate as a data-quality problem, not an agent-skill problem, redirecting investment toward contact-database validation and skip tracing. Top-performer benchmarks on call duration, attempt cadence, and PTP conversion gave the coaching program concrete targets, and the tiered recommendations turned a one-off audit into an executable action backlog.\n\nThe live dashboard is kept private under the client's data confidentiality terms.\n"
+    },
+    {
+      "slug": "heavy-equipment-maintenance-dashboard",
+      "title": "Heavy Equipment Preventive Maintenance Dashboard",
+      "subtitle": "Cylinder and hose lifecycle dashboard for a mining contractor's Komatsu excavator fleet.",
+      "client": "Mining contractor",
+      "year": "2025",
+      "categories": [
+        "Dashboard",
+        "Data Analyst"
+      ],
+      "stack": [
+        "Looker Studio",
+        "Google Sheets",
+        "Excel",
+        "Python"
+      ],
+      "detail": "\n## Context\n\nA mining contractor running large Komatsu excavators (PC2000, PC1250, PC850 class) needed forward visibility into cylinder and hose rehousing demand. Lifetime data lived in the maintenance planner's workbooks, indexed by EGI (unit serial), section (boom, arm, bucket), and part number. Stock for overhaul (stock OVH) was tracked separately - the only way to confirm parts were ready when a cylinder hit its rehousing window was a manual cross-check.\n\n## Problem\n\n- Lifetime data sat across multiple sheets per excavator class, with serial ranges (`20196-20453`, `20454-UP`) deciding which part number applied. Manual lookups were error-prone.\n- \"Need per cylinder\" vs \"stock OVH\" was a per-row Excel calc with no aggregated view to flag shortages before they hit scheduling.\n- Planning wanted one screen showing which unit needs what part next, but the source data was structured for parts catalogs, not forward planning.\n\n## Approach\n\n1. Restructured the source workbooks into a clean tabular dataset - one row per unit + section + component + part number, stock and need columns aligned, serial-range logic flattened for clean downstream joins.\n2. Built a parts-demand model in Sheets combining current lifetime status with the rehousing interval per cylinder type, producing a forward window of which units come due next month, quarter, and year.\n3. Designed a Looker Studio dashboard with three lenses - fleet-level readiness (parts ready vs shortage), per-unit timeline (next milestone per EGI), and part-level (where stock is below need).\n4. Added an exception view surfacing rows where stock OVH is zero against an upcoming need, so the planner acts on a shortlist instead of scanning the whole workbook.\n5. Documented a lightweight monthly refresh so the planner updates the source sheet and the dashboard stays in sync.\n\n## Outcome\n\nThe dashboard replaced ad-hoc spreadsheet lookups with a single planning view the maintenance team uses in monthly reviews. Forward visibility let procurement order against an actual list of upcoming jobs instead of buffer-stocking everything, and the exception view turned shortage detection from a periodic audit into a daily check.\n"
+    },
+    {
+      "slug": "edtech-tableau-course",
+      "title": "Tableau for Data Analysis 101 Course",
+      "subtitle": "Instructor-built Tableau curriculum with a single retail case study (VoraStore) as the project arc.",
+      "client": "Indonesian EdTech platform",
+      "year": "2025",
+      "categories": [
+        "Data Analyst",
+        "Dashboard"
+      ],
+      "stack": [
+        "Tableau",
+        "PowerPoint",
+        "Curriculum Design"
+      ],
+      "detail": "\n## Context\n\nAn EdTech platform for Indonesian working professionals needed a Tableau 101 course taking absolute beginners from install to a presentable dashboard. The market either over-indexed on tool clicks (no business framing) or jumped straight to advanced features. The brief: a course that respects a professional's time and lands them on something portfolio-worthy.\n\n## Problem\n\n- Mixed backgrounds - some Excel-fluent, others from zero. The first three modules had to build confidence without boring the experienced.\n- Tutorials easily devolve into \"click here, then here\" without teaching the underlying decisions, so learners can't reproduce on a new dataset and lose momentum.\n- A single dataset had to carry the whole arc, or every module felt disconnected.\n\n## Approach\n\n1. Sequenced five blocks: Introduction & Preparation (install, joins, data cleaning), Visualization Basics (filters, parameters, sorting), Geospatial Maps, Calculations (table calcs, LOD), and Interactive Dashboards + Trend Lines & Forecasting - each block ending with a checkpoint exercise, not a quiz.\n2. Built one case study, VoraStore - a fictional multinational retailer across four US regions (Central, East, South, West) with three categories (Furniture, Office Supplies, Technology). Every module reuses it so concepts compound instead of resetting.\n3. Anchored it in a CEO brief: total sales, profit, return orders, product performance, profit ratio by state, and a profitability crisis to investigate. The learner plays a BI Analyst, not a tool user.\n4. Wrote slides and speaker notes in Bahasa Indonesia with key technical terms kept in English, matching how analysts actually talk.\n5. Designed each module to land on a tangible artifact, ending with a full interactive dashboard for a portfolio or internal review.\n\n## Outcome\n\nThe course shipped as a complete syllabus - slides, case brief, and a dashboard the learner builds across modules. Instead of a tool walkthrough, learners finish with a defensible BI artifact they can talk through in an interview. VoraStore is reusable across cohorts and gives the platform a consistent reference example for future intermediate courses.\n"
+    },
+    {
+      "slug": "govt-statistics-data-platform",
+      "title": "Government Statistics Data Platform Implementation",
+      "subtitle": "Reference catalog and ingestion layer mapping all 549 BPS office domains for a coordinating ministry.",
+      "client": "Indonesian coordinating ministry",
+      "year": "2025",
+      "categories": [
+        "Data Engineer"
+      ],
+      "stack": [
+        "Python",
+        "BPS Web API",
+        "JavaScript",
+        "CSV",
+        "JSON"
+      ],
+      "detail": "\n## Context\n\nA coordinating ministry needed a clean, programmatically accessible catalog of statistical sources from Indonesia's central statistics agency (Badan Pusat Statistik / BPS), so analysts could pull regional and subject-specific data without manually navigating dozens of provincial and regency websites. Scoped as a 28-working-day implementation: deliver end-to-end, document, hand over.\n\n## Problem\n\n- BPS publishes across 549 office domains (one central, 34 provincial, plus regency-level). Without a unified reference, every analyst bookmarked sites ad hoc.\n- The subject taxonomy splits into three top-level categories (Demographic & Social, Economic, Environmental & Multi-domain) with nested subcategories - each office serving the same taxonomy at a different administrative level.\n- It had to stand up inside a fixed budget and tight calendar, so the architecture favored lightweight, documented components over heavy infrastructure.\n\n## Approach\n\n1. Built a BPS web API ingestion script pulling the full domain reference (549 offices: `domain_id`, `domain_name`, `domain_url`) into a clean CSV joinable against any downstream dataset.\n2. Pulled the subject taxonomy (CSAC subjects, subcategories) into parallel reference tables so analysts filter by topic across offices without per-region logic.\n3. Processed the BPS terms-of-use PDFs into structured records, giving legal/compliance a single artifact instead of re-downloading per office.\n4. Wrote the platform in plain Python (`requests`, `csv`), deliberately avoiding heavy frameworks so the ministry's internal team can maintain and extend it.\n5. Documented refresh procedures, source endpoints, and schema decisions so the next engineer can pick it up without a knowledge-transfer call.\n\n## Outcome\n\nThe ministry received a maintainable reference catalog covering every BPS office and subject area, plus ingestion code, documentation, and processed terms of use. Analysts now resolve \"which BPS office publishes this for my region\" in a single CSV lookup instead of clicking through provincial sites, and the lightweight stack keeps the platform maintainable past the implementation window.\n"
+    },
+    {
+      "slug": "mobile-analytics-data-pipeline",
+      "title": "Mobile App Analytics Data Pipeline",
+      "subtitle": "Multi-source ingestion pipeline unifying AppsFlyer, MoEngage, Google Play Console, and App Store Connect into BigQuery for a Looker Studio monitoring dashboard.",
+      "client": "Digital financial services app",
+      "year": "2026",
+      "categories": [
+        "Data Engineer",
+        "DevOps"
+      ],
+      "stack": [
+        "Python",
+        "dbt",
+        "BigQuery",
+        "Cloud Run Jobs",
+        "Cloud Workflows",
+        "Cloud Scheduler",
+        "Cloud Build",
+        "GCP Secret Manager",
+        "Terraform",
+        "Looker Studio"
+      ],
+      "detail": "\n## Context\n\nA digital financial services app needed a single source of truth for their product analytics. Data was scattered across four platforms: AppsFlyer (attribution and events), MoEngage (push campaigns), Google Play Console (Android performance), and App Store Connect (iOS analytics). Each had its own API format, auth method, and data lag. Marketing, product, and growth teams were pulling reports manually from each platform individually.\n\nThe goal was to automate all four sources into one BigQuery warehouse, transform the raw data with dbt into clean mart tables, and surface it in a Looker Studio dashboard refreshed twice daily.\n\n## Problem\n\nFour distinct ingestion challenges in one pipeline:\n\n- **AppsFlyer** exposes separate endpoints per report type (installs, events, cohorts, cost) across iOS and Android. That is 8 total pulls per run.\n- **MoEngage** requires a two-step campaign API: search for campaigns first, then fetch stats per campaign.\n- **Google Play Console** has a 3-day data lag on vitals APIs. Requesting data newer than T-3 returns HTTP 400, so the pipeline window must be offset accordingly.\n- **App Store Connect** uses JWT-signed tokens with short expiry, requiring rotation logic baked into the extractor.\n\nBeyond ingestion, the pipeline needed CI/CD, environment isolation (dev vs. prod), and a runbook a non-engineer could follow for token rotation and backfills.\n\n## Approach\n\n**Architecture.** Cloud Scheduler triggers Cloud Workflows twice daily. The workflow fans out all four extractors in parallel, waits for all to succeed, then runs the dbt transform step. Each extractor runs as an independent Cloud Run Job. A single Docker image packages both the Python ingestion code and the dbt project, and each job sets its own command and args at runtime, keeping the image count to one.\n\n**Ingestion layer.** Each source is a Python module with its own API client, retry logic, and schema normalization. Raw payloads land in BigQuery raw layer tables. Extraction is stateless: the pipeline accepts a date range parameter, defaulting to T-4 to T-3 to accommodate the Play Console lag.\n\n**Transform layer.** dbt handles the data modeling: staging models (type casting, deduplication, null handling) and mart models (joined, aggregated, Looker-ready), with slowly changing dimensions tracked as SCD Type 2 via dbt snapshots. Models are tested with dbt's built-in schema tests, 51 tests total across all four sources, all green before production deploy.\n\n**CI/CD.** Cloud Build runs on push to `develop` (deploys to dev GCP) and `main` (deploys to client prod GCP via VPN). Secrets are managed in GCP Secret Manager, never in code or environment variables.\n\n**Environments.** Two long-lived branches mirror two GCP projects: consultant-owned dev for testing, client-owned prod for live data. Feature branches go through dev E2E verification before merging to main.\n\n## Results\n\n- **4 sources fully automated** across AppsFlyer, MoEngage, Google Play Console, and App Store Connect, all running end-to-end in production.\n- **51 dbt tests passing** across all sources, covering null checks, uniqueness, accepted values, and referential integrity.\n- **Full handover documentation** including setup guide, runbook, data catalogs per source, and contributing guide written for the client's internal team to maintain independently.\n\n## Stack notes\n\n- **Cloud Workflows** orchestrates parallel extraction with a fan-out pattern. All four sources run simultaneously and dbt only starts after all succeed. A single workflow failure stops the transform from running on partial data.\n- **Single Docker image** for both Python ingestion and dbt reduces image management overhead. Each Cloud Run Job overrides the command at runtime.\n- **dbt Medallion layers** (raw, staging, mart) keep transform logic modular. Adding a new source means adding one staging model and one mart model without touching existing ones.\n- **GCP Secret Manager** for all credentials. API tokens, service account keys, and App Store Connect private keys are never in code, never in env files, never in logs.\n"
+    },
+    {
+      "slug": "personal-portfolio-website",
+      "title": "Personal Portfolio Website with RAG Chat",
+      "subtitle": "A personal portfolio with an agentic RAG chat assistant powered by Gemini, combining semantic retrieval, tool calling, and guardrails to answer grounded questions about my projects, experience, and skills.",
+      "client": "Self-initiated",
+      "year": "2026",
+      "categories": [
+        "AI Engineer",
+        "Data Engineer"
+      ],
+      "stack": [
+        "Gemini API",
+        "Agentic RAG",
+        "Vector Embeddings",
+        "Semantic Search",
+        "Tool Calling",
+        "Prompt Engineering",
+        "Guardrails",
+        "Python",
+        "Next.js",
+        "Vercel"
+      ],
+      "detail": "\n## Context\n\nI wanted a portfolio that could do more than just display static content. Most portfolios are one-way: the visitor has to read through everything and piece together the picture themselves. I wanted visitors to be able to ask questions and get direct answers about my work, experience, and skills without having to dig through pages manually.\n\nThe result is this site: a Next.js portfolio with a chat widget backed by a Gemini-powered RAG pipeline.\n\n## Problem\n\nTwo challenges to solve:\n\n- A generic LLM with no context about me would either hallucinate or give vague answers. It needed to be grounded in actual content from the portfolio.\n- Dumping all portfolio content into every prompt would be slow and wasteful. The assistant needed to retrieve only the relevant pieces per question.\n\n## Approach\n\n**Content layer.** All portfolio content lives as structured TypeScript data (experience, projects, skills) and MDX case studies. A build-time script reads all of it, splits it into chunks, embeds each chunk via Gemini's embedding model, and writes the vectors to a local JSON file.\n\n**Retrieval.** At query time, the user's question is embedded and compared against all stored vectors using cosine similarity. The top-k most relevant chunks are pulled and injected into the system prompt as grounding context.\n\n**Generation.** Gemini handles the response with a tight system prompt: answer only from the retrieved context, never hallucinate, stay scoped to questions about my work. The response streams back to the client token by token.\n\n**Guardrails.** The system prompt enforces strict boundaries: answer only about my work, decline off-topic and sensitive questions (salary, company internals), treat user input and retrieved context as untrusted data against prompt injection, and never construct URLs or figures not present in the data. Input validation strips control characters and caps message length and history.\n\n**Rate limiting.** Two layers: per-IP (20 requests per minute) and global (200 requests per hour) to stay within the free tier and prevent abuse.\n\n**Frontend.** Next.js App Router, Tailwind CSS for styling, Framer Motion for transitions. The chat widget floats over the page and streams responses in real time. MDX powers the case study pages.\n\n## Prompt Engineering and Evaluation\n\nGetting the model to answer accurately required more iteration than the retrieval side. A few specific problems came up:\n\n**Capability bridging.** When asked \"can Firza do X?\" where X is not explicitly in the data, the model would either hallucinate a yes or give a flat no. Neither is useful. The solution was a structured bridging instruction in the system prompt: always call a tool first to check, then if X is not found, surface the closest analog from the data with an explicit explanation of the overlap. This turns dead-ends into honest, useful answers.\n\n**Tool-call enforcement.** Lightweight models tend to skip tool calls and answer from retrieved context alone, which leads to confident wrong answers. The fix was explicit instruction: \"You MUST call get_skills or search_projects first\" for capability questions. Without the word MUST, the model would ignore the instruction.\n\n**Language detection.** Retrieved context is often in Bahasa Indonesia (from local project descriptions). Without guidance, the model would mirror the context language rather than the visitor's language. Fixed by explicitly grounding language choice to the visitor's message only.\n\n**Evaluation approach.** Prompt changes were validated with a dedicated test script (`scripts/test_chat.py`) running a fixed set of hard questions: capability questions for skills not in the data, sensitive questions (salary, availability), negative questions, and cross-language cases. Each prompt iteration was tested against all cases before shipping. Model selection (comparing gemini-2.5-flash vs gemini-3.1-flash-lite) was also done this way: same 4 questions, side-by-side output comparison, pick based on accuracy and free-tier quota.\n\n## Stack notes\n\n- **Gemini embedding model** for both indexing and query-time retrieval. Keeping both on the same model avoids vector space mismatches.\n- **Static vector index** stored as a JSON file in the repo. Simple and fast for a portfolio-scale dataset (70 chunks). No external vector DB needed.\n- **Streaming SSE** from the API route to the client so responses appear progressively rather than waiting for the full answer.\n- **Vercel** for deployment with serverless functions handling the chat API.\n"
+    },
+    {
+      "slug": "telco-churn-prediction",
+      "title": "Telco Customer Churn Prediction (Streamlit)",
+      "subtitle": "End-to-end ML app benchmarking Logistic Regression, Random Forest, and Gradient Boosting on telco subscriber data, deployed live on Streamlit.",
+      "client": "Self-initiated portfolio project",
+      "year": "2022",
+      "categories": [
+        "Data Scientist",
+        "ML Engineer",
+        "Dashboard"
+      ],
+      "stack": [
+        "Python",
+        "Streamlit",
+        "scikit-learn",
+        "Pandas",
+        "Logistic Regression",
+        "Random Forest",
+        "Gradient Boosting"
+      ],
+      "detail": "\n## Context\n\nA self-initiated project to practice the full ML lifecycle on a known business problem: predicting telecom subscriber churn. The dataset is DQLab's dummy data for a fictional \"DQLab Telco\" - customer state as of June 2020, ~6,800 rows, 21 attributes covering demographics, services, contract type, and billing.\n\nThe goal wasn't just to fit a model, but to make the analysis legible end-to-end: a visitor to the live app can walk through cleansing, EDA, and model comparison, then type in customer attributes and get a churn probability back.\n\n## Problem\n\nDQLab Telco wants to predict, ahead of time, who is likely to unsubscribe. From a modeling standpoint, three constraints:\n\n- Imbalanced target (~26% churn, 74% non-churn), so accuracy alone misleads.\n- Most predictors are categorical (gender, partner status, service flags, contract terms), so encoding choices matter.\n- Output must be usable - a notebook score doesn't help ops; a ten-input form returning a churn probability does.\n\n## Approach\n\nThe Streamlit app is split into four navigable sections, each one mapping to a stage of the pipeline.\n\n**Data cleansing.** Drop operational columns (customerID, UpdatedAt), handle missing TotalCharges, standardize types. The cleaned dataset is exported to a separate CSV so EDA and modeling read from one canonical source.\n\n**Exploratory data analysis.** Bivariate plots against the Churn label - overlaid histograms for numerical features, seaborn count plots for categorical, a Plotly donut for the overall churn ratio. Three findings shaped the model framing:\n\n- Higher monthly charges correlate with higher churn.\n- Longer tenure correlates with lower churn.\n- StreamingTV, InternetService, and PaperlessBilling users churn at higher rates than their counterparts, suggesting service quality or pricing friction in those segments.\n\n**Model building.** Label-encode non-numeric columns, split 70/30 with a fixed random state, then fit three baseline classifiers at default hyperparameters:\n\n- Logistic Regression\n- Random Forest Classifier\n- Gradient Boosting Classifier\n\nEach model surfaces its own classification report and confusion matrix in the app, with separate train/test views so the overfit pattern is visible.\n\n**Prediction.** A form takes ten attributes (gender, senior citizen, partner, tenure, phone, streaming TV, internet, paperless billing, monthly charges, total charges), encodes them as the training pipeline did, and runs them through a pickled model loaded via joblib. The app returns the predicted class plus probabilities for both outcomes.\n\n## Results\n\nTest accuracy was close across baselines, but training accuracy told the real story:\n\n- **Logistic Regression: 80% train / 79% test.** Balanced, generalizes cleanly.\n- **Random Forest: 100% train / 78% test.** Classic overfit signal.\n- **Gradient Boosting: 82% train / 79% test.** Slightly better train fit, no real test gain.\n\nI picked **Logistic Regression** for production precisely because its train–test gap was smallest. Its test confusion matrix is more conservative on positives than negatives - appropriate when the downstream action (retention offers, discount budget) carries a per-customer cost you don't want to spray indiscriminately.\n\nThe operational takeaway, written into the app's Conclusion: an ML score concentrates retention spend on customers actually predicted to churn, instead of blanket promotions across the full base.\n\n## Stack notes\n\n- **Streamlit** for the entire UI - no Flask, no React. The same script runs locally and deploys to share.streamlit.io.\n- **scikit-learn** for all three models; a uniform API across LR, RF, and GBC kept the side-by-side comparison simple.\n- **joblib** for in-app model persistence, **pickle** for the saved repo artifact.\n- **Plotly + matplotlib + seaborn** mixed deliberately: Plotly for the interactive churn donut, matplotlib for confusion matrices, seaborn for categorical count plots.\n\nThe full source, including the cleansing, EDA, and ML modules as separate Python files, is on GitHub at [FirzaCank/Churn](https://github.com/FirzaCank/Churn).\n"
+    }
+  ],
+  "experience": [
+    {
+      "id": "hypefast",
+      "company": "Hypefast",
+      "placement": null,
+      "title": "Data Engineer",
+      "period": "March 2025 - Present",
+      "current": true,
+      "internship": false,
+      "location": "Jakarta, Indonesia",
+      "summary": "Building data and Machine Learning (ML) infrastructure for a multi-brand consumer aggregator. Pipelines, recommendation systems, AI-driven automation across 11+ brands.",
+      "highlights": [
+        "Designed L0–L2 ETL pipelines ingesting order and customer data from 4 marketplace APIs and Google Sheets to BigQuery for 11+ brands, with Flask-based token management on Cloud Run and PostgreSQL for API authentication, applying SCD handling on dimension tables, enabling unified analytics and reporting.",
+        "Built and tuned product recommendation systems on Shopee (neural collaborative filtering, replenishment, and baby-clothing category models) using TensorFlow/Keras, scikit-learn, and FastAPI on GCP (Vertex AI, Agent Platform), driving hundreds of millions of IDR per month in GMV.",
+        "Created an end-to-end pipeline for a smart voucher optimization system using K-Means clustering and linear programming for budget-constrained allocation, orchestrated via Vertex AI and Agent Platform Pipelines and Cloud Composer, achieving a 200× average monthly return on voucher budget per brand.",
+        "Automated financial workflows for 3 brands by integrating Jubelio (omnichannel OMS) with Mekari Jurnal (Jurnal.id) via API, reducing invoice processing from days to <5 minutes for hundreds of daily invoices, and accelerating cash flow through faster AR recognition.",
+        "Engineered an AI-based OCR system using GCP Document AI (evaluated against Mistral AI), automating invoice and receipt processing, reducing extraction time from 8 hours to 5 minutes (96× faster) with 90%+ accuracy.",
+        "Delivered Metabase dashboards for Finance, Data Science, and Business Operations teams to monitor catalog performance, advertising AI, and customer data platform."
+      ],
+      "stack": [
+        "Google Cloud Platform (GCP)",
+        "Composer (Airflow)",
+        "BigQuery",
+        "Vertex AI",
+        "Agent Platform",
+        "Cloud Run",
+        "Compute Engine",
+        "Pub/Sub",
+        "Datastream (Change Data Capture / CDC)",
+        "Document AI",
+        "Flask",
+        "FastAPI",
+        "TensorFlow",
+        "scikit-learn",
+        "PostgreSQL",
+        "Metabase",
+        "Mistral AI",
+        "Jubelio (Omnichannel OMS)",
+        "Mekari Jurnal"
+      ]
+    },
+    {
+      "id": "idstar",
+      "company": "IDstar Cipta Teknologi",
+      "placement": "Placement in PT XL Axiata Tbk.",
+      "title": "Data Engineer and Analytics / ETL Developer",
+      "period": "July 2022 - March 2025",
+      "current": false,
+      "internship": false,
+      "location": "Jakarta, Indonesia",
+      "summary": "Built telco-scale data platforms processing 1B+ daily records with Medallion architecture, plus partner-facing analytics products.",
+      "highlights": [
+        "Developed an end-to-end telco user behavior & credit scoring platform using a Medallion Architecture (Bronze/Silver/Gold) on Snowflake; built PySpark ETL pipelines on AWS (S3, EC2, Lambda) processing 1B+ daily records with schema evolution, partition pruning, and data quality gates enforced at each layer, plus slowly changing dimension (SCD) management across Types 0-6.",
+        "Built a monthly PySpark-based lead generation pipeline to process and enrich millions of XL Axiata subscriber profiles for targeted bank product acquisition.",
+        "Built a dashboard monitoring XL's API Economy performance for external partners; its insights drove fixes that improved API response times by 30%, lifted success rates by 15%, and grew API transaction revenue by 10%."
+      ],
+      "stack": [
+        "AWS",
+        "Snowflake",
+        "PySpark",
+        "Hadoop",
+        "Airflow",
+        "Cloudera",
+        "Kafka",
+        "Hive",
+        "Impala",
+        "Shell Script"
+      ]
+    },
+    {
+      "id": "telkom",
+      "company": "Telkom Indonesia",
+      "placement": null,
+      "title": "Data Scientist Internship",
+      "period": "February 2021 - August 2021",
+      "current": false,
+      "internship": true,
+      "location": "Jakarta, Indonesia",
+      "summary": "Supported exploratory data analysis and product modeling for digital products including T-Money and KALISA blockchain waqf platform.",
+      "highlights": [
+        "Performed data cleansing and exploratory data analysis on T-Money data within 1 month, reporting and interpreting results to support data-driven decisions.",
+        "Developed the business model for KALISA, a blockchain waqf platform; management adopted it as the product's new business model within 3 months."
+      ],
+      "stack": [
+        "Python",
+        "pandas",
+        "Business Modeling"
+      ]
+    },
+    {
+      "id": "arindo",
+      "company": "PT Arindo Cipta Perkasa",
+      "placement": null,
+      "title": "Production Systems and Business Analyst Internship",
+      "period": "November 2020 - April 2021",
+      "current": false,
+      "internship": true,
+      "location": "Bogor Regency, Indonesia",
+      "summary": "Production operations analysis and scheduling optimization for manufacturing operations.",
+      "highlights": [
+        "Analyzed production data to identify root causes of operational problems and recommend improvements to management.",
+        "Recommended a production scheduling optimization to management using the NEH (Nawaz-Enscore-Ham) heuristic, reducing total makespan by 10.84% (996 minutes)."
+      ],
+      "stack": [
+        "Production Scheduling",
+        "Heuristic Algorithm",
+        "Manufacturing",
+        "Data Analysis"
+      ]
+    },
+    {
+      "id": "banopolis",
+      "company": "Banopolis Inovasi Kendara",
+      "placement": null,
+      "title": "Business Development Internship",
+      "period": "June 2020 - August 2020",
+      "current": false,
+      "internship": true,
+      "location": "Bandung, Indonesia",
+      "summary": "Business development for GETBIKE ride sharing product. Proposed B2B and B2B2G models, designed partnership scheme with PT Telkom Indonesia.",
+      "highlights": [
+        "Proposed a new business model of GETBIKE B2B and B2B2G ride sharing using 3 tools (Business Model Canvas, Value Proposition Canvas, Lean Canvas). Management implemented the ideas for the product within 1 month.",
+        "Ideated solutions using How Might We Question method for every element in the Business Model Canvas in 2 weeks.",
+        "Designed the partnership model scheme with PT Telkom Indonesia in 2 weeks.",
+        "Applied agile methods to 2 critical business processes affected by the Covid-19 pandemic within 1 month."
+      ],
+      "stack": [
+        "Business Model Canvas",
+        "Value Proposition Canvas",
+        "Lean Canvas",
+        "Agile"
+      ]
+    }
+  ],
+  "about": {
+    "bio": [
+      "I’m a Data & AI Engineer with ~4 years of experience building end-to-end data pipelines and scalable MLOps frameworks. I turn raw data infrastructure into automated systems: recommendation models in production, LLM-powered document processing, and pipelines that run unattended.",
+      "I’ve spent the last several years inside Telco and consumer brand environments, where the systems I designed had to run reliably at scale, with proven impact: processing 1B+ daily records, driving hundreds of millions of IDR per month in GMV via recommendation systems, achieving a 200× average monthly return on voucher budget per brand, and cutting OCR extraction time from 8 hours to 5 minutes (96× faster).",
+      "Beyond my core engineering role, I take on freelance projects spanning AI engineering, data analysis, dashboards, and pitch decks. The work I take on lets me ship end-to-end, from raw data to a deliverable a stakeholder can act on."
+    ],
+    "education": [
+      {
+        "institution": "Bandung Institute of Technology (ITB), Indonesia",
+        "degree": "Bachelor's Degree",
+        "faculty": "Faculty of Industrial Technology, Industrial Engineering",
+        "detail": "Worked as a paid assistant at the Production Systems Laboratory (LSP), Faculty of Industrial Technology",
+        "period": "August 2017 - July 2021",
+        "thesis": {
+          "title": "A Proposed Improvement to Flow Shop Production Scheduling for Makespan Minimization",
+          "url": "https://digilib.itb.ac.id/gdl/view/79335/Firza-Chandra-Sandjaya-Putra"
+        }
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Python for Data Science and Artificial Intelligence (AI)",
+        "issuer": "Coursera"
+      },
+      {
+        "name": "Data Descriptors, Statistical Distributions, and Application to Business Decisions",
+        "issuer": "Rice University"
+      },
+      {
+        "name": "JLPT N3 Japanese Proficiency",
+        "issuer": "Japan Foundation"
+      }
+    ],
+    "languages": [
+      {
+        "name": "Bahasa Indonesia",
+        "level": "Native"
+      },
+      {
+        "name": "English",
+        "level": "Professional"
+      },
+      {
+        "name": "Japanese",
+        "level": "JLPT N3"
+      }
+    ],
+    "skills": [
+      {
+        "group": "AI / LLM",
+        "items": [
+          "LangChain",
+          "LangGraph",
+          "OpenAI API",
+          "Anthropic Claude API",
+          "Gemini API",
+          "FAISS",
+          "RAG",
+          "Vector Search",
+          "Tool Calling",
+          "Prompt Engineering",
+          "Prompt Evaluation",
+          "Sentence Transformers",
+          "OpenCV"
+        ]
+      },
+      {
+        "group": "ML / Data Science",
+        "items": [
+          "Deep Learning",
+          "TensorFlow / Keras",
+          "PyTorch",
+          "scikit-learn",
+          "pandas",
+          "numpy",
+          "PySpark",
+          "seaborn",
+          "matplotlib"
+        ]
+      },
+      {
+        "group": "Backend",
+        "items": [
+          "FastAPI",
+          "Flask",
+          "SQLAlchemy",
+          "REST API",
+          "Next.js"
+        ]
+      },
+      {
+        "group": "Cloud",
+        "items": [
+          "AWS (EC2, S3, Lambda, ECS/ECR)",
+          "GCP (Vertex AI, Agent Platform, BigQuery, Cloud Run, Compute Engine, Datastream (Change Data Capture / CDC), Document AI, Pub/Sub, Composer, Cloud Build, Cloud Workflows, Cloud Scheduler, Secret Manager, IAM)",
+          "Snowflake"
+        ]
+      },
+      {
+        "group": "On-Premise",
+        "items": [
+          "Cloudera (CDH)",
+          "Apache Airflow",
+          "Kafka (streaming)",
+          "Hive",
+          "Impala",
+          "Hadoop (HDFS, YARN)"
+        ]
+      },
+      {
+        "group": "Databases",
+        "items": [
+          "PostgreSQL",
+          "MySQL",
+          "MongoDB Atlas",
+          "NoSQL",
+          "Data modeling (star schema, SCD Types 0-6, dbt snapshots)"
+        ]
+      },
+      {
+        "group": "BI & Visualization",
+        "items": [
+          "Metabase",
+          "Looker Studio",
+          "Power BI",
+          "Tableau",
+          "Google Sheets/Excel"
+        ]
+      },
+      {
+        "group": "Infra & DevOps",
+        "items": [
+          "Terraform",
+          "Docker",
+          "Kubernetes",
+          "BitBucket CI/CD",
+          "Linux",
+          "Git"
+        ]
+      },
+      {
+        "group": "Tools",
+        "items": [
+          "Jira",
+          "Confluence",
+          "Apps Script",
+          "n8n",
+          "dbt",
+          "Jubelio (Omnichannel OMS)",
+          "Mekari Jurnal"
+        ]
+      },
+      {
+        "group": "Languages",
+        "items": [
+          "Python",
+          "SQL",
+          "JavaScript",
+          "TypeScript",
+          "Shell Script"
+        ]
+      }
+    ],
+    "leadership": [
+      {
+        "organization": "INFINITY ITB",
+        "context": "ITB Dance and Performance Art Community",
+        "role": "Vice President and Head of the General Secretariat Department",
+        "highlights": [
+          "Oversaw all organizational activities, set vision, mission, and OKRs, drove budget allocation decisions, and represented the organization in external partnerships. Achieved 95% program execution success across all divisions.",
+          "Led the General Secretariat Department, managing three divisions: Treasury, Administration, and Secretary Management."
+        ]
+      },
+      {
+        "organization": "Keluarga Mahasiswa Teknik Industri (MTI ITB)",
+        "context": "Industrial Engineering Student Association",
+        "role": "Head of Staff, People Management & Measurement",
+        "highlights": [
+          "Performed the Social Mapping project for MTI 2018 students to identify the 10 best group combinations.",
+          "Produced appreciation cards for every member at the end of the management period."
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "title": "Top Finalist",
+        "context": "Java Business Case National Competition 2019",
+        "issuer": "Telkom University"
+      },
+      {
+        "title": "Scholarship Awardee",
+        "context": "Rumah Sahabat Muda Salman 2.0 ITB Scholarship 2017-2018",
+        "issuer": "Salman Mosque in Bandung Institute of Technology (ITB)"
+      }
+    ]
+  }
+}
