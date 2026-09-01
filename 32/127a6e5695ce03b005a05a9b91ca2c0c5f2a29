@@ -1,0 +1,29 @@
+scripts/retrieval_set.json
+  s_aa22a7319babf4::t_6be93685f46d7c 1-402
+scripts/corpus_digest.py
+  s_aa22a7319babf4::t_240bc59317ebb7 1-22,35-66
+  s_aa22a7319babf4::t_e17b60745896f7 23-34
+scripts/check_retrieval_set.py
+  s_aa22a7319babf4::t_c941bb66170aec 1-140
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "32127a6e5695ce03b005a05a9b91ca2c0c5f2a29",
+  "prompts": {},
+  "humans": {
+    "h_6146201214d51c": {
+      "author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
