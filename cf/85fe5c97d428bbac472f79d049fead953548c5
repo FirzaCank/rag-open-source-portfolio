@@ -1,0 +1,27 @@
+README.md
+  s_aa22a7319babf4::t_04e602c7d6b959 21-28
+  s_aa22a7319babf4::t_7fc187cf1e8b99 1-20,29-32
+.gitignore
+  s_aa22a7319babf4::t_04e602c7d6b959 37-43
+  s_aa22a7319babf4::t_b23565b8123841 1-36,44-45
+smoke/Dockerfile
+  s_aa22a7319babf4::t_074475f6e40f15 1-18
+smoke/main.py
+  s_aa22a7319babf4::t_cadc85959f6ed9 1-67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "cf85fe5c97d428bbac472f79d049fead953548c5",
+  "prompts": {},
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
