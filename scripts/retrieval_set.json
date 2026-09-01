@@ -1,0 +1,402 @@
+{
+  "_comment": "66 hand written retrieval queries, 3 per source across 22 sources, 12 of them in Indonesian. The only denominator for Hit Rate and MRR, see D49. Labeled per source, never per chunk id, see D28. Frozen once complete: a set editable after seeing results measures nothing. Rule: never reuse the chunk's own phrasing, a query that quotes its chunk measures string matching. Validate with scripts/check_retrieval_set.py.",
+  "frozen": false,
+  "queries": [
+    {
+      "id": "about-firza-1",
+      "query": "",
+      "source": "About Firza",
+      "lang": "en"
+    },
+    {
+      "id": "about-firza-2",
+      "query": "",
+      "source": "About Firza",
+      "lang": "en"
+    },
+    {
+      "id": "about-firza-3",
+      "query": "",
+      "source": "About Firza",
+      "lang": "id"
+    },
+    {
+      "id": "career-timeline-1",
+      "query": "",
+      "source": "Career Timeline",
+      "lang": "en"
+    },
+    {
+      "id": "career-timeline-2",
+      "query": "",
+      "source": "Career Timeline",
+      "lang": "en"
+    },
+    {
+      "id": "career-timeline-3",
+      "query": "",
+      "source": "Career Timeline",
+      "lang": "id"
+    },
+    {
+      "id": "hypefast-1",
+      "query": "",
+      "source": "Experience: Data Engineer at Hypefast",
+      "lang": "en"
+    },
+    {
+      "id": "hypefast-2",
+      "query": "",
+      "source": "Experience: Data Engineer at Hypefast",
+      "lang": "en"
+    },
+    {
+      "id": "hypefast-3",
+      "query": "",
+      "source": "Experience: Data Engineer at Hypefast",
+      "lang": "id"
+    },
+    {
+      "id": "idstar-cipta-teknologi-1",
+      "query": "",
+      "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
+      "lang": "en"
+    },
+    {
+      "id": "idstar-cipta-teknologi-2",
+      "query": "",
+      "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
+      "lang": "en"
+    },
+    {
+      "id": "idstar-cipta-teknologi-3",
+      "query": "",
+      "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
+      "lang": "id"
+    },
+    {
+      "id": "telkom-indonesia-1",
+      "query": "",
+      "source": "Experience: Data Scientist Internship at Telkom Indonesia",
+      "lang": "en"
+    },
+    {
+      "id": "telkom-indonesia-2",
+      "query": "",
+      "source": "Experience: Data Scientist Internship at Telkom Indonesia",
+      "lang": "en"
+    },
+    {
+      "id": "telkom-indonesia-3",
+      "query": "",
+      "source": "Experience: Data Scientist Internship at Telkom Indonesia",
+      "lang": "id"
+    },
+    {
+      "id": "pt-arindo-cipta-perkasa-1",
+      "query": "",
+      "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
+      "lang": "en"
+    },
+    {
+      "id": "pt-arindo-cipta-perkasa-2",
+      "query": "",
+      "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
+      "lang": "en"
+    },
+    {
+      "id": "pt-arindo-cipta-perkasa-3",
+      "query": "",
+      "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
+      "lang": "id"
+    },
+    {
+      "id": "banopolis-inovasi-kendara-1",
+      "query": "",
+      "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
+      "lang": "en"
+    },
+    {
+      "id": "banopolis-inovasi-kendara-2",
+      "query": "",
+      "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
+      "lang": "en"
+    },
+    {
+      "id": "banopolis-inovasi-kendara-3",
+      "query": "",
+      "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
+      "lang": "id"
+    },
+    {
+      "id": "video-platform-data-analysis-1",
+      "query": "",
+      "source": "Project: Video Platform Data Analysis",
+      "lang": "en"
+    },
+    {
+      "id": "video-platform-data-analysis-2",
+      "query": "",
+      "source": "Project: Video Platform Data Analysis",
+      "lang": "en"
+    },
+    {
+      "id": "video-platform-data-analysis-3",
+      "query": "",
+      "source": "Project: Video Platform Data Analysis",
+      "lang": "id"
+    },
+    {
+      "id": "affiliate-commission-perform-1",
+      "query": "",
+      "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
+      "lang": "en"
+    },
+    {
+      "id": "affiliate-commission-perform-2",
+      "query": "",
+      "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
+      "lang": "en"
+    },
+    {
+      "id": "affiliate-commission-perform-3",
+      "query": "",
+      "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
+      "lang": "en"
+    },
+    {
+      "id": "content-strategy-revenue-pro-1",
+      "query": "",
+      "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
+      "lang": "en"
+    },
+    {
+      "id": "content-strategy-revenue-pro-2",
+      "query": "",
+      "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
+      "lang": "en"
+    },
+    {
+      "id": "content-strategy-revenue-pro-3",
+      "query": "",
+      "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
+      "lang": "en"
+    },
+    {
+      "id": "ecommerce-strategic-valuatio-1",
+      "query": "",
+      "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
+      "lang": "en"
+    },
+    {
+      "id": "ecommerce-strategic-valuatio-2",
+      "query": "",
+      "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
+      "lang": "en"
+    },
+    {
+      "id": "ecommerce-strategic-valuatio-3",
+      "query": "",
+      "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
+      "lang": "en"
+    },
+    {
+      "id": "nuclear-energy-policy-discou-1",
+      "query": "",
+      "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
+      "lang": "en"
+    },
+    {
+      "id": "nuclear-energy-policy-discou-2",
+      "query": "",
+      "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
+      "lang": "en"
+    },
+    {
+      "id": "nuclear-energy-policy-discou-3",
+      "query": "",
+      "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
+      "lang": "en"
+    },
+    {
+      "id": "regional-writing-ecosystem-i-1",
+      "query": "",
+      "source": "Project: Regional Writing Ecosystem Index (PCA)",
+      "lang": "en"
+    },
+    {
+      "id": "regional-writing-ecosystem-i-2",
+      "query": "",
+      "source": "Project: Regional Writing Ecosystem Index (PCA)",
+      "lang": "en"
+    },
+    {
+      "id": "regional-writing-ecosystem-i-3",
+      "query": "",
+      "source": "Project: Regional Writing Ecosystem Index (PCA)",
+      "lang": "en"
+    },
+    {
+      "id": "social-media-scraping-integr-1",
+      "query": "",
+      "source": "Project: Social Media Scraping Integration",
+      "lang": "en"
+    },
+    {
+      "id": "social-media-scraping-integr-2",
+      "query": "",
+      "source": "Project: Social Media Scraping Integration",
+      "lang": "en"
+    },
+    {
+      "id": "social-media-scraping-integr-3",
+      "query": "",
+      "source": "Project: Social Media Scraping Integration",
+      "lang": "id"
+    },
+    {
+      "id": "google-news-scraping-gemini-1",
+      "query": "",
+      "source": "Project: Google News Scraping + Gemini AI Aggregation",
+      "lang": "en"
+    },
+    {
+      "id": "google-news-scraping-gemini-2",
+      "query": "",
+      "source": "Project: Google News Scraping + Gemini AI Aggregation",
+      "lang": "en"
+    },
+    {
+      "id": "google-news-scraping-gemini-3",
+      "query": "",
+      "source": "Project: Google News Scraping + Gemini AI Aggregation",
+      "lang": "en"
+    },
+    {
+      "id": "debt-collection-analytics-ag-1",
+      "query": "",
+      "source": "Project: Debt Collection Analytics & Agent Productivity",
+      "lang": "en"
+    },
+    {
+      "id": "debt-collection-analytics-ag-2",
+      "query": "",
+      "source": "Project: Debt Collection Analytics & Agent Productivity",
+      "lang": "en"
+    },
+    {
+      "id": "debt-collection-analytics-ag-3",
+      "query": "",
+      "source": "Project: Debt Collection Analytics & Agent Productivity",
+      "lang": "en"
+    },
+    {
+      "id": "heavy-equipment-preventive-m-1",
+      "query": "",
+      "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
+      "lang": "en"
+    },
+    {
+      "id": "heavy-equipment-preventive-m-2",
+      "query": "",
+      "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
+      "lang": "en"
+    },
+    {
+      "id": "heavy-equipment-preventive-m-3",
+      "query": "",
+      "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
+      "lang": "id"
+    },
+    {
+      "id": "tableau-for-data-analysis-10-1",
+      "query": "",
+      "source": "Project: Tableau for Data Analysis 101 Course",
+      "lang": "en"
+    },
+    {
+      "id": "tableau-for-data-analysis-10-2",
+      "query": "",
+      "source": "Project: Tableau for Data Analysis 101 Course",
+      "lang": "en"
+    },
+    {
+      "id": "tableau-for-data-analysis-10-3",
+      "query": "",
+      "source": "Project: Tableau for Data Analysis 101 Course",
+      "lang": "en"
+    },
+    {
+      "id": "government-statistics-data-p-1",
+      "query": "",
+      "source": "Project: Government Statistics Data Platform Implementation",
+      "lang": "en"
+    },
+    {
+      "id": "government-statistics-data-p-2",
+      "query": "",
+      "source": "Project: Government Statistics Data Platform Implementation",
+      "lang": "en"
+    },
+    {
+      "id": "government-statistics-data-p-3",
+      "query": "",
+      "source": "Project: Government Statistics Data Platform Implementation",
+      "lang": "en"
+    },
+    {
+      "id": "mobile-app-analytics-data-pi-1",
+      "query": "",
+      "source": "Project: Mobile App Analytics Data Pipeline",
+      "lang": "en"
+    },
+    {
+      "id": "mobile-app-analytics-data-pi-2",
+      "query": "",
+      "source": "Project: Mobile App Analytics Data Pipeline",
+      "lang": "en"
+    },
+    {
+      "id": "mobile-app-analytics-data-pi-3",
+      "query": "",
+      "source": "Project: Mobile App Analytics Data Pipeline",
+      "lang": "id"
+    },
+    {
+      "id": "personal-portfolio-website-w-1",
+      "query": "",
+      "source": "Project: Personal Portfolio Website with RAG Chat",
+      "lang": "en"
+    },
+    {
+      "id": "personal-portfolio-website-w-2",
+      "query": "",
+      "source": "Project: Personal Portfolio Website with RAG Chat",
+      "lang": "en"
+    },
+    {
+      "id": "personal-portfolio-website-w-3",
+      "query": "",
+      "source": "Project: Personal Portfolio Website with RAG Chat",
+      "lang": "en"
+    },
+    {
+      "id": "telco-customer-churn-predict-1",
+      "query": "",
+      "source": "Project: Telco Customer Churn Prediction (Streamlit)",
+      "lang": "en"
+    },
+    {
+      "id": "telco-customer-churn-predict-2",
+      "query": "",
+      "source": "Project: Telco Customer Churn Prediction (Streamlit)",
+      "lang": "en"
+    },
+    {
+      "id": "telco-customer-churn-predict-3",
+      "query": "",
+      "source": "Project: Telco Customer Churn Prediction (Streamlit)",
+      "lang": "id"
+    }
+  ]
+}
