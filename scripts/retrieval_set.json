@@ -1,5 +1,5 @@
 {
-  "_comment": "66 hand written retrieval queries, 3 per source across 22 sources, 12 of them in Indonesian. The only denominator for Hit Rate and MRR, see D49. Labeled per source, never per chunk id, see D28. Frozen once complete: a set editable after seeing results measures nothing. Rule: never reuse the chunk's own phrasing, a query that quotes its chunk measures string matching. Validate with scripts/check_retrieval_set.py.",
+  "_comment": "66 hand written retrieval queries, 3 per source across 22 sources, 12 of them in Indonesian. The only denominator for Hit Rate and MRR, see D49. Labeled per source, never per chunk id, see D28. Generated from retrieval_worksheet.md by scripts/worksheet_to_json.py, never edited by hand. Frozen once complete, see D41.",
   "frozen": false,
   "queries": [
     {
