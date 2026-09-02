@@ -27,11 +27,16 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Bake the weights into the image. Never pulled at startup, see D44. This runs before the code is
 # copied so that editing a Python file does not invalidate a 4.7 GB layer.
-RUN sh -c 'ollama serve & pid=$!; \
+# `ollama list` runs while the daemon is still up. An earlier version killed it first and the
+# build failed on "could not connect to ollama server" after a successful 4.7 GB pull.
+RUN sh -c 'set -e; \
+    ollama serve & pid=$!; \
     until curl -sf http://127.0.0.1:11434/api/tags > /dev/null; do sleep 1; done; \
     ollama pull "$MODEL"; \
-    kill $pid; wait $pid 2>/dev/null || true' \
-    && ollama list
+    ollama list; \
+    kill $pid || true' \
+    && test -d /root/.ollama/models/manifests/registry.ollama.ai/library/qwen2.5 \
+    && du -sh /root/.ollama/models
 
 COPY rag/ ./rag/
 COPY data/ ./data/

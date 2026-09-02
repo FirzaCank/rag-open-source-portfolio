@@ -5,18 +5,34 @@
 # makes the pip install and the two downloads slower than the extra machine cost.
 
 steps:
+  # Pull the previous image so the 4.7 GB model layer can be reused. Fails harmlessly the first
+  # time, when there is nothing to pull. D34 needs Q8 and 14b builds later, and without this each
+  # one re-downloads the weights from scratch.
   - name: gcr.io/cloud-builders/docker
-    args: ['build', '--tag', '${_IMAGE}:${_TAG}', '--tag', '${_IMAGE}:latest', '.']
+    entrypoint: bash
+    args: ['-c', 'docker pull ${_IMAGE}:latest || true']
+
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - 'build'
+      - '--cache-from'
+      - '${_IMAGE}:latest'
+      - '--tag'
+      - '${_IMAGE}:${_TAG}'
+      - '--tag'
+      - '${_IMAGE}:latest'
+      - '.'
 
 # Pushed by Cloud Build after the build succeeds, which also records the digest in the build log.
 images:
   - '${_IMAGE}:${_TAG}'
   - '${_IMAGE}:latest'
 
+# Default logging on purpose. CLOUD_LOGGING_ONLY was tried and it made `gcloud builds submit`
+# print a bare "step exited with non-zero status" with no reason, which cost a round trip.
 options:
   machineType: E2_HIGHCPU_8
   diskSizeGb: 100
-  logging: CLOUD_LOGGING_ONLY
 
 timeout: 3600s
 
