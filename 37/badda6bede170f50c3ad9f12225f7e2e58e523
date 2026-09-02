@@ -1,0 +1,34 @@
+scripts/check_golden_sources.py
+  s_aa22a7319babf4::t_1159f8a5c83fef 1-69
+data/portfolio.json
+  s_aa22a7319babf4::t_dabd0cca31f17a 439
+scripts/eval_retrieval.py
+  s_aa22a7319babf4::t_9f609dfe04b17d 1-67,74-82
+  s_aa22a7319babf4::t_00a323d3d2ecee 68-73
+data/embeddings.json
+  s_aa22a7319babf4::t_01bc2016dcfaad 1
+scripts/golden_sources.json
+  s_aa22a7319babf4::t_01bc2016dcfaad 26
+  s_aa22a7319babf4::t_2d40f7c79601d5 1-25,27-95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "37badda6bede170f50c3ad9f12225f7e2e58e523",
+  "prompts": {},
+  "humans": {
+    "h_6146201214d51c": {
+      "author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
