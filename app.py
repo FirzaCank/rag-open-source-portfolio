@@ -24,7 +24,7 @@ from fastapi import FastAPI, Header, Request
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
-from rag.llm import MODEL, NUM_CTX, run_chat
+from rag.llm import MAX_TOOL_ROUNDS, MODEL, NUM_CTX, OLLAMA_SEED, TEMPERATURE, run_chat
 from rag.retriever import _load_index
 
 MAX_MSGS = 40
@@ -120,7 +120,15 @@ def health():
     """
     import urllib.request
 
-    detail = {"model": MODEL, "num_ctx": NUM_CTX}
+    # The comparison knobs are reported here so a run file can record what it actually measured.
+    # Proving MAX_TOOL_ROUNDS=4 was live took two gcloud commands and log access once. See D69.
+    detail = {
+        "model": MODEL,
+        "num_ctx": NUM_CTX,
+        "max_tool_rounds": MAX_TOOL_ROUNDS,
+        "temperature": TEMPERATURE,
+        "seed": OLLAMA_SEED or None,
+    }
     try:
         sources, texts, vectors = _load_index()
         detail["chunks"] = len(texts)

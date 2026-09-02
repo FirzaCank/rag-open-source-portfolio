@@ -184,7 +184,13 @@ def _probe_server(url):
         sys.exit(1)
     TARGET["model"] = h["model"]
     TARGET["num_ctx"] = h.get("served_context") or h.get("num_ctx")
-    print(f"server reports model {TARGET['model']}, context {TARGET['num_ctx']}")
+    for k in ("max_tool_rounds", "temperature", "seed"):
+        if k in h:
+            TARGET[k] = h[k]
+    knobs = ", ".join(f"{k} {TARGET[k]}" for k in ("max_tool_rounds", "temperature", "seed") if k in TARGET)
+    print(f"server reports model {TARGET['model']}, context {TARGET['num_ctx']}" + (f", {knobs}" if knobs else ""))
+    if not knobs:
+        print("WARNING: /health reports no comparison knobs, so this run cannot prove what it measured.")
 
 
 def summarise(records, label, elapsed):
@@ -235,6 +241,7 @@ def summarise(records, label, elapsed):
         "label": label,
         "model": TARGET.get("model") or MODEL,
         "num_ctx": TARGET.get("num_ctx") or NUM_CTX,
+        "knobs": {k: TARGET[k] for k in ("max_tool_rounds", "temperature", "seed") if k in TARGET},
         "target": TARGET.get("url") or "in process",
         "cases": len(records),
         "passed": len(passed),
