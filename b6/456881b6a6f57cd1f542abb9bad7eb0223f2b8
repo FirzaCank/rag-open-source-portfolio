@@ -1,0 +1,38 @@
+rag/llm.py
+  s_aa22a7319babf4::t_2ed89b27619faa 202-204
+scripts/gold_retrieval_check.py
+  s_aa22a7319babf4::t_97527152079fc6 101-112
+  s_aa22a7319babf4::t_f21f044059f172 1-100,113-116
+start.sh
+  s_aa22a7319babf4::t_976f05e3c57277 19-21,23,25
+app.py
+  s_aa22a7319babf4::t_976f05e3c57277 110-111,114-116
+  s_aa22a7319babf4::t_2ed89b27619faa 159-164,185-188
+  s_aa22a7319babf4::t_e17845398a5653 117
+  s_aa22a7319babf4::t_f95e283d412c6a 141-154,197
+Dockerfile
+  s_aa22a7319babf4::t_976f05e3c57277 14-20
+scripts/eval_chat.py
+  s_aa22a7319babf4::t_cba119ebe4ba48 11,25-30,43-44,74-122,159-162,181-182,209,227-228,237,250,268-269
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "b6456881b6a6f57cd1f542abb9bad7eb0223f2b8",
+  "prompts": {},
+  "humans": {
+    "h_6146201214d51c": {
+      "author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
