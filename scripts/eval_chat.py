@@ -160,6 +160,28 @@ def run_case(case):
 TARGET = {}
 
 
+def _probe_server(url):
+    """Ask the service which model it serves, and record that instead of the local MODEL.
+
+    The first remote run wrote "qwen2.5:3b" into a file produced by a 7b server, because MODEL
+    is read from this process's environment and the server's model is baked into the image.
+    """
+    import urllib.request
+
+    try:
+        with urllib.request.urlopen(url.rstrip("/") + "/health", timeout=20) as resp:
+            h = json.loads(resp.read().decode())
+    except Exception as e:
+        print(f"ERROR: /health unreachable, cannot label the run: {e}")
+        sys.exit(1)
+    if not h.get("model"):
+        print("ERROR: /health returned no model field, cannot label the run.")
+        sys.exit(1)
+    TARGET["model"] = h["model"]
+    TARGET["num_ctx"] = h.get("served_context") or h.get("num_ctx")
+    print(f"server reports model {TARGET['model']}, context {TARGET['num_ctx']}")
+
+
 def summarise(records, label, elapsed):
     """Print the run summary and return the object written to disk."""
     passed = [r for r in records if not r.get("error") and not r["failures"]]
@@ -178,7 +200,9 @@ def summarise(records, label, elapsed):
     prompts = [r["prompt_tokens"] for r in records if r.get("prompt_tokens")]
 
     print(f"\n{len(passed)}/{len(records)} passed" + (f", {len(errored)} errored" if errored else ""))
-    where = TARGET.get("url") or f"in process, {MODEL}, num_ctx {NUM_CTX}"
+    model = TARGET.get("model") or MODEL
+    num_ctx = TARGET.get("num_ctx") or NUM_CTX
+    where = f"{TARGET['url']}, {model}, num_ctx {num_ctx}" if TARGET.get("url") else f"in process, {model}, num_ctx {num_ctx}"
     print(f"label: {label}  target: {where}  total: {elapsed / 60:.1f} min\n")
 
     print(f"{'category':<14} {'pass':>5} {'of':>4}")
@@ -204,8 +228,8 @@ def summarise(records, label, elapsed):
 
     return {
         "label": label,
-        "model": MODEL,
-        "num_ctx": NUM_CTX,
+        "model": TARGET.get("model") or MODEL,
+        "num_ctx": TARGET.get("num_ctx") or NUM_CTX,
         "target": TARGET.get("url") or "in process",
         "cases": len(records),
         "passed": len(passed),
@@ -235,6 +259,8 @@ def main():
         sys.exit(1)
 
     TARGET["url"] = args.url
+    if args.url:
+        _probe_server(args.url)
     cases = json.loads(GOLDEN_PATH.read_text())["cases"]
     if args.only:
         cases = [c for c in cases if c["id"] == args.only]
@@ -265,7 +291,8 @@ def main():
     run = summarise(records, args.label, time.time() - t_start)
 
     OUT_DIR.mkdir(exist_ok=True)
-    tag = "remote" if args.url else MODEL.replace(":", "-")
+    model_tag = (TARGET.get("model") or MODEL).replace(":", "-")
+    tag = f"remote_{model_tag}" if args.url else model_tag
     out = Path(args.out) if args.out else OUT_DIR / f"{int(t_start)}_{tag}.json"
     out.write_text(json.dumps(run, indent=2))
     print(f"\nwrote {out.relative_to(ROOT)}")

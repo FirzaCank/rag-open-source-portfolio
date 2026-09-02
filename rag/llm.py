@@ -43,7 +43,9 @@ MODEL = os.environ.get("MODEL", "qwen2.5:3b")
 NUM_CTX = int(os.environ.get("OLLAMA_NUM_CTX", "8192"))
 
 MAX_HISTORY = 12
-MAX_TOOL_ROUNDS = 2
+# Read from the environment so the Phase 3b comparison run is a revision update, not a rebuild.
+# The default stays 2, so the baseline is what you get without asking for anything.
+MAX_TOOL_ROUNDS = int(os.environ.get("MAX_TOOL_ROUNDS", "2"))
 # Was 30 on Vercel, which killed the function at 60 s. Cloud Run has no such ceiling, and a cold
 # 7b on an L4 needs the headroom. The rounds cap stays at 2, changing it is a Phase 3b run. See D25.
 TIME_BUDGET_S = 120
