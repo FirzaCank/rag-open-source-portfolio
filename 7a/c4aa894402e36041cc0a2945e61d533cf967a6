@@ -1,0 +1,26 @@
+app.py
+  s_aa22a7319babf4::t_a76396f0ca2031 1-245
+requirements.txt
+  s_aa22a7319babf4::t_65187522d0e02e 11-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "7ac4aa894402e36041cc0a2945e61d533cf967a6",
+  "prompts": {},
+  "humans": {
+    "h_6146201214d51c": {
+      "author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
