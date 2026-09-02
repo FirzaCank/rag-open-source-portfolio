@@ -1,0 +1,28 @@
+scripts/eval_chat.py
+  s_aa22a7319babf4::t_4d4fa22065bb6b 126-131,141-143
+  s_aa22a7319babf4::t_6ade47a35dcc59 236-243,277
+  s_aa22a7319babf4::t_66862cfe97699d 83-90,92-96,107-125
+scripts/compare_runs.py
+  s_aa22a7319babf4::t_6ade47a35dcc59 30-36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "990b8fab01e55827ad67c463663fee9b33fc88f1",
+  "prompts": {},
+  "humans": {
+    "h_6146201214d51c": {
+      "author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
