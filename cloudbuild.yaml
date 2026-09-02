@@ -1,0 +1,25 @@
+# Build the one image and push it to Artifact Registry.
+#
+# Three settings exist because the defaults do not fit this image. The build pulls a 4.7 GB model
+# and a 1.0 GB embedder, so the default 10 minute timeout expires halfway, and the default machine
+# makes the pip install and the two downloads slower than the extra machine cost.
+
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ['build', '--tag', '${_IMAGE}:${_TAG}', '--tag', '${_IMAGE}:latest', '.']
+
+# Pushed by Cloud Build after the build succeeds, which also records the digest in the build log.
+images:
+  - '${_IMAGE}:${_TAG}'
+  - '${_IMAGE}:latest'
+
+options:
+  machineType: E2_HIGHCPU_8
+  diskSizeGb: 100
+  logging: CLOUD_LOGGING_ONLY
+
+timeout: 3600s
+
+substitutions:
+  _IMAGE: asia-southeast1-docker.pkg.dev/hypefast-data-staging/rag-ai/rag-api
+  _TAG: v1

@@ -1,0 +1,22 @@
+# Keep the build context small. Anything the image needs is either installed or downloaded during
+# the build, so nothing large is uploaded to Cloud Build.
+
+.git
+.venv
+__pycache__
+**/__pycache__
+*.pyc
+
+# The embedding model is downloaded inside the image instead of uploaded, 1.0 GB either way.
+models/
+
+# Results, notes, and the Phase 0 smoke test are not part of the service.
+eval_runs/
+docs/
+smoke/
+mlruns/
+scripts/retrieval_worksheet.md
+
+CLAUDE.md
+CONTEXT.md
+.DS_Store
