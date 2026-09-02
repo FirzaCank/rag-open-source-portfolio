@@ -107,9 +107,13 @@ def _err(status: int, message: str):
     return JSONResponse(status_code=status, content={"error": message})
 
 
-@api.get("/healthz", summary="Readiness check")
-def healthz():
+@api.get("/health", summary="Readiness check")
+def health():
     """Report whether the index loaded and Ollama answers.
+
+    Named `/health`, not `/healthz`. The `/healthz` version returned a Google 404 in production
+    while appearing in `openapi.json`, so the edge intercepts that path before the container sees
+    it. Local testing could not have caught this.
 
     Cloud Run only checks that the port is open, and a container that listens before the model is
     ready looks healthy while answering nothing. This endpoint checks the two things that matter.
@@ -134,11 +138,30 @@ def healthz():
     except Exception as e:
         return JSONResponse(status_code=503, content={"error": f"ollama unreachable: {e}"[:200], **detail})
 
+    # What context length the loaded model actually serves. The truncation guard in llm.py compares
+    # against the number this process believes, so a server serving less would truncate every
+    # prompt while the guard stayed quiet. Reported, not assumed. See D64.
+    try:
+        ps_url = os.environ.get("OLLAMA_PS_URL", "http://localhost:11434/api/ps")
+        with urllib.request.urlopen(ps_url, timeout=5) as resp:
+            loaded = json.loads(resp.read().decode()).get("models", [])
+        served = next((m.get("context_length") for m in loaded if m.get("name") == MODEL), None)
+        detail["served_context"] = served
+        if served and served < NUM_CTX:
+            detail["context_mismatch"] = f"serving {served}, requests ask for {NUM_CTX}"
+    except Exception as e:
+        detail["served_context"] = f"unknown: {str(e)[:80]}"
+
     return {"status": "ok", **detail}
 
 
 @api.post("/chat", summary="Ask about Firza's work", response_description="A raw text stream, not JSON")
-def chat(body: ChatRequest, request: Request, x_api_key: str | None = Header(default=None)):
+def chat(
+    body: ChatRequest,
+    request: Request,
+    x_api_key: str | None = Header(default=None),
+    x_bypass_cache: str | None = Header(default=None),
+):
     """Answer a question about Firza's portfolio, streaming plain text.
 
     Retrieval runs first, the model may call portfolio tools, and the answer streams as it is
@@ -159,7 +182,10 @@ def chat(body: ChatRequest, request: Request, x_api_key: str | None = Header(def
     if not messages:
         return _err(400, "messages array required.")
 
-    key = _cache_key(messages) if CACHE_ON else None
+    # D36 requires the cache off while the eval runs. A header does that without two redeploys,
+    # and it is visible in the request log, so a cached number cannot be mistaken for a fresh one.
+    use_cache = CACHE_ON and not x_bypass_cache
+    key = _cache_key(messages) if use_cache else None
     if key and key in _cache:
         _cache.move_to_end(key)
         cached = _cache[key]
@@ -168,7 +194,7 @@ def chat(body: ChatRequest, request: Request, x_api_key: str | None = Header(def
                                  headers={"Cache-Control": "no-store"})
 
     def generate():
-        stats = {"cache": "miss"}
+        stats = {"cache": "bypass" if x_bypass_cache else "miss"}
         error = None
         parts = []
         try:

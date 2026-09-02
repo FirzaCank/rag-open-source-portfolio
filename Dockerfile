@@ -11,6 +11,13 @@ ENV PYTHONUNBUFFERED=1 \
     FASTEMBED_CACHE=/app/models/fastembed \
     PORT=8080
 
+# One number, two readers. `rag/llm.py` sends OLLAMA_NUM_CTX in every request and Ollama uses
+# OLLAMA_CONTEXT_LENGTH as its default. When they disagreed, Ollama loaded the model at its own
+# 4096 default during warmup and then reloaded it at 8192 on the first real request, throwing away
+# most of a 74 second warm up. See D64.
+ENV OLLAMA_NUM_CTX=8192 \
+    OLLAMA_CONTEXT_LENGTH=8192
+
 # The base image ships Ollama and the CUDA runtime, not Python. curl is used by the healthcheck
 # loop in start.sh and by the model pull below.
 RUN apt-get update \

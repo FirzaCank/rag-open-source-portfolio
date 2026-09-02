@@ -8,6 +8,7 @@ answer against the frozen regexes. Exit code 1 if anything fails.
     python scripts/eval_chat.py --only sens-salary
     python scripts/eval_chat.py --verbose
     python scripts/eval_chat.py --label "3b, not baseline"
+    python scripts/eval_chat.py --url https://rag-api-....run.app --label "7b Q4, L4, baseline"
 
 Ported from the source repository. Five changes:
 
@@ -21,6 +22,12 @@ Ported from the source repository. Five changes:
 5. Every run writes a JSON file under `eval_runs/`, labeled. A 3b run on this laptop is never a
    baseline and never compared with Gemini, so the label travels with the numbers. See D24.
 
+`--url` measures the deployed service over HTTP, which is the path a visitor takes, so the timings
+include the network. It sends `x-bypass-cache`, because a cached answer measures dict lookup speed,
+see D36. Retrieval diagnostics are not available over HTTP, and they do not need to be: retrieval
+is deterministic and runs on CPU, so `scripts/gold_retrieval_check.py` answers that locally at no
+cost. See D63.
+
 The regexes are frozen. They were written for Gemini's phrasing, so a correct Qwen answer can fail
 on wording. Do not loosen them, classify the failure by hand as wrong-fact or wrong-wording
 instead. See D25.
@@ -33,6 +40,8 @@ import re
 import statistics
 import sys
 import time
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -60,6 +69,55 @@ def check(case, answer):
     if max_chars and len(answer) > max_chars:
         failures.append(f"too long: {len(answer)} chars > {max_chars}")
     return failures
+
+
+HTTP_TIMEOUT_S = 300
+
+
+def messages_of(case):
+    """The conversation to send. `time` is added because the widget always sends it, see D52."""
+    msgs = case.get("messages") or [{"role": "user", "content": case["question"]}]
+    return [{"role": m["role"], "content": m["content"], "time": "00:00"} for m in msgs]
+
+
+def run_case_http(case, url, api_key=None):
+    """Run one case against the deployed service. Timings include the network, which is the point."""
+    headers = {"Content-Type": "application/json", "x-bypass-cache": "1"}
+    if api_key:
+        headers["x-api-key"] = api_key
+    req = urllib.request.Request(
+        url.rstrip("/") + "/chat",
+        data=json.dumps({"messages": messages_of(case)}).encode(),
+        headers=headers,
+        method="POST",
+    )
+
+    t0 = time.time()
+    try:
+        with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT_S) as resp:
+            # First byte then the rest, so time to first token is the real number and not the
+            # time to fill a read buffer.
+            first = resp.read(1)
+            ttft = time.time() - t0
+            answer = (first + resp.read()).decode("utf-8", errors="replace")
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", errors="replace")[:200]
+        return {"id": case["id"], "category": case["category"], "error": f"HTTP {e.code}: {detail}",
+                "wall_s": round(time.time() - t0, 2)}
+    except Exception as e:
+        return {"id": case["id"], "category": case["category"], "error": str(e)[:300],
+                "wall_s": round(time.time() - t0, 2)}
+
+    return {
+        "id": case["id"],
+        "category": case["category"],
+        "answer": answer,
+        "failures": check(case, answer),
+        "wall_s": round(time.time() - t0, 2),
+        "ttft_s": round(ttft, 2),
+        "chars": len(answer),
+        "transport": "http",
+    }
 
 
 def run_case(case):
@@ -98,6 +156,10 @@ def run_case(case):
     }
 
 
+# Filled in main so the summary can name what was measured without threading it through.
+TARGET = {}
+
+
 def summarise(records, label, elapsed):
     """Print the run summary and return the object written to disk."""
     passed = [r for r in records if not r.get("error") and not r["failures"]]
@@ -116,7 +178,8 @@ def summarise(records, label, elapsed):
     prompts = [r["prompt_tokens"] for r in records if r.get("prompt_tokens")]
 
     print(f"\n{len(passed)}/{len(records)} passed" + (f", {len(errored)} errored" if errored else ""))
-    print(f"label: {label}  model: {MODEL}  num_ctx: {NUM_CTX}  total: {elapsed / 60:.1f} min\n")
+    where = TARGET.get("url") or f"in process, {MODEL}, num_ctx {NUM_CTX}"
+    print(f"label: {label}  target: {where}  total: {elapsed / 60:.1f} min\n")
 
     print(f"{'category':<14} {'pass':>5} {'of':>4}")
     for cat in sorted(by_cat):
@@ -143,6 +206,7 @@ def summarise(records, label, elapsed):
         "label": label,
         "model": MODEL,
         "num_ctx": NUM_CTX,
+        "target": TARGET.get("url") or "in process",
         "cases": len(records),
         "passed": len(passed),
         "failed": [r["id"] for r in failed],
@@ -160,6 +224,8 @@ def main():
     ap.add_argument("--verbose", action="store_true", help="print full answers")
     ap.add_argument("--label", default="3b, not baseline", help="label recorded with the run")
     ap.add_argument("--out", help="output path, defaults to eval_runs/<epoch>_<model>.json")
+    ap.add_argument("--url", help="run against a deployed service instead of in process")
+    ap.add_argument("--api-key", help="sent as x-api-key when the service requires one, see D37")
     args = ap.parse_args()
 
     # A configured endpoint means a real POST to the contact route, and the send cases feed the
@@ -168,6 +234,7 @@ def main():
         print("ERROR: CONTACT_ENDPOINT is set. Unset it before running the eval, see D29.")
         sys.exit(1)
 
+    TARGET["url"] = args.url
     cases = json.loads(GOLDEN_PATH.read_text())["cases"]
     if args.only:
         cases = [c for c in cases if c["id"] == args.only]
@@ -180,7 +247,7 @@ def main():
     t_start = time.time()
     records = []
     for case in cases:
-        rec = run_case(case)
+        rec = run_case_http(case, args.url, args.api_key) if args.url else run_case(case)
         records.append(rec)
         label = f"[{rec['category']}] {rec['id']}"
         if rec.get("error"):
@@ -198,7 +265,8 @@ def main():
     run = summarise(records, args.label, time.time() - t_start)
 
     OUT_DIR.mkdir(exist_ok=True)
-    out = Path(args.out) if args.out else OUT_DIR / f"{int(t_start)}_{MODEL.replace(':', '-')}.json"
+    tag = "remote" if args.url else MODEL.replace(":", "-")
+    out = Path(args.out) if args.out else OUT_DIR / f"{int(t_start)}_{tag}.json"
     out.write_text(json.dumps(run, indent=2))
     print(f"\nwrote {out.relative_to(ROOT)}")
 

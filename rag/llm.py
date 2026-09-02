@@ -199,6 +199,9 @@ def run_chat(messages, stats=None):
         context = format_context(hits)
         stats["chunks"] = len(hits)
         stats["top_score"] = round(hits[0]["score"], 3) if hits else None
+        # Which sources reached the model. Without this, a wrong answer cannot be told apart from
+        # a correct refusal over a context that never contained the fact. See D63.
+        stats["sources"] = [h["source"] for h in hits]
     except Exception as e:
         # A retrieval failure must not take down the whole answer.
         print(json.dumps({"evt": "retrieval_error", "error": str(e)[:200]}))

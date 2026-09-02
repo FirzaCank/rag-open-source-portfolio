@@ -16,10 +16,13 @@ done
 echo '{"evt":"boot","step":"ollama_up"}'
 
 # Pull the weights into VRAM now. The model is already on disk, baked at build time, see D44.
+# num_ctx has to match what the app requests. Warming at a different size makes Ollama reload the
+# model on the first real request, which is exactly what happened on the first deploy. See D64.
+NUM_CTX="${OLLAMA_NUM_CTX:-8192}"
 curl -sf http://127.0.0.1:11434/api/generate \
-  -d "{\"model\":\"${MODEL}\",\"prompt\":\"ok\",\"stream\":false,\"options\":{\"num_predict\":1}}" \
+  -d "{\"model\":\"${MODEL}\",\"prompt\":\"ok\",\"stream\":false,\"options\":{\"num_predict\":1,\"num_ctx\":${NUM_CTX}}}" \
   > /dev/null 2>&1 || echo '{"evt":"boot","step":"warmup_failed"}'
-echo '{"evt":"boot","step":"model_warm"}'
+echo "{\"evt\":\"boot\",\"step\":\"model_warm\",\"num_ctx\":${NUM_CTX}}"
 
 # exec so uvicorn becomes PID 1's child and receives Cloud Run's shutdown signal directly.
 exec uvicorn app:api --host 0.0.0.0 --port "${PORT:-8080}"
