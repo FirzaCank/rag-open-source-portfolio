@@ -1,0 +1,95 @@
+{
+  "_comment": "Which corpus source answers each golden set case. Kept in a separate file so scripts/golden_set.json stays frozen, see D41. Labeled per source, never per chunk id, see D28. Only 11 of the 41 cases have a retrievable source at all, so this is NEVER a Hit Rate denominator, see D49. The denominator is retrieval_set.json, 66 queries.",
+  "labeled_on": "2026-09-02",
+  "cases_total": 41,
+  "cases_labeled": 11,
+  "labels": [
+    {
+      "id": "fact-current-job",
+      "category": "factual",
+      "gold_sources": ["Experience: Data Engineer at Hypefast"],
+      "also_answers": ["Career Timeline"],
+      "evidence": "Data Engineer at Hypefast, ... building ETL pipelines, recommendation systems, AI-driven automation across 11+ brands."
+    },
+    {
+      "id": "fact-first-job",
+      "category": "factual",
+      "gold_sources": ["Career Timeline"],
+      "also_answers": ["Experience: Business Development Internship at Banopolis Inovasi Kendara"],
+      "evidence": "in chronological order (earliest to latest): 1. Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020 (internship)."
+    },
+    {
+      "id": "fact-years-experience",
+      "category": "factual",
+      "gold_sources": ["About Firza"],
+      "also_answers": [],
+      "evidence": "I am a Data & AI Engineer with >4 years of experience building end-to-end data pipelines and scalable MLOps frameworks."
+    },
+    {
+      "id": "fact-education",
+      "category": "factual",
+      "gold_sources": ["About Firza"],
+      "also_answers": [],
+      "evidence": "Education: Bachelor's Degree, Faculty of Industrial Technology, Industrial Engineering, Bandung Institute of Technology (ITB), Indonesia (August 2017 - July 2021)."
+    },
+    {
+      "id": "fact-ocr-impact",
+      "category": "factual",
+      "gold_sources": ["Experience: Data Engineer at Hypefast"],
+      "also_answers": ["About Firza"],
+      "evidence": "Engineered an AI-based OCR system using GCP Document AI (evaluated against Mistral AI), ... reducing extraction time from 8 hours to 5 minutes (96x faster) with 90%+ accuracy."
+    },
+    {
+      "id": "fact-telco-scale",
+      "category": "factual",
+      "gold_sources": ["Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi"],
+      "also_answers": ["About Firza"],
+      "evidence": "IDstar Cipta Teknologi (Placement in PT XL Axiata Tbk.), July 2022 - March 2025. ... Built telco-scale data platforms processing 1B+ daily records with Medallion architecture."
+    },
+    {
+      "id": "fact-japanese",
+      "category": "factual",
+      "gold_sources": ["About Firza"],
+      "also_answers": [],
+      "evidence": "JLPT N3 Japanese Proficiency (Japan Foundation). Languages: Bahasa Indonesia: Native; ... Japanese: JLPT N3."
+    },
+    {
+      "id": "fact-rag-stack",
+      "category": "factual",
+      "gold_sources": ["Project: Personal Portfolio Website with RAG Chat"],
+      "also_answers": [],
+      "evidence": "A personal portfolio with an agentic RAG chat assistant powered by Gemini, combining semantic retrieval, tool calling, and guardrails."
+    },
+    {
+      "id": "id-current-job",
+      "category": "bahasa",
+      "gold_sources": ["Experience: Data Engineer at Hypefast"],
+      "also_answers": ["Career Timeline"],
+      "evidence": "Data Engineer at Hypefast, ... building ETL pipelines, recommendation systems, AI-driven automation across 11+ brands."
+    },
+    {
+      "id": "id-ai-projects",
+      "category": "bahasa",
+      "gold_sources": [
+        "Project: Personal Portfolio Website with RAG Chat",
+        "Project: Google News Scraping + Gemini AI Aggregation",
+        "Project: Nuclear Energy Policy Discourse Network Analysis",
+        "Project: Social Media Scraping Integration"
+      ],
+      "also_answers": [],
+      "evidence": "Four separate AI projects. A correct answer names several, so any one of the four at rank 1 is a hit. Retrieval over this case is a recall question, not a rank-1 question."
+    },
+    {
+      "id": "multi-followup",
+      "category": "multi-turn",
+      "gold_sources": ["Experience: Data Engineer at Hypefast"],
+      "also_answers": [],
+      "evidence": "Follow-up to a Hypefast answer. The retrieval query is the rewritten last turn, so the gold source is the same Hypefast document."
+    }
+  ],
+  "unlabeled_reason": {
+    "id-salary": "Correct answer is a refusal plus a pointer to contact. No corpus source states a salary, so there is no gold source. Same reason applies to every sensitive, injection, off-topic, style, and send-message case.",
+    "capability": "cap-* cases are answered by the whole skills list plus a bridging judgement, not by one source. Labeling them would invent a denominator.",
+    "other": "30 of 41 cases have no single retrievable source: 5 sensitive, 6 injection, 3 off-topic, 3 style, 8 send-message, 4 capability, 1 bahasa (id-salary)."
+  }
+}
