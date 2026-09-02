@@ -24,7 +24,7 @@ from fastapi import FastAPI, Header, Request
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
-from rag.llm import MAX_TOOL_ROUNDS, MODEL, NUM_CTX, OLLAMA_SEED, TEMPERATURE, run_chat
+from rag.llm import MAX_TOOL_ROUNDS, MODEL, NUM_CTX, OLLAMA_SEED, PROMPT_VARIANT, TEMPERATURE, run_chat
 from rag.retriever import _load_index
 
 MAX_MSGS = 40
@@ -128,6 +128,7 @@ def health():
         "max_tool_rounds": MAX_TOOL_ROUNDS,
         "temperature": TEMPERATURE,
         "seed": OLLAMA_SEED or None,
+        "prompt_variant": PROMPT_VARIANT,
     }
     try:
         sources, texts, vectors = _load_index()

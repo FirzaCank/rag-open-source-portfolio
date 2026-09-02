@@ -29,7 +29,15 @@ import time
 import urllib.error
 import urllib.request
 
-from .prompt import system_prompt
+# Which static prompt to use. "full" is production, "compact" is a Phase 3b arm. Both are plain
+# strings with no interpolation, so the invariant holds either way. See D25 and rag/prompt_compact.py.
+PROMPT_VARIANT = os.environ.get("PROMPT_VARIANT", "full").strip().lower()
+if PROMPT_VARIANT == "compact":
+    from .prompt_compact import system_prompt
+elif PROMPT_VARIANT == "full":
+    from .prompt import system_prompt
+else:
+    raise ValueError(f"PROMPT_VARIANT must be full or compact, got {PROMPT_VARIANT!r}")
 from .retriever import format_context, retrieve
 from .tools import OLLAMA_TOOLS, reset_send_guard, run_tool
 
