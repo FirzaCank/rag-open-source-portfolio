@@ -1,0 +1,50 @@
+rag/prompt.py
+  s_aa22a7319babf4::t_7a58bd0329c805 1-94
+rag/tools.py
+  s_aa22a7319babf4::t_984996a046aa62 1-303,306-360,363-364
+  s_aa22a7319babf4::t_5f2e7718595f2d 304-305
+  s_aa22a7319babf4::t_ea117549a5f030 361-362
+.gitignore
+  s_aa22a7319babf4::t_8269ef67c0353b 30-31
+scripts/eval_chat.py
+  s_aa22a7319babf4::t_8c7e1e10f1752b 1-209
+rag/llm.py
+  s_aa22a7319babf4::t_e5127432e71188 1-33,35-36,38-111,113,116-123,125-132,134-136,141,150-153,163,173-175,177-213,215-239,241-251,253-280,286-303
+  s_aa22a7319babf4::t_1a92ebee838e2b 34
+  s_aa22a7319babf4::t_5688ccabba4f2f 37
+  s_aa22a7319babf4::t_2a3108e3f3e1c8 112
+  s_aa22a7319babf4::t_81b61ebdd8af5b 114-115
+  s_aa22a7319babf4::t_e85be8405f10a8 124
+  s_aa22a7319babf4::t_b4b7049a759fca 133
+  s_aa22a7319babf4::t_e84c5291a247d2 137-140
+  s_aa22a7319babf4::t_fda435c72d0a25 142-144,147-149
+  s_aa22a7319babf4::t_28fd3cf1abdf6d 154-156,160-162
+  s_aa22a7319babf4::t_4c2a3834182685 164-166,170-172
+  s_aa22a7319babf4::t_0a669c26f73472 176
+  s_aa22a7319babf4::t_83bfbe0fd07f27 214
+  s_aa22a7319babf4::t_4a6f5764a48d40 240
+  s_aa22a7319babf4::t_4f9509f76edb6e 252
+  s_aa22a7319babf4::t_a7b3ca140ea702 281-285
+  s_aa22a7319babf4::t_fb6b695e78d88b 145-146,157-159,167-169
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "1836723d88b885ed511fb3df66e4bf64441d941f",
+  "prompts": {},
+  "humans": {
+    "h_6146201214d51c": {
+      "author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
