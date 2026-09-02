@@ -165,14 +165,19 @@ def _probe_server(url):
 
     The first remote run wrote "qwen2.5:3b" into a file produced by a 7b server, because MODEL
     is read from this process's environment and the server's model is baked into the image.
+
+    The timeout has to clear a cold start, measured at 92 s from scale to zero and 101.5 s on
+    deploy, see D64. A 20 s timeout failed here on the first try. This call doubles as the warm up,
+    so case 1 is never the one paying for the cold start.
     """
     import urllib.request
 
+    print("probing /health, a cold instance takes up to 100 s ...")
     try:
-        with urllib.request.urlopen(url.rstrip("/") + "/health", timeout=20) as resp:
+        with urllib.request.urlopen(url.rstrip("/") + "/health", timeout=240) as resp:
             h = json.loads(resp.read().decode())
     except Exception as e:
-        print(f"ERROR: /health unreachable, cannot label the run: {e}")
+        print(f"ERROR: /health unreachable after 240 s, cannot label the run: {e}")
         sys.exit(1)
     if not h.get("model"):
         print("ERROR: /health returned no model field, cannot label the run.")

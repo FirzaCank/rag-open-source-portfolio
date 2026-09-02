@@ -49,7 +49,10 @@ MAX_TOOL_ROUNDS = int(os.environ.get("MAX_TOOL_ROUNDS", "2"))
 # Was 30 on Vercel, which killed the function at 60 s. Cloud Run has no such ceiling, and a cold
 # 7b on an L4 needs the headroom. The rounds cap stays at 2, changing it is a Phase 3b run. See D25.
 TIME_BUDGET_S = 120
-TEMPERATURE = 0.4
+TEMPERATURE = float(os.environ.get("TEMPERATURE", "0.4"))
+# Unset in production, so visitors get real sampling. Set for a comparison run: two runs of the
+# same config scored 28 and 23 of 41, so without a fixed seed a comparison measures the dice.
+OLLAMA_SEED = os.environ.get("OLLAMA_SEED", "").strip()
 MAX_TOKENS = 1024
 MAX_TOKENS_FINAL = 2048
 
@@ -105,6 +108,8 @@ def _chat_body(convo, tools, max_tokens):
         "stream": True,
         "options": {"temperature": TEMPERATURE, "num_ctx": NUM_CTX, "num_predict": max_tokens},
     }
+    if OLLAMA_SEED:
+        body["options"]["seed"] = int(OLLAMA_SEED)
     if tools:
         body["tools"] = tools
     return body
