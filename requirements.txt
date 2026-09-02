@@ -8,3 +8,10 @@ fastembed==0.8.0
 
 # Cosine over 76 chunks in memory. Not FAISS, 76 vectors need no index structure. See D22.
 numpy==2.2.6
+
+# API. Swagger UI at /docs comes from FastAPI itself, which the assignment asks for.
+fastapi==0.118.0
+uvicorn==0.37.0
+
+# Pydantic ships with FastAPI, pinned here so the environment is reproducible from this file alone.
+pydantic==2.11.9
