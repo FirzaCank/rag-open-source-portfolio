@@ -27,6 +27,13 @@ def main():
     a, ra = load(sys.argv[1])
     b, rb = load(sys.argv[2])
 
+    for tag, d in (("A", a), ("B", b)):
+        # `valid` is absent in runs written before D71. Errored cases are the real test either way.
+        if d.get("valid") is False or d.get("errored"):
+            print(f"{tag} is INVALID: {len(d.get('errored', []))} cases errored in "
+                  f"{d['label']!r}. Rerun it, do not compare it.")
+            sys.exit(1)
+
     print(f"A  {a['passed']}/{a['cases']}  {a['label']}")
     print(f"B  {b['passed']}/{b['cases']}  {b['label']}")
     print(f"   model A {a.get('model')}  model B {b.get('model')}")

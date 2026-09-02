@@ -80,8 +80,20 @@ def messages_of(case):
     return [{"role": m["role"], "content": m["content"], "time": "00:00"} for m in msgs]
 
 
+# The server allows RATE_PER_MIN requests per instance per 60 s window, 20 by default. The compact
+# prompt arm answered fast enough that 41 sequential cases tripped it at case 20, and 18 cases came
+# back as HTTP 429 in a run that still printed a score. A 429 is congestion, not a verdict, so it
+# is waited out rather than recorded. See D71.
+RATE_RETRIES = 5
+RATE_WAIT_S = 15
+
+
 def run_case_http(case, url, api_key=None):
-    """Run one case against the deployed service. Timings include the network, which is the point."""
+    """Run one case against the deployed service. Timings include the network, which is the point.
+
+    A 429 is retried after a wait long enough to cross the server's 60 s window. The timing kept is
+    the successful attempt's, so a retry never inflates the latency numbers.
+    """
     headers = {"Content-Type": "application/json", "x-bypass-cache": "1"}
     if api_key:
         headers["x-api-key"] = api_key
@@ -92,23 +104,31 @@ def run_case_http(case, url, api_key=None):
         method="POST",
     )
 
-    t0 = time.time()
-    try:
-        with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT_S) as resp:
-            # First byte then the rest, so time to first token is the real number and not the
-            # time to fill a read buffer.
-            first = resp.read(1)
-            ttft = time.time() - t0
-            answer = (first + resp.read()).decode("utf-8", errors="replace")
-    except urllib.error.HTTPError as e:
-        detail = e.read().decode("utf-8", errors="replace")[:200]
-        return {"id": case["id"], "category": case["category"], "error": f"HTTP {e.code}: {detail}",
-                "wall_s": round(time.time() - t0, 2)}
-    except Exception as e:
-        return {"id": case["id"], "category": case["category"], "error": str(e)[:300],
-                "wall_s": round(time.time() - t0, 2)}
+    retries = 0
+    while True:
+        t0 = time.time()
+        try:
+            with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT_S) as resp:
+                # First byte then the rest, so time to first token is the real number and not the
+                # time to fill a read buffer.
+                first = resp.read(1)
+                ttft = time.time() - t0
+                answer = (first + resp.read()).decode("utf-8", errors="replace")
+            break
+        except urllib.error.HTTPError as e:
+            detail = e.read().decode("utf-8", errors="replace")[:200]
+            if e.code == 429 and retries < RATE_RETRIES:
+                retries += 1
+                print(f"  rate limited, waiting {RATE_WAIT_S}s then retry {retries}/{RATE_RETRIES}")
+                time.sleep(RATE_WAIT_S)
+                continue
+            return {"id": case["id"], "category": case["category"], "error": f"HTTP {e.code}: {detail}",
+                    "wall_s": round(time.time() - t0, 2)}
+        except Exception as e:
+            return {"id": case["id"], "category": case["category"], "error": str(e)[:300],
+                    "wall_s": round(time.time() - t0, 2)}
 
-    return {
+    rec = {
         "id": case["id"],
         "category": case["category"],
         "answer": answer,
@@ -118,6 +138,9 @@ def run_case_http(case, url, api_key=None):
         "chars": len(answer),
         "transport": "http",
     }
+    if retries:
+        rec["rate_retries"] = retries
+    return rec
 
 
 def run_case(case):
@@ -210,7 +233,14 @@ def summarise(records, label, elapsed):
     ttfts = [r["ttft_s"] for r in records if r.get("ttft_s")]
     prompts = [r["prompt_tokens"] for r in records if r.get("prompt_tokens")]
 
-    print(f"\n{len(passed)}/{len(records)} passed" + (f", {len(errored)} errored" if errored else ""))
+    # A run with any errored case is not a run. The compact prompt arm printed "16/41 passed" over
+    # 18 rate-limited cases, and that number reads like a score next to a real one. Say invalid
+    # first, before any per-category table, and mark the file so compare_runs.py refuses it.
+    if errored:
+        print(f"\nRUN INVALID: {len(errored)} of {len(records)} cases errored. "
+              f"The {len(passed)} passes below are not a score and must not be compared.")
+    else:
+        print(f"\n{len(passed)}/{len(records)} passed")
     model = TARGET.get("model") or MODEL
     num_ctx = TARGET.get("num_ctx") or NUM_CTX
     where = f"{TARGET['url']}, {model}, num_ctx {num_ctx}" if TARGET.get("url") else f"in process, {model}, num_ctx {num_ctx}"
@@ -244,6 +274,7 @@ def summarise(records, label, elapsed):
         "knobs": {k: TARGET[k] for k in ("max_tool_rounds", "temperature", "seed", "prompt_variant") if k in TARGET},
         "target": TARGET.get("url") or "in process",
         "cases": len(records),
+        "valid": not errored,
         "passed": len(passed),
         "failed": [r["id"] for r in failed],
         "errored": [r["id"] for r in errored],
