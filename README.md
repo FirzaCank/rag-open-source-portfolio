@@ -3,6 +3,7 @@
 A portfolio chat assistant that answers questions about me from my own data, rebuilt on fully
 open source models and served from a GPU that scales to zero.
 
+| | |
 | :--- | :--- |
 | Demo, open source models on Cloud Run GPU | https://portfolio-web-121020284283.asia-southeast1.run.app |
 | API, Swagger UI | `https://rag-api-121020284283.asia-southeast1.run.app/docs` |
