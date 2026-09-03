@@ -1,0 +1,36 @@
+{
+  "label": "compact language clause, seed 2",
+  "model": "qwen2.5:7b-instruct-q4_K_M",
+  "num_ctx": 8192,
+  "knobs": {
+    "max_tool_rounds": 2,
+    "temperature": 0.4,
+    "seed": "2",
+    "prompt_variant": "compact"
+  },
+  "target": "https://rag-api-121020284283.asia-southeast1.run.app",
+  "cases": 1,
+  "valid": true,
+  "passed": 1,
+  "failed": [],
+  "errored": [],
+  "by_category": {
+    "bahasa": {
+      "n": 1,
+      "pass": 1
+    }
+  },
+  "elapsed_s": 9.7,
+  "records": [
+    {
+      "id": "id-current-job",
+      "category": "bahasa",
+      "answer": "Firza saat ini bekerja sebagai Data Engineer di Hypefast, mulai dari Maret 2025 hingga sekarang.",
+      "failures": [],
+      "wall_s": 9.74,
+      "ttft_s": 9.21,
+      "chars": 96,
+      "transport": "http"
+    }
+  ]
+}
