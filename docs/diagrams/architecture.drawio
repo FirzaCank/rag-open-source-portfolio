@@ -5,57 +5,57 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <mxCell id="svc_web" value="portfolio-web&#10;Cloud Run, CPU only, scales to zero" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#e8f0fe;strokeColor=#4285f4;dashed=1;fontSize=11;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="svc_web" value="portfolio-web&#10;Cloud Run, CPU only, scales to zero" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#E3E8DE;strokeColor=#5A7058;dashed=1;fontSize=11;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="250" y="30" width="290" height="210" as="geometry" />
         </mxCell>
-        <mxCell id="svc_api" value="rag-api&#10;Cloud Run, 1x NVIDIA L4, scales to zero" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#e6f4ea;strokeColor=#34a853;dashed=1;fontSize=11;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="svc_api" value="rag-api&#10;Cloud Run, 1x NVIDIA L4, scales to zero" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#A8B89E;strokeColor=#3F5040;dashed=1;fontSize=11;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="600" y="30" width="470" height="360" as="geometry" />
         </mxCell>
 
-        <mxCell id="visitor" value="Visitor&#10;browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="1">
+        <mxCell id="visitor" value="Visitor&#10;browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBE3D2;strokeColor=#4A5145;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="50" y="100" width="140" height="60" as="geometry" />
         </mxCell>
 
-        <mxCell id="site" value="Next.js site&#10;ChatWidget.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4285f4;fontSize=11" vertex="1" parent="1">
+        <mxCell id="site" value="Next.js site&#10;ChatWidget.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF8F2;strokeColor=#5A7058;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="270" y="75" width="250" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="proxy" value="/api/chat&#10;server side proxy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4285f4;fontSize=11" vertex="1" parent="1">
+        <mxCell id="proxy" value="/api/chat&#10;server side proxy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF8F2;strokeColor=#5A7058;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="270" y="165" width="250" height="55" as="geometry" />
         </mxCell>
 
-        <mxCell id="api" value="FastAPI&#10;app.py, Swagger at /docs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#34a853;fontSize=11" vertex="1" parent="1">
+        <mxCell id="api" value="FastAPI&#10;app.py, Swagger at /docs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF8F2;strokeColor=#3F5040;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="620" y="75" width="200" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="retr" value="Retriever&#10;numpy cosine, in memory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#34a853;fontSize=11" vertex="1" parent="1">
+        <mxCell id="retr" value="Retriever&#10;numpy cosine, in memory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF8F2;strokeColor=#3F5040;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="620" y="165" width="200" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="ollama" value="Ollama&#10;Qwen2.5 7B Instruct Q4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#34a853;fontSize=11" vertex="1" parent="1">
+        <mxCell id="ollama" value="Ollama&#10;Qwen2.5 7B Instruct Q4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF8F2;strokeColor=#3F5040;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="860" y="165" width="190" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="tools" value="6 tools&#10;tools.py" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#34a853;fontSize=11" vertex="1" parent="1">
+        <mxCell id="tools" value="6 tools&#10;tools.py" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF8F2;strokeColor=#3F5040;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="860" y="255" width="190" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="guard" value="Output filter and send guard&#10;deterministic, in code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce8e6;strokeColor=#ea4335;fontSize=11;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="guard" value="Output filter and send guard&#10;deterministic, in code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4E3DA;strokeColor=#B5552E;fontSize=11;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="620" y="255" width="200" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="idx" value="Baked into the image: embeddings.json, 76 chunks x 768 dim, 721 KB / portfolio.json / e5 base ONNX" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f1f3f4;strokeColor=#9aa0a6;fontSize=10" vertex="1" parent="1">
+        <mxCell id="idx" value="Baked into the image: embeddings.json, 76 chunks x 768 dim, 721 KB / portfolio.json / e5 base ONNX" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBE3D2;strokeColor=#A8B89E;fontSize=10" vertex="1" parent="1">
           <mxGeometry x="620" y="325" width="430" height="45" as="geometry" />
         </mxCell>
 
-        <mxCell id="gh" value="GitHub&#10;public repo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f3f4;strokeColor=#5f6368;fontSize=11" vertex="1" parent="1">
+        <mxCell id="gh" value="GitHub&#10;public repo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBE3D2;strokeColor=#4A5145;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="50" y="450" width="140" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="cb" value="Cloud Build&#10;one image" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f3f4;strokeColor=#5f6368;fontSize=11" vertex="1" parent="1">
+        <mxCell id="cb" value="Cloud Build&#10;one image" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBE3D2;strokeColor=#4A5145;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="240" y="450" width="140" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="ar" value="Artifact Registry&#10;rag-ai" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f3f4;strokeColor=#5f6368;fontSize=11" vertex="1" parent="1">
+        <mxCell id="ar" value="Artifact Registry&#10;rag-ai" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBE3D2;strokeColor=#4A5145;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="430" y="450" width="150" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="log" value="Cloud Logging&#10;metadata only, never message bodies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f3f4;strokeColor=#5f6368;fontSize=10" vertex="1" parent="1">
+        <mxCell id="log" value="Cloud Logging&#10;metadata only, never message bodies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBE3D2;strokeColor=#4A5145;fontSize=10" vertex="1" parent="1">
           <mxGeometry x="880" y="450" width="190" height="50" as="geometry" />
         </mxCell>
 
-        <mxCell id="note" value="The browser never calls rag-api directly.&#10;NEXT_PUBLIC_* is inlined into the bundle at build time, so a browser side call would publish the GPU service URL and the API key." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#fbc02d;align=left;fontSize=10;verticalAlign=top;spacing=6" vertex="1" parent="1">
+        <mxCell id="note" value="The browser never calls rag-api directly.&#10;NEXT_PUBLIC_* is inlined into the bundle at build time, so a browser side call would publish the GPU service URL and the API key." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F4E3DA;strokeColor=#8E3F1F;align=left;fontSize=10;verticalAlign=top;spacing=6" vertex="1" parent="1">
           <mxGeometry x="240" y="270" width="310" height="90" as="geometry" />
         </mxCell>
 

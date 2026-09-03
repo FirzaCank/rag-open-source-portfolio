@@ -5,41 +5,41 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <mxCell id="s1" value="Visitor question&#10;plus up to 12 turns of history" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="1">
+        <mxCell id="s1" value="Visitor question&#10;plus up to 12 turns of history" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBE3D2;strokeColor=#4A5145;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="300" y="30" width="260" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="s2" value="Embed the latest turn&#10;multilingual e5 base, ONNX, with the mandatory query: prefix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f0fe;strokeColor=#4285f4;fontSize=11" vertex="1" parent="1">
+        <mxCell id="s2" value="Embed the latest turn&#10;multilingual e5 base, ONNX, with the mandatory query: prefix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3E8DE;strokeColor=#5A7058;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="300" y="120" width="260" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="s3" value="Cosine similarity&#10;one dot product against a 76 x 768 unit norm matrix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f0fe;strokeColor=#4285f4;fontSize=11" vertex="1" parent="1">
+        <mxCell id="s3" value="Cosine similarity&#10;one dot product against a 76 x 768 unit norm matrix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3E8DE;strokeColor=#5A7058;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="300" y="215" width="260" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="s4" value="Take the top 8 chunks&#10;no absolute score floor, MIN_SCORE is 0.0 and that is the calibrated answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f0fe;strokeColor=#4285f4;fontSize=11" vertex="1" parent="1">
+        <mxCell id="s4" value="Take the top 8 chunks&#10;no absolute score floor, MIN_SCORE is 0.0 and that is the calibrated answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3E8DE;strokeColor=#5A7058;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="300" y="310" width="260" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="s5" value="Append the context block to the VISITOR message&#10;never to the system prompt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce8e6;strokeColor=#ea4335;fontSize=11;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="s5" value="Append the context block to the VISITOR message&#10;never to the system prompt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4E3DA;strokeColor=#B5552E;fontSize=11;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="300" y="405" width="260" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="s6" value="Ollama chat request&#10;static system prompt, no interpolation, plus 6 tool schemas, num_ctx 8192, think off" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f4ea;strokeColor=#34a853;fontSize=11" vertex="1" parent="1">
+        <mxCell id="s6" value="Ollama chat request&#10;static system prompt, no interpolation, plus 6 tool schemas, num_ctx 8192, think off" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A8B89E;strokeColor=#3F5040;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="300" y="500" width="260" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="d1" value="Tool call requested?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e6f4ea;strokeColor=#34a853;fontSize=11" vertex="1" parent="1">
+        <mxCell id="d1" value="Tool call requested?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#A8B89E;strokeColor=#3F5040;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="330" y="605" width="200" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="s7" value="Send guard&#10;is the email in the arguments present verbatim in a visitor message?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce8e6;strokeColor=#ea4335;fontSize=11;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="s7" value="Send guard&#10;is the email in the arguments present verbatim in a visitor message?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4E3DA;strokeColor=#B5552E;fontSize=11;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="640" y="590" width="230" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="s8" value="Run the tool, feed the result back&#10;max 2 rounds. 40 of 41 test cases use 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#34a853;fontSize=11" vertex="1" parent="1">
+        <mxCell id="s8" value="Run the tool, feed the result back&#10;max 2 rounds. 40 of 41 test cases use 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF8F2;strokeColor=#3F5040;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="640" y="680" width="230" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="s9" value="Output filter&#10;cut the stream at the first tool name or code fence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce8e6;strokeColor=#ea4335;fontSize=11;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="s9" value="Output filter&#10;cut the stream at the first tool name or code fence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4E3DA;strokeColor=#B5552E;fontSize=11;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="300" y="730" width="260" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="s10" value="Raw text stream to the visitor&#10;errors return JSON with an error field" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="1">
+        <mxCell id="s10" value="Raw text stream to the visitor&#10;errors return JSON with an error field" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBE3D2;strokeColor=#4A5145;fontSize=11" vertex="1" parent="1">
           <mxGeometry x="300" y="825" width="260" height="55" as="geometry" />
         </mxCell>
 
-        <mxCell id="n1" value="Three red boxes, and one theme.&#10;&#10;Context placement is what the 6 prompt injection test cases exist to check.&#10;&#10;The other two are code, not prompt rules. The tool names leaked in 8 of 8 runs and the message tool sent an invented email address, both while the prompt forbade it, because the request format handed the model all 6 tool schemas every time." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#fbc02d;align=left;verticalAlign=top;fontSize=10;spacing=8" vertex="1" parent="1">
+        <mxCell id="n1" value="Three red boxes, and one theme.&#10;&#10;Context placement is what the 6 prompt injection test cases exist to check.&#10;&#10;The other two are code, not prompt rules. The tool names leaked in 8 of 8 runs and the message tool sent an invented email address, both while the prompt forbade it, because the request format handed the model all 6 tool schemas every time." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F4E3DA;strokeColor=#8E3F1F;align=left;verticalAlign=top;fontSize=10;spacing=8" vertex="1" parent="1">
           <mxGeometry x="30" y="405" width="240" height="230" as="geometry" />
         </mxCell>
 
