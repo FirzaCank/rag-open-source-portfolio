@@ -82,9 +82,6 @@ def _neutralize_markers(text: str) -> str:
 # Read off the declarations instead of typed here, so a newly declared tool is covered the moment
 # it exists rather than the moment someone remembers this list.
 _TOOL_NAMES = tuple(t["function"]["name"] for t in OLLAMA_TOOLS)
-# A name arrives split across stream chunks, so the tail that could still be the start of one is
-# held back before anything is yielded. Longest name minus one character is exactly enough.
-_HOLD = max(len(n) for n in _TOOL_NAMES) - 1
 
 # The sentence rag/prompt.py line 74 already tells the model to use. Same words, so the filter and
 # the instruction do not contradict each other in front of a visitor.
@@ -94,32 +91,53 @@ TOOL_DISCLOSURE_REFUSAL = (
     "The internals stay private."
 )
 
+# rag/prompt.py line 68 asks for one short declining sentence and does not fix the words, so these
+# are chosen to satisfy it: no code, and the scope named rather than only refused.
+OFF_TOPIC_REFUSAL = (
+    "I only answer questions about Firza, so I can't write code here. Ask me about his projects, "
+    "skills, or experience instead."
+)
 
-def _redact_tool_names(chunks, stats=None):
-    """Cut the stream at the first tool name and finish with the refusal instead.
+# Every marker that ends the answer, with the event it logs and the sentence it finishes with.
+# A code fence is the marker because a word list is not usable: `import ` matches "data import
+# pipeline", which is ordinary phrasing on a data engineer's portfolio. Both forbidden patterns in
+# the measured off-code-help answer sit inside the fence, so cutting there removes both.
+_CUTS = [(n, "tool_name_redacted", TOOL_DISCLOSURE_REFUSAL) for n in _TOOL_NAMES]
+_CUTS.append(("```", "code_block_redacted", OFF_TOPIC_REFUSAL))
+# A marker arrives split across stream chunks, so the tail that could still be the start of one is
+# held back before anything is yielded. Longest marker minus one character is exactly enough.
+_HOLD = max(len(m) for m, _, _ in _CUTS) - 1
 
-    The prompt has forbidden this disclosure since the first version and the names still leaked in
-    8 of 8 measured runs, under both prompt variants and in three languages. The model is handed
-    the schemas in the `tools` field of every request, so no instruction can take them back.
+
+def _redact_output(chunks, stats=None):
+    """Cut the stream at the first forbidden marker and finish with that marker's refusal.
+
+    The prompt has forbidden both disclosures since the first version. Tool names still leaked in
+    8 of 8 measured runs, under both prompt variants and in three languages, because the model is
+    handed the schemas in the `tools` field of every request. A code block still appeared in 11 of
+    12 runs of off-code-help. Neither is something an instruction can take back.
+
+    ponytail: prose before the marker is still served, so "you will need to import requests" ahead
+    of a fence survives. The fence was the only marker safe enough to use, see _CUTS.
     """
     buf = ""
     for chunk in chunks:
         buf += chunk
         low = buf.lower()
-        hits = [(low.index(n), n) for n in _TOOL_NAMES if n in low]
+        hits = [(low.index(m), m, evt, sub) for m, evt, sub in _CUTS if m in low]
         if hits:
-            # Earliest position, not first declared. Otherwise a name sitting before the matched one
-            # would be yielded in the prefix.
-            head, name = min(hits)
+            # Earliest position, not first declared. Otherwise a marker sitting before the matched
+            # one would be yielded in the prefix.
+            head, marker, evt, sub = min(hits)
             # The cut lands mid list item, so the bullet or bold marker that introduced the name is
             # still in the prefix. It leaks nothing and renders as a broken line, so it goes.
             prefix = buf[:head].rstrip(" *-`\n")
             if prefix:
                 yield prefix
             if stats is not None:
-                stats["tool_name_redacted"] = True
-            print(json.dumps({"evt": "tool_name_redacted", "name": name}))
-            yield "\n\n" + TOOL_DISCLOSURE_REFUSAL
+                stats[evt] = True
+            print(json.dumps({"evt": evt, "marker": marker}))
+            yield "\n\n" + sub
             return
         if len(buf) > _HOLD:
             yield buf[:-_HOLD]
@@ -333,7 +351,7 @@ def run_chat(messages, stats=None):
     sentence go through it too. Both callers, the eval and the API, get the same protection.
     """
     stats = stats if stats is not None else {}
-    yield from _redact_tool_names(_run_chat(messages, stats), stats)
+    yield from _redact_output(_run_chat(messages, stats), stats)
 
 
 if __name__ == "__main__":
@@ -342,7 +360,7 @@ if __name__ == "__main__":
 
     # The filter first, because it needs no model and a broken filter is a live disclosure.
     def _red(chunks):
-        return "".join(_redact_tool_names(list(chunks)))
+        return "".join(_redact_output(list(chunks)))
 
     # Clean text must survive byte for byte, including the held-back tail.
     clean = ["Firza works at ", "Hypefast as a ", "Data Engineer."]
@@ -373,8 +391,28 @@ if __name__ == "__main__":
 
     # It has to be reported, not only prevented. A filter with no counter cannot be measured.
     st = {}
-    list(_redact_tool_names(["get_skills"], st))
+    list(_redact_output(["get_skills"], st))
     assert st["tool_name_redacted"] is True, st
+
+    # A code fence ends the answer too. Measured shape of off-code-help: prose, then the fence,
+    # then `import tweepy`. Cutting at the fence removes both forbidden patterns at once.
+    code = _red(["Here is a script:\n\n", "``", "`pyt", "hon\nimport tweepy\n```"])
+    assert "```" not in code, code
+    assert "import " not in code, code
+    assert code.startswith("Here is a script:"), code
+    assert OFF_TOPIC_REFUSAL in code, code
+
+    # Single backticks are ordinary in a real answer and must survive untouched.
+    inline = ["Firza uses ", "`dbt`", " and `Airflow`."]
+    assert _red(inline) == "".join(inline), _red(inline)
+
+    # The two markers report separately, or one number would cover two behaviours.
+    st2 = {}
+    list(_redact_output(["```python"], st2))
+    assert st2 == {"code_block_redacted": True}, st2
+
+    # Neither substitute may trip the other marker, or a second pass would eat its own answer.
+    assert _red([OFF_TOPIC_REFUSAL]) == OFF_TOPIC_REFUSAL
 
     q = "Where does Firza work right now?"
     stats = {}
