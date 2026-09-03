@@ -268,6 +268,34 @@ def _parse_args(raw):
         return {}
 
 
+# What the model is told when a send is blocked. It names the missing thing so the model has
+# something to ask for, instead of reporting the send as done.
+SEND_BLOCKED_ERROR = (
+    "Not sent. That email address did not come from the visitor. Ask for their own name and email "
+    "address, repeat the message back, and wait for confirmation before trying again."
+)
+
+
+def _send_blocked(name, args, messages):
+    """True when a send carries an email address the visitor never typed.
+
+    The prompt has forbidden sending without confirmation since the first version, and qwen3 sent
+    anyway in 3 cases at both seeds, inventing a well formed address for a visitor who gave none.
+    An instruction cannot take that back, so the guard is deterministic and sits where every tool
+    call passes. Same shape as _redact_output, see D74 and D82.
+
+    Only `role == "user"` counts. An address the model itself produced in an earlier turn is exactly
+    what is being caught. Empty args fall through to tools.py, which names the missing field.
+    """
+    if name != "send_message_to_firza":
+        return False
+    email = str(args.get("email") or "").strip().lower()
+    if not email:
+        return False
+    said = " ".join(m.get("content") or "" for m in messages if m.get("role") == "user").lower()
+    return email not in said
+
+
 def _run_chat(messages, stats):
     """The tool loop. Yields raw model text, which is why nothing calls it directly."""
     t0 = time.time()
@@ -317,7 +345,13 @@ def _run_chat(messages, stats):
 
         for c in pending:
             stats["tools"].append(c["name"])
-            result = run_tool(c["name"], _parse_args(c["arguments"]))
+            args = _parse_args(c["arguments"])
+            if _send_blocked(c["name"], args, messages):
+                result = {"sent": False, "error": SEND_BLOCKED_ERROR}
+                stats["send_blocked"] = True
+                print(json.dumps({"evt": "send_blocked"}))
+            else:
+                result = run_tool(c["name"], args)
             if c["name"] == "send_message_to_firza":
                 stats["sent"] = bool(isinstance(result, dict) and result.get("sent"))
             convo.append({"role": "tool", "tool_name": c["name"], "content": json.dumps(result)})
@@ -423,6 +457,22 @@ if __name__ == "__main__":
         _b = _chat_body([{"role": "user", "content": "hi"}], _tools, 100)
         assert _b["think"] is False, _b
         assert "think" not in _b["options"], _b
+
+    # The send guard. An address the visitor typed goes through, one the model made up does not.
+    _said = [{"role": "user", "content": "Hi, I am Rina, rina@gojek.com, we have a role open."}]
+    assert not _send_blocked("send_message_to_firza", {"email": "rina@gojek.com"}, _said)
+    assert not _send_blocked("send_message_to_firza", {"email": " RINA@Gojek.com "}, _said)
+    assert _send_blocked("send_message_to_firza", {"email": "recruiter@gojek.com"}, _said)
+
+    # Empty email falls through to tools.py, which names the field the model has to ask for.
+    assert not _send_blocked("send_message_to_firza", {}, _said)
+
+    # The model echoing an address back in its own turn must not authorise the send.
+    _echo = [{"role": "assistant", "content": "Sending from recruiter@gojek.com"}]
+    assert _send_blocked("send_message_to_firza", {"email": "recruiter@gojek.com"}, _echo)
+
+    # Read only tools are never touched by the guard.
+    assert not _send_blocked("search_projects", {"query": "rag"}, [])
 
     q = "Where does Firza work right now?"
     stats = {}
