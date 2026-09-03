@@ -23,7 +23,7 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
-from rag.chunk import OVERLAP_CHARS, TARGET_CHARS, chunk_docs
+from rag.chunk import OVERLAP_CHARS, TARGET_CHARS, VARIANT, chunk_docs
 from rag.embed import DIM, MODEL_FILE, MODEL_NAME, embed_passages
 from rag.sources import get_docs
 
@@ -45,8 +45,8 @@ def build() -> dict:
         "model": MODEL_NAME,
         "dim": DIM,
         "model_file": MODEL_FILE,
-        # Recorded so a Phase 5 variant index cannot be mistaken for variant A. Nothing reads it yet.
-        "chunking": {"variant": "A", "target_chars": TARGET_CHARS, "overlap_chars": OVERLAP_CHARS},
+        # Read off CHUNK_VARIANT, not hardcoded: a B index once recorded itself as A. See D89.
+        "chunking": {"variant": VARIANT, "target_chars": TARGET_CHARS, "overlap_chars": OVERLAP_CHARS},
         "chunks": [
             {"source": c["source"], "text": c["text"], "vector": [round(float(x), 7) for x in v]}
             for c, v in zip(chunks, vectors)

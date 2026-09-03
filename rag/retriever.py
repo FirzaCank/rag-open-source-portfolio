@@ -26,6 +26,11 @@ reaches it and scores 33 of 41 against 36, MMR reranking cannot promote a candid
 chunk that still ranks 15th at 0.7298, losing to `Career Timeline` at 0.8386 which contains no
 education text at all. The e5 `query:` and `passage:` prefixes were verified correct. The limit is
 the embedding model, which is what Phase 5c fine-tunes. See D89.
+
+Paragraph aware chunking was then built and evaluated over the 66 query set rather than judged on
+that one case, and it fires the kill criterion: HR@1 68.2 to 59.1, MRR 0.7497 to 0.7005, English
+68.5 to 53.7. HR@8 rises 86.4 to 87.9, so 134 smaller chunks still contain the answer and only
+rank it lower. The index stays variant A. See D90.
 """
 
 import json

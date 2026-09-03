@@ -1,0 +1,983 @@
+{
+ "_comment": "Phase 5c training pairs, template generated. Training only, never an eval number. See D49.",
+ "pairs": [
+  {
+   "query": "Who is Firza?",
+   "text": "I’m a Data & AI Engineer with >4 years of experience building end-to-end data pipelines and scalable MLOps frameworks. I turn raw data infrastructure into automated systems: recommendation models in production, LLM-powered document processing, and pipelines that run unattended.\nI’ve spent the last several years inside Telco and consumer brand environments, where the systems I designed had to run reliably at scale, with proven impact: processing 1B+ daily records, driving hundreds of millions of IDR per month in GMV via recommendation systems, achieving a 200× average monthly return on voucher budget per brand, and cutting OCR extraction time from 8 hours to 5 minutes (96× faster).\nBeyond my core engineering role, I take on freelance projects spanning AI engineering, data analysis, dashboards, and pitch decks. The work I take on lets me ship end-to-end, from raw data to a deliverable a stakeholder can act on.",
+   "source": "About Firza",
+   "template": "about"
+  },
+  {
+   "query": "Tell me about Firza.",
+   "text": "I’m a Data & AI Engineer with >4 years of experience building end-to-end data pipelines and scalable MLOps frameworks. I turn raw data infrastructure into automated systems: recommendation models in production, LLM-powered document processing, and pipelines that run unattended.\nI’ve spent the last several years inside Telco and consumer brand environments, where the systems I designed had to run reliably at scale, with proven impact: processing 1B+ daily records, driving hundreds of millions of IDR per month in GMV via recommendation systems, achieving a 200× average monthly return on voucher budget per brand, and cutting OCR extraction time from 8 hours to 5 minutes (96× faster).\nBeyond my core engineering role, I take on freelance projects spanning AI engineering, data analysis, dashboards, and pitch decks. The work I take on lets me ship end-to-end, from raw data to a deliverable a stakeholder can act on.",
+   "source": "About Firza",
+   "template": "about"
+  },
+  {
+   "query": "What does Firza do?",
+   "text": "I’m a Data & AI Engineer with >4 years of experience building end-to-end data pipelines and scalable MLOps frameworks. I turn raw data infrastructure into automated systems: recommendation models in production, LLM-powered document processing, and pipelines that run unattended.\nI’ve spent the last several years inside Telco and consumer brand environments, where the systems I designed had to run reliably at scale, with proven impact: processing 1B+ daily records, driving hundreds of millions of IDR per month in GMV via recommendation systems, achieving a 200× average monthly return on voucher budget per brand, and cutting OCR extraction time from 8 hours to 5 minutes (96× faster).\nBeyond my core engineering role, I take on freelance projects spanning AI engineering, data analysis, dashboards, and pitch decks. The work I take on lets me ship end-to-end, from raw data to a deliverable a stakeholder can act on.",
+   "source": "About Firza",
+   "template": "about"
+  },
+  {
+   "query": "Firza itu siapa?",
+   "text": "I’m a Data & AI Engineer with >4 years of experience building end-to-end data pipelines and scalable MLOps frameworks. I turn raw data infrastructure into automated systems: recommendation models in production, LLM-powered document processing, and pipelines that run unattended.\nI’ve spent the last several years inside Telco and consumer brand environments, where the systems I designed had to run reliably at scale, with proven impact: processing 1B+ daily records, driving hundreds of millions of IDR per month in GMV via recommendation systems, achieving a 200× average monthly return on voucher budget per brand, and cutting OCR extraction time from 8 hours to 5 minutes (96× faster).\nBeyond my core engineering role, I take on freelance projects spanning AI engineering, data analysis, dashboards, and pitch decks. The work I take on lets me ship end-to-end, from raw data to a deliverable a stakeholder can act on.",
+   "source": "About Firza",
+   "template": "about"
+  },
+  {
+   "query": "Apa pekerjaan Firza?",
+   "text": "I’m a Data & AI Engineer with >4 years of experience building end-to-end data pipelines and scalable MLOps frameworks. I turn raw data infrastructure into automated systems: recommendation models in production, LLM-powered document processing, and pipelines that run unattended.\nI’ve spent the last several years inside Telco and consumer brand environments, where the systems I designed had to run reliably at scale, with proven impact: processing 1B+ daily records, driving hundreds of millions of IDR per month in GMV via recommendation systems, achieving a 200× average monthly return on voucher budget per brand, and cutting OCR extraction time from 8 hours to 5 minutes (96× faster).\nBeyond my core engineering role, I take on freelance projects spanning AI engineering, data analysis, dashboards, and pitch decks. The work I take on lets me ship end-to-end, from raw data to a deliverable a stakeholder can act on.",
+   "source": "About Firza",
+   "template": "about"
+  },
+  {
+   "query": "Where did Firza study?",
+   "text": "Education: Bachelor's Degree, Faculty of Industrial Technology, Industrial Engineering, Bandung Institute of Technology (ITB), Indonesia (August 2017 - July 2021). Thesis: A Proposed Improvement to Flow Shop Production Scheduling for Makespan Minimization",
+   "source": "About Firza",
+   "template": "label:Education"
+  },
+  {
+   "query": "Which university did Firza attend?",
+   "text": "Education: Bachelor's Degree, Faculty of Industrial Technology, Industrial Engineering, Bandung Institute of Technology (ITB), Indonesia (August 2017 - July 2021). Thesis: A Proposed Improvement to Flow Shop Production Scheduling for Makespan Minimization",
+   "source": "About Firza",
+   "template": "label:Education"
+  },
+  {
+   "query": "What is Firza's degree?",
+   "text": "Education: Bachelor's Degree, Faculty of Industrial Technology, Industrial Engineering, Bandung Institute of Technology (ITB), Indonesia (August 2017 - July 2021). Thesis: A Proposed Improvement to Flow Shop Production Scheduling for Makespan Minimization",
+   "source": "About Firza",
+   "template": "label:Education"
+  },
+  {
+   "query": "Did Firza go to college?",
+   "text": "Education: Bachelor's Degree, Faculty of Industrial Technology, Industrial Engineering, Bandung Institute of Technology (ITB), Indonesia (August 2017 - July 2021). Thesis: A Proposed Improvement to Flow Shop Production Scheduling for Makespan Minimization",
+   "source": "About Firza",
+   "template": "label:Education"
+  },
+  {
+   "query": "What did Firza major in?",
+   "text": "Education: Bachelor's Degree, Faculty of Industrial Technology, Industrial Engineering, Bandung Institute of Technology (ITB), Indonesia (August 2017 - July 2021). Thesis: A Proposed Improvement to Flow Shop Production Scheduling for Makespan Minimization",
+   "source": "About Firza",
+   "template": "label:Education"
+  },
+  {
+   "query": "Di mana Firza kuliah?",
+   "text": "Education: Bachelor's Degree, Faculty of Industrial Technology, Industrial Engineering, Bandung Institute of Technology (ITB), Indonesia (August 2017 - July 2021). Thesis: A Proposed Improvement to Flow Shop Production Scheduling for Makespan Minimization",
+   "source": "About Firza",
+   "template": "label:Education"
+  },
+  {
+   "query": "Apa latar belakang pendidikan Firza?",
+   "text": "Education: Bachelor's Degree, Faculty of Industrial Technology, Industrial Engineering, Bandung Institute of Technology (ITB), Indonesia (August 2017 - July 2021). Thesis: A Proposed Improvement to Flow Shop Production Scheduling for Makespan Minimization",
+   "source": "About Firza",
+   "template": "label:Education"
+  },
+  {
+   "query": "Firza lulusan mana?",
+   "text": "Education: Bachelor's Degree, Faculty of Industrial Technology, Industrial Engineering, Bandung Institute of Technology (ITB), Indonesia (August 2017 - July 2021). Thesis: A Proposed Improvement to Flow Shop Production Scheduling for Makespan Minimization",
+   "source": "About Firza",
+   "template": "label:Education"
+  },
+  {
+   "query": "Firza kuliah jurusan apa?",
+   "text": "Education: Bachelor's Degree, Faculty of Industrial Technology, Industrial Engineering, Bandung Institute of Technology (ITB), Indonesia (August 2017 - July 2021). Thesis: A Proposed Improvement to Flow Shop Production Scheduling for Makespan Minimization",
+   "source": "About Firza",
+   "template": "label:Education"
+  },
+  {
+   "query": "What courses has Firza taken?",
+   "text": "Certifications: Python for Data Science and Artificial Intelligence (AI) (Coursera); Data Descriptors, Statistical Distributions, and Application to Business Decisions (Rice University); JLPT N3 Japanese Proficiency (Japan Foundation)",
+   "source": "About Firza",
+   "template": "label:Certifications"
+  },
+  {
+   "query": "Is Firza certified in anything?",
+   "text": "Certifications: Python for Data Science and Artificial Intelligence (AI) (Coursera); Data Descriptors, Statistical Distributions, and Application to Business Decisions (Rice University); JLPT N3 Japanese Proficiency (Japan Foundation)",
+   "source": "About Firza",
+   "template": "label:Certifications"
+  },
+  {
+   "query": "What training has Firza completed?",
+   "text": "Certifications: Python for Data Science and Artificial Intelligence (AI) (Coursera); Data Descriptors, Statistical Distributions, and Application to Business Decisions (Rice University); JLPT N3 Japanese Proficiency (Japan Foundation)",
+   "source": "About Firza",
+   "template": "label:Certifications"
+  },
+  {
+   "query": "Sertifikat apa yang dimiliki Firza?",
+   "text": "Certifications: Python for Data Science and Artificial Intelligence (AI) (Coursera); Data Descriptors, Statistical Distributions, and Application to Business Decisions (Rice University); JLPT N3 Japanese Proficiency (Japan Foundation)",
+   "source": "About Firza",
+   "template": "label:Certifications"
+  },
+  {
+   "query": "Firza pernah ikut kursus apa?",
+   "text": "Certifications: Python for Data Science and Artificial Intelligence (AI) (Coursera); Data Descriptors, Statistical Distributions, and Application to Business Decisions (Rice University); JLPT N3 Japanese Proficiency (Japan Foundation)",
+   "source": "About Firza",
+   "template": "label:Certifications"
+  },
+  {
+   "query": "What languages does Firza speak?",
+   "text": "Languages: Bahasa Indonesia: Native; English: Professional; Japanese: JLPT N3\n\nSkills: AI / LLM: LangChain, LangGraph, OpenAI API, Anthropic Claude API, Gemini API, FAISS, RAG, Vector Search, Tool Calling, Prompt Engineering, Prompt Evaluation, Sentence Transformers, OpenCV. ML / Data Science: Deep Learning, TensorFlow / Keras, PyTorch, scikit-learn, pandas, numpy, PySpark, seaborn, matplotlib. Backend: FastAPI, Flask, SQLAlchemy, REST API, Next.js. Cloud: AWS (EC2, S3, Lambda, ECS/ECR), GCP (Vertex AI, Agent Platform, BigQuery, Cloud Run, Compute Engine, Datastream (Change Data Capture / CDC), Document AI, Pub/Sub, Composer, Cloud Build, Cloud Workflows, Cloud Scheduler, Secret Manager, IAM), Snowflake. On-Premise: Cloudera (CDH), Apache Airflow, Kafka (streaming), Hive, Impala, Hadoop (HDFS, YARN). Databases: PostgreSQL, MySQL, MongoDB Atlas, NoSQL, Data modeling (star schema, SCD Types 0-6, dbt snapshots). BI & Visualization: Metabase, Looker Studio, Power BI, Tableau, Google Sheets/Excel. Infra & DevOps: Terraform, Docker, Kubernetes, BitBucket CI/CD, Linux, Git. Tools: Jira, Confluence, Apps Script, n8n, dbt, Jubelio (Omnichannel OMS), Mekari Jurnal. Languages: Python, SQL,",
+   "source": "About Firza",
+   "template": "label:Languages"
+  },
+  {
+   "query": "Can Firza speak English?",
+   "text": "Languages: Bahasa Indonesia: Native; English: Professional; Japanese: JLPT N3\n\nSkills: AI / LLM: LangChain, LangGraph, OpenAI API, Anthropic Claude API, Gemini API, FAISS, RAG, Vector Search, Tool Calling, Prompt Engineering, Prompt Evaluation, Sentence Transformers, OpenCV. ML / Data Science: Deep Learning, TensorFlow / Keras, PyTorch, scikit-learn, pandas, numpy, PySpark, seaborn, matplotlib. Backend: FastAPI, Flask, SQLAlchemy, REST API, Next.js. Cloud: AWS (EC2, S3, Lambda, ECS/ECR), GCP (Vertex AI, Agent Platform, BigQuery, Cloud Run, Compute Engine, Datastream (Change Data Capture / CDC), Document AI, Pub/Sub, Composer, Cloud Build, Cloud Workflows, Cloud Scheduler, Secret Manager, IAM), Snowflake. On-Premise: Cloudera (CDH), Apache Airflow, Kafka (streaming), Hive, Impala, Hadoop (HDFS, YARN). Databases: PostgreSQL, MySQL, MongoDB Atlas, NoSQL, Data modeling (star schema, SCD Types 0-6, dbt snapshots). BI & Visualization: Metabase, Looker Studio, Power BI, Tableau, Google Sheets/Excel. Infra & DevOps: Terraform, Docker, Kubernetes, BitBucket CI/CD, Linux, Git. Tools: Jira, Confluence, Apps Script, n8n, dbt, Jubelio (Omnichannel OMS), Mekari Jurnal. Languages: Python, SQL,",
+   "source": "About Firza",
+   "template": "label:Languages"
+  },
+  {
+   "query": "Does Firza know Japanese?",
+   "text": "Languages: Bahasa Indonesia: Native; English: Professional; Japanese: JLPT N3\n\nSkills: AI / LLM: LangChain, LangGraph, OpenAI API, Anthropic Claude API, Gemini API, FAISS, RAG, Vector Search, Tool Calling, Prompt Engineering, Prompt Evaluation, Sentence Transformers, OpenCV. ML / Data Science: Deep Learning, TensorFlow / Keras, PyTorch, scikit-learn, pandas, numpy, PySpark, seaborn, matplotlib. Backend: FastAPI, Flask, SQLAlchemy, REST API, Next.js. Cloud: AWS (EC2, S3, Lambda, ECS/ECR), GCP (Vertex AI, Agent Platform, BigQuery, Cloud Run, Compute Engine, Datastream (Change Data Capture / CDC), Document AI, Pub/Sub, Composer, Cloud Build, Cloud Workflows, Cloud Scheduler, Secret Manager, IAM), Snowflake. On-Premise: Cloudera (CDH), Apache Airflow, Kafka (streaming), Hive, Impala, Hadoop (HDFS, YARN). Databases: PostgreSQL, MySQL, MongoDB Atlas, NoSQL, Data modeling (star schema, SCD Types 0-6, dbt snapshots). BI & Visualization: Metabase, Looker Studio, Power BI, Tableau, Google Sheets/Excel. Infra & DevOps: Terraform, Docker, Kubernetes, BitBucket CI/CD, Linux, Git. Tools: Jira, Confluence, Apps Script, n8n, dbt, Jubelio (Omnichannel OMS), Mekari Jurnal. Languages: Python, SQL,",
+   "source": "About Firza",
+   "template": "label:Languages"
+  },
+  {
+   "query": "Firza bisa bahasa apa saja?",
+   "text": "Languages: Bahasa Indonesia: Native; English: Professional; Japanese: JLPT N3\n\nSkills: AI / LLM: LangChain, LangGraph, OpenAI API, Anthropic Claude API, Gemini API, FAISS, RAG, Vector Search, Tool Calling, Prompt Engineering, Prompt Evaluation, Sentence Transformers, OpenCV. ML / Data Science: Deep Learning, TensorFlow / Keras, PyTorch, scikit-learn, pandas, numpy, PySpark, seaborn, matplotlib. Backend: FastAPI, Flask, SQLAlchemy, REST API, Next.js. Cloud: AWS (EC2, S3, Lambda, ECS/ECR), GCP (Vertex AI, Agent Platform, BigQuery, Cloud Run, Compute Engine, Datastream (Change Data Capture / CDC), Document AI, Pub/Sub, Composer, Cloud Build, Cloud Workflows, Cloud Scheduler, Secret Manager, IAM), Snowflake. On-Premise: Cloudera (CDH), Apache Airflow, Kafka (streaming), Hive, Impala, Hadoop (HDFS, YARN). Databases: PostgreSQL, MySQL, MongoDB Atlas, NoSQL, Data modeling (star schema, SCD Types 0-6, dbt snapshots). BI & Visualization: Metabase, Looker Studio, Power BI, Tableau, Google Sheets/Excel. Infra & DevOps: Terraform, Docker, Kubernetes, BitBucket CI/CD, Linux, Git. Tools: Jira, Confluence, Apps Script, n8n, dbt, Jubelio (Omnichannel OMS), Mekari Jurnal. Languages: Python, SQL,",
+   "source": "About Firza",
+   "template": "label:Languages"
+  },
+  {
+   "query": "What tools does Firza use?",
+   "text": "Languages: Bahasa Indonesia: Native; English: Professional; Japanese: JLPT N3\n\nSkills: AI / LLM: LangChain, LangGraph, OpenAI API, Anthropic Claude API, Gemini API, FAISS, RAG, Vector Search, Tool Calling, Prompt Engineering, Prompt Evaluation, Sentence Transformers, OpenCV. ML / Data Science: Deep Learning, TensorFlow / Keras, PyTorch, scikit-learn, pandas, numpy, PySpark, seaborn, matplotlib. Backend: FastAPI, Flask, SQLAlchemy, REST API, Next.js. Cloud: AWS (EC2, S3, Lambda, ECS/ECR), GCP (Vertex AI, Agent Platform, BigQuery, Cloud Run, Compute Engine, Datastream (Change Data Capture / CDC), Document AI, Pub/Sub, Composer, Cloud Build, Cloud Workflows, Cloud Scheduler, Secret Manager, IAM), Snowflake. On-Premise: Cloudera (CDH), Apache Airflow, Kafka (streaming), Hive, Impala, Hadoop (HDFS, YARN). Databases: PostgreSQL, MySQL, MongoDB Atlas, NoSQL, Data modeling (star schema, SCD Types 0-6, dbt snapshots). BI & Visualization: Metabase, Looker Studio, Power BI, Tableau, Google Sheets/Excel. Infra & DevOps: Terraform, Docker, Kubernetes, BitBucket CI/CD, Linux, Git. Tools: Jira, Confluence, Apps Script, n8n, dbt, Jubelio (Omnichannel OMS), Mekari Jurnal. Languages: Python, SQL,",
+   "source": "About Firza",
+   "template": "label:Skills"
+  },
+  {
+   "query": "What is Firza good at?",
+   "text": "Languages: Bahasa Indonesia: Native; English: Professional; Japanese: JLPT N3\n\nSkills: AI / LLM: LangChain, LangGraph, OpenAI API, Anthropic Claude API, Gemini API, FAISS, RAG, Vector Search, Tool Calling, Prompt Engineering, Prompt Evaluation, Sentence Transformers, OpenCV. ML / Data Science: Deep Learning, TensorFlow / Keras, PyTorch, scikit-learn, pandas, numpy, PySpark, seaborn, matplotlib. Backend: FastAPI, Flask, SQLAlchemy, REST API, Next.js. Cloud: AWS (EC2, S3, Lambda, ECS/ECR), GCP (Vertex AI, Agent Platform, BigQuery, Cloud Run, Compute Engine, Datastream (Change Data Capture / CDC), Document AI, Pub/Sub, Composer, Cloud Build, Cloud Workflows, Cloud Scheduler, Secret Manager, IAM), Snowflake. On-Premise: Cloudera (CDH), Apache Airflow, Kafka (streaming), Hive, Impala, Hadoop (HDFS, YARN). Databases: PostgreSQL, MySQL, MongoDB Atlas, NoSQL, Data modeling (star schema, SCD Types 0-6, dbt snapshots). BI & Visualization: Metabase, Looker Studio, Power BI, Tableau, Google Sheets/Excel. Infra & DevOps: Terraform, Docker, Kubernetes, BitBucket CI/CD, Linux, Git. Tools: Jira, Confluence, Apps Script, n8n, dbt, Jubelio (Omnichannel OMS), Mekari Jurnal. Languages: Python, SQL,",
+   "source": "About Firza",
+   "template": "label:Skills"
+  },
+  {
+   "query": "Which technologies does Firza know?",
+   "text": "Languages: Bahasa Indonesia: Native; English: Professional; Japanese: JLPT N3\n\nSkills: AI / LLM: LangChain, LangGraph, OpenAI API, Anthropic Claude API, Gemini API, FAISS, RAG, Vector Search, Tool Calling, Prompt Engineering, Prompt Evaluation, Sentence Transformers, OpenCV. ML / Data Science: Deep Learning, TensorFlow / Keras, PyTorch, scikit-learn, pandas, numpy, PySpark, seaborn, matplotlib. Backend: FastAPI, Flask, SQLAlchemy, REST API, Next.js. Cloud: AWS (EC2, S3, Lambda, ECS/ECR), GCP (Vertex AI, Agent Platform, BigQuery, Cloud Run, Compute Engine, Datastream (Change Data Capture / CDC), Document AI, Pub/Sub, Composer, Cloud Build, Cloud Workflows, Cloud Scheduler, Secret Manager, IAM), Snowflake. On-Premise: Cloudera (CDH), Apache Airflow, Kafka (streaming), Hive, Impala, Hadoop (HDFS, YARN). Databases: PostgreSQL, MySQL, MongoDB Atlas, NoSQL, Data modeling (star schema, SCD Types 0-6, dbt snapshots). BI & Visualization: Metabase, Looker Studio, Power BI, Tableau, Google Sheets/Excel. Infra & DevOps: Terraform, Docker, Kubernetes, BitBucket CI/CD, Linux, Git. Tools: Jira, Confluence, Apps Script, n8n, dbt, Jubelio (Omnichannel OMS), Mekari Jurnal. Languages: Python, SQL,",
+   "source": "About Firza",
+   "template": "label:Skills"
+  },
+  {
+   "query": "Does Firza know SQL?",
+   "text": "Languages: Bahasa Indonesia: Native; English: Professional; Japanese: JLPT N3\n\nSkills: AI / LLM: LangChain, LangGraph, OpenAI API, Anthropic Claude API, Gemini API, FAISS, RAG, Vector Search, Tool Calling, Prompt Engineering, Prompt Evaluation, Sentence Transformers, OpenCV. ML / Data Science: Deep Learning, TensorFlow / Keras, PyTorch, scikit-learn, pandas, numpy, PySpark, seaborn, matplotlib. Backend: FastAPI, Flask, SQLAlchemy, REST API, Next.js. Cloud: AWS (EC2, S3, Lambda, ECS/ECR), GCP (Vertex AI, Agent Platform, BigQuery, Cloud Run, Compute Engine, Datastream (Change Data Capture / CDC), Document AI, Pub/Sub, Composer, Cloud Build, Cloud Workflows, Cloud Scheduler, Secret Manager, IAM), Snowflake. On-Premise: Cloudera (CDH), Apache Airflow, Kafka (streaming), Hive, Impala, Hadoop (HDFS, YARN). Databases: PostgreSQL, MySQL, MongoDB Atlas, NoSQL, Data modeling (star schema, SCD Types 0-6, dbt snapshots). BI & Visualization: Metabase, Looker Studio, Power BI, Tableau, Google Sheets/Excel. Infra & DevOps: Terraform, Docker, Kubernetes, BitBucket CI/CD, Linux, Git. Tools: Jira, Confluence, Apps Script, n8n, dbt, Jubelio (Omnichannel OMS), Mekari Jurnal. Languages: Python, SQL,",
+   "source": "About Firza",
+   "template": "label:Skills"
+  },
+  {
+   "query": "Keahlian Firza apa saja?",
+   "text": "Languages: Bahasa Indonesia: Native; English: Professional; Japanese: JLPT N3\n\nSkills: AI / LLM: LangChain, LangGraph, OpenAI API, Anthropic Claude API, Gemini API, FAISS, RAG, Vector Search, Tool Calling, Prompt Engineering, Prompt Evaluation, Sentence Transformers, OpenCV. ML / Data Science: Deep Learning, TensorFlow / Keras, PyTorch, scikit-learn, pandas, numpy, PySpark, seaborn, matplotlib. Backend: FastAPI, Flask, SQLAlchemy, REST API, Next.js. Cloud: AWS (EC2, S3, Lambda, ECS/ECR), GCP (Vertex AI, Agent Platform, BigQuery, Cloud Run, Compute Engine, Datastream (Change Data Capture / CDC), Document AI, Pub/Sub, Composer, Cloud Build, Cloud Workflows, Cloud Scheduler, Secret Manager, IAM), Snowflake. On-Premise: Cloudera (CDH), Apache Airflow, Kafka (streaming), Hive, Impala, Hadoop (HDFS, YARN). Databases: PostgreSQL, MySQL, MongoDB Atlas, NoSQL, Data modeling (star schema, SCD Types 0-6, dbt snapshots). BI & Visualization: Metabase, Looker Studio, Power BI, Tableau, Google Sheets/Excel. Infra & DevOps: Terraform, Docker, Kubernetes, BitBucket CI/CD, Linux, Git. Tools: Jira, Confluence, Apps Script, n8n, dbt, Jubelio (Omnichannel OMS), Mekari Jurnal. Languages: Python, SQL,",
+   "source": "About Firza",
+   "template": "label:Skills"
+  },
+  {
+   "query": "Firza bisa pakai tools apa?",
+   "text": "Languages: Bahasa Indonesia: Native; English: Professional; Japanese: JLPT N3\n\nSkills: AI / LLM: LangChain, LangGraph, OpenAI API, Anthropic Claude API, Gemini API, FAISS, RAG, Vector Search, Tool Calling, Prompt Engineering, Prompt Evaluation, Sentence Transformers, OpenCV. ML / Data Science: Deep Learning, TensorFlow / Keras, PyTorch, scikit-learn, pandas, numpy, PySpark, seaborn, matplotlib. Backend: FastAPI, Flask, SQLAlchemy, REST API, Next.js. Cloud: AWS (EC2, S3, Lambda, ECS/ECR), GCP (Vertex AI, Agent Platform, BigQuery, Cloud Run, Compute Engine, Datastream (Change Data Capture / CDC), Document AI, Pub/Sub, Composer, Cloud Build, Cloud Workflows, Cloud Scheduler, Secret Manager, IAM), Snowflake. On-Premise: Cloudera (CDH), Apache Airflow, Kafka (streaming), Hive, Impala, Hadoop (HDFS, YARN). Databases: PostgreSQL, MySQL, MongoDB Atlas, NoSQL, Data modeling (star schema, SCD Types 0-6, dbt snapshots). BI & Visualization: Metabase, Looker Studio, Power BI, Tableau, Google Sheets/Excel. Infra & DevOps: Terraform, Docker, Kubernetes, BitBucket CI/CD, Linux, Git. Tools: Jira, Confluence, Apps Script, n8n, dbt, Jubelio (Omnichannel OMS), Mekari Jurnal. Languages: Python, SQL,",
+   "source": "About Firza",
+   "template": "label:Skills"
+  },
+  {
+   "query": "Has Firza led a team?",
+   "text": "Leadership: Vice President and Head of the General Secretariat Department at INFINITY ITB (ITB Dance and Performance Art Community): Oversaw all organizational activities, set vision, mission, and OKRs, drove budget allocation decisions, and represented the organization in external partnerships. Achieved 95% program execution success across all divisions. Led the General Secretariat Department, managing three divisions: Treasury, Administration, and Secretary Management. Head of Staff, People Management & Measurement at Keluarga Mahasiswa Teknik Industri (MTI ITB) (Industrial Engineering Student Association): Performed the Social Mapping project for MTI 2018 students to identify the 10 best group combinations. Produced appreciation cards for every member at the end of the management period.",
+   "source": "About Firza",
+   "template": "label:Leadership"
+  },
+  {
+   "query": "What organisations was Firza part of?",
+   "text": "Leadership: Vice President and Head of the General Secretariat Department at INFINITY ITB (ITB Dance and Performance Art Community): Oversaw all organizational activities, set vision, mission, and OKRs, drove budget allocation decisions, and represented the organization in external partnerships. Achieved 95% program execution success across all divisions. Led the General Secretariat Department, managing three divisions: Treasury, Administration, and Secretary Management. Head of Staff, People Management & Measurement at Keluarga Mahasiswa Teknik Industri (MTI ITB) (Industrial Engineering Student Association): Performed the Social Mapping project for MTI 2018 students to identify the 10 best group combinations. Produced appreciation cards for every member at the end of the management period.",
+   "source": "About Firza",
+   "template": "label:Leadership"
+  },
+  {
+   "query": "Does Firza have leadership experience?",
+   "text": "Leadership: Vice President and Head of the General Secretariat Department at INFINITY ITB (ITB Dance and Performance Art Community): Oversaw all organizational activities, set vision, mission, and OKRs, drove budget allocation decisions, and represented the organization in external partnerships. Achieved 95% program execution success across all divisions. Led the General Secretariat Department, managing three divisions: Treasury, Administration, and Secretary Management. Head of Staff, People Management & Measurement at Keluarga Mahasiswa Teknik Industri (MTI ITB) (Industrial Engineering Student Association): Performed the Social Mapping project for MTI 2018 students to identify the 10 best group combinations. Produced appreciation cards for every member at the end of the management period.",
+   "source": "About Firza",
+   "template": "label:Leadership"
+  },
+  {
+   "query": "Apakah Firza pernah memimpin tim?",
+   "text": "Leadership: Vice President and Head of the General Secretariat Department at INFINITY ITB (ITB Dance and Performance Art Community): Oversaw all organizational activities, set vision, mission, and OKRs, drove budget allocation decisions, and represented the organization in external partnerships. Achieved 95% program execution success across all divisions. Led the General Secretariat Department, managing three divisions: Treasury, Administration, and Secretary Management. Head of Staff, People Management & Measurement at Keluarga Mahasiswa Teknik Industri (MTI ITB) (Industrial Engineering Student Association): Performed the Social Mapping project for MTI 2018 students to identify the 10 best group combinations. Produced appreciation cards for every member at the end of the management period.",
+   "source": "About Firza",
+   "template": "label:Leadership"
+  },
+  {
+   "query": "What has Firza won?",
+   "text": "Achievements: Top Finalist, Java Business Case National Competition 2019 (Telkom University); Scholarship Awardee, Rumah Sahabat Muda Salman 2.0 ITB Scholarship 2017-2018 (Salman Mosque in Bandung Institute of Technology (ITB))",
+   "source": "About Firza",
+   "template": "label:Achievements"
+  },
+  {
+   "query": "Any awards or scholarships?",
+   "text": "Achievements: Top Finalist, Java Business Case National Competition 2019 (Telkom University); Scholarship Awardee, Rumah Sahabat Muda Salman 2.0 ITB Scholarship 2017-2018 (Salman Mosque in Bandung Institute of Technology (ITB))",
+   "source": "About Firza",
+   "template": "label:Achievements"
+  },
+  {
+   "query": "What is Firza proudest of?",
+   "text": "Achievements: Top Finalist, Java Business Case National Competition 2019 (Telkom University); Scholarship Awardee, Rumah Sahabat Muda Salman 2.0 ITB Scholarship 2017-2018 (Salman Mosque in Bandung Institute of Technology (ITB))",
+   "source": "About Firza",
+   "template": "label:Achievements"
+  },
+  {
+   "query": "Prestasi Firza apa saja?",
+   "text": "Achievements: Top Finalist, Java Business Case National Competition 2019 (Telkom University); Scholarship Awardee, Rumah Sahabat Muda Salman 2.0 ITB Scholarship 2017-2018 (Salman Mosque in Bandung Institute of Technology (ITB))",
+   "source": "About Firza",
+   "template": "label:Achievements"
+  },
+  {
+   "query": "Where does Firza work now?",
+   "text": "Firza's complete career history in chronological order (earliest to latest):\n1. Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020 (internship).\n2. Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021 (internship).\n3. Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021 (internship).\n4. Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi, July 2022 - March 2025.\n5. Data Engineer at Hypefast, March 2025 - Present (current).",
+   "source": "Career Timeline",
+   "template": "timeline"
+  },
+  {
+   "query": "What is Firza's current role?",
+   "text": "Firza's complete career history in chronological order (earliest to latest):\n1. Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020 (internship).\n2. Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021 (internship).\n3. Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021 (internship).\n4. Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi, July 2022 - March 2025.\n5. Data Engineer at Hypefast, March 2025 - Present (current).",
+   "source": "Career Timeline",
+   "template": "timeline"
+  },
+  {
+   "query": "Walk me through Firza's career.",
+   "text": "Firza's complete career history in chronological order (earliest to latest):\n1. Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020 (internship).\n2. Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021 (internship).\n3. Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021 (internship).\n4. Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi, July 2022 - March 2025.\n5. Data Engineer at Hypefast, March 2025 - Present (current).",
+   "source": "Career Timeline",
+   "template": "timeline"
+  },
+  {
+   "query": "How many years of experience does Firza have?",
+   "text": "Firza's complete career history in chronological order (earliest to latest):\n1. Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020 (internship).\n2. Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021 (internship).\n3. Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021 (internship).\n4. Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi, July 2022 - March 2025.\n5. Data Engineer at Hypefast, March 2025 - Present (current).",
+   "source": "Career Timeline",
+   "template": "timeline"
+  },
+  {
+   "query": "Firza sekarang kerja di mana?",
+   "text": "Firza's complete career history in chronological order (earliest to latest):\n1. Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020 (internship).\n2. Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021 (internship).\n3. Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021 (internship).\n4. Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi, July 2022 - March 2025.\n5. Data Engineer at Hypefast, March 2025 - Present (current).",
+   "source": "Career Timeline",
+   "template": "timeline"
+  },
+  {
+   "query": "Berapa lama Firza sudah bekerja?",
+   "text": "Firza's complete career history in chronological order (earliest to latest):\n1. Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020 (internship).\n2. Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021 (internship).\n3. Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021 (internship).\n4. Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi, July 2022 - March 2025.\n5. Data Engineer at Hypefast, March 2025 - Present (current).",
+   "source": "Career Timeline",
+   "template": "timeline"
+  },
+  {
+   "query": "What did Firza do at Hypefast?",
+   "text": "Data Engineer at Hypefast, March 2025 - Present (current role). Location: Jakarta, Indonesia.\nBuilding data and Machine Learning (ML) infrastructure for a multi-brand consumer aggregator. Pipelines, recommendation systems, AI-driven automation across 11+ brands.\nDesigned L0–L2 ETL pipelines ingesting order and customer data from 4 marketplace APIs and Google Sheets to BigQuery for 11+ brands, with Flask-based token management on Cloud Run and PostgreSQL for API authentication, applying SCD handling on dimension tables, enabling unified analytics and reporting.\nStack: Google Cloud Platform (GCP), Composer (Airflow), BigQuery, Vertex AI, Agent Platform, Cloud Run, Compute Engine, Pub/Sub, Datastream (Change Data Capture / CDC), Document AI, Flask, FastAPI, TensorFlow, scikit-learn, PostgreSQL, Metabase, Mistral AI, Jubelio (Omnichannel OMS), Mekari Jurnal.",
+   "source": "Experience: Data Engineer at Hypefast",
+   "template": "experience"
+  },
+  {
+   "query": "Tell me about Firza's work at Hypefast.",
+   "text": "Data Engineer at Hypefast, March 2025 - Present (current role). Location: Jakarta, Indonesia.\nBuilding data and Machine Learning (ML) infrastructure for a multi-brand consumer aggregator. Pipelines, recommendation systems, AI-driven automation across 11+ brands.\nDesigned L0–L2 ETL pipelines ingesting order and customer data from 4 marketplace APIs and Google Sheets to BigQuery for 11+ brands, with Flask-based token management on Cloud Run and PostgreSQL for API authentication, applying SCD handling on dimension tables, enabling unified analytics and reporting.\nStack: Google Cloud Platform (GCP), Composer (Airflow), BigQuery, Vertex AI, Agent Platform, Cloud Run, Compute Engine, Pub/Sub, Datastream (Change Data Capture / CDC), Document AI, Flask, FastAPI, TensorFlow, scikit-learn, PostgreSQL, Metabase, Mistral AI, Jubelio (Omnichannel OMS), Mekari Jurnal.",
+   "source": "Experience: Data Engineer at Hypefast",
+   "template": "experience"
+  },
+  {
+   "query": "What was Firza's role at Hypefast?",
+   "text": "Data Engineer at Hypefast, March 2025 - Present (current role). Location: Jakarta, Indonesia.\nBuilding data and Machine Learning (ML) infrastructure for a multi-brand consumer aggregator. Pipelines, recommendation systems, AI-driven automation across 11+ brands.\nDesigned L0–L2 ETL pipelines ingesting order and customer data from 4 marketplace APIs and Google Sheets to BigQuery for 11+ brands, with Flask-based token management on Cloud Run and PostgreSQL for API authentication, applying SCD handling on dimension tables, enabling unified analytics and reporting.\nStack: Google Cloud Platform (GCP), Composer (Airflow), BigQuery, Vertex AI, Agent Platform, Cloud Run, Compute Engine, Pub/Sub, Datastream (Change Data Capture / CDC), Document AI, Flask, FastAPI, TensorFlow, scikit-learn, PostgreSQL, Metabase, Mistral AI, Jubelio (Omnichannel OMS), Mekari Jurnal.",
+   "source": "Experience: Data Engineer at Hypefast",
+   "template": "experience"
+  },
+  {
+   "query": "What did Firza build at Hypefast?",
+   "text": "Data Engineer at Hypefast, March 2025 - Present (current role). Location: Jakarta, Indonesia.\nBuilding data and Machine Learning (ML) infrastructure for a multi-brand consumer aggregator. Pipelines, recommendation systems, AI-driven automation across 11+ brands.\nDesigned L0–L2 ETL pipelines ingesting order and customer data from 4 marketplace APIs and Google Sheets to BigQuery for 11+ brands, with Flask-based token management on Cloud Run and PostgreSQL for API authentication, applying SCD handling on dimension tables, enabling unified analytics and reporting.\nStack: Google Cloud Platform (GCP), Composer (Airflow), BigQuery, Vertex AI, Agent Platform, Cloud Run, Compute Engine, Pub/Sub, Datastream (Change Data Capture / CDC), Document AI, Flask, FastAPI, TensorFlow, scikit-learn, PostgreSQL, Metabase, Mistral AI, Jubelio (Omnichannel OMS), Mekari Jurnal.",
+   "source": "Experience: Data Engineer at Hypefast",
+   "template": "experience"
+  },
+  {
+   "query": "Firza ngerjain apa di Hypefast?",
+   "text": "Data Engineer at Hypefast, March 2025 - Present (current role). Location: Jakarta, Indonesia.\nBuilding data and Machine Learning (ML) infrastructure for a multi-brand consumer aggregator. Pipelines, recommendation systems, AI-driven automation across 11+ brands.\nDesigned L0–L2 ETL pipelines ingesting order and customer data from 4 marketplace APIs and Google Sheets to BigQuery for 11+ brands, with Flask-based token management on Cloud Run and PostgreSQL for API authentication, applying SCD handling on dimension tables, enabling unified analytics and reporting.\nStack: Google Cloud Platform (GCP), Composer (Airflow), BigQuery, Vertex AI, Agent Platform, Cloud Run, Compute Engine, Pub/Sub, Datastream (Change Data Capture / CDC), Document AI, Flask, FastAPI, TensorFlow, scikit-learn, PostgreSQL, Metabase, Mistral AI, Jubelio (Omnichannel OMS), Mekari Jurnal.",
+   "source": "Experience: Data Engineer at Hypefast",
+   "template": "experience"
+  },
+  {
+   "query": "Apa tanggung jawab Firza di Hypefast?",
+   "text": "Data Engineer at Hypefast, March 2025 - Present (current role). Location: Jakarta, Indonesia.\nBuilding data and Machine Learning (ML) infrastructure for a multi-brand consumer aggregator. Pipelines, recommendation systems, AI-driven automation across 11+ brands.\nDesigned L0–L2 ETL pipelines ingesting order and customer data from 4 marketplace APIs and Google Sheets to BigQuery for 11+ brands, with Flask-based token management on Cloud Run and PostgreSQL for API authentication, applying SCD handling on dimension tables, enabling unified analytics and reporting.\nStack: Google Cloud Platform (GCP), Composer (Airflow), BigQuery, Vertex AI, Agent Platform, Cloud Run, Compute Engine, Pub/Sub, Datastream (Change Data Capture / CDC), Document AI, Flask, FastAPI, TensorFlow, scikit-learn, PostgreSQL, Metabase, Mistral AI, Jubelio (Omnichannel OMS), Mekari Jurnal.",
+   "source": "Experience: Data Engineer at Hypefast",
+   "template": "experience"
+  },
+  {
+   "query": "What did Firza do at IDstar Cipta Teknologi?",
+   "text": "Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi (Placement in PT XL Axiata Tbk.), July 2022 - March 2025. Location: Jakarta, Indonesia.\nBuilt telco-scale data platforms processing 1B+ daily records with Medallion architecture, plus partner-facing analytics products.\nDeveloped an end-to-end telco user behavior & credit scoring platform using a Medallion Architecture (Bronze/Silver/Gold) on Snowflake; built PySpark ETL pipelines on AWS (S3, EC2, Lambda) processing 1B+ daily records with schema evolution, partition pruning, and data quality gates enforced at each layer, plus slowly changing dimension (SCD) management across Types 0-6.\nStack: AWS, Snowflake, PySpark, Hadoop, Airflow, Cloudera, Kafka, Hive, Impala, Shell Script.",
+   "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
+   "template": "experience"
+  },
+  {
+   "query": "Tell me about Firza's work at IDstar Cipta Teknologi.",
+   "text": "Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi (Placement in PT XL Axiata Tbk.), July 2022 - March 2025. Location: Jakarta, Indonesia.\nBuilt telco-scale data platforms processing 1B+ daily records with Medallion architecture, plus partner-facing analytics products.\nDeveloped an end-to-end telco user behavior & credit scoring platform using a Medallion Architecture (Bronze/Silver/Gold) on Snowflake; built PySpark ETL pipelines on AWS (S3, EC2, Lambda) processing 1B+ daily records with schema evolution, partition pruning, and data quality gates enforced at each layer, plus slowly changing dimension (SCD) management across Types 0-6.\nStack: AWS, Snowflake, PySpark, Hadoop, Airflow, Cloudera, Kafka, Hive, Impala, Shell Script.",
+   "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
+   "template": "experience"
+  },
+  {
+   "query": "What was Firza's role at IDstar Cipta Teknologi?",
+   "text": "Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi (Placement in PT XL Axiata Tbk.), July 2022 - March 2025. Location: Jakarta, Indonesia.\nBuilt telco-scale data platforms processing 1B+ daily records with Medallion architecture, plus partner-facing analytics products.\nDeveloped an end-to-end telco user behavior & credit scoring platform using a Medallion Architecture (Bronze/Silver/Gold) on Snowflake; built PySpark ETL pipelines on AWS (S3, EC2, Lambda) processing 1B+ daily records with schema evolution, partition pruning, and data quality gates enforced at each layer, plus slowly changing dimension (SCD) management across Types 0-6.\nStack: AWS, Snowflake, PySpark, Hadoop, Airflow, Cloudera, Kafka, Hive, Impala, Shell Script.",
+   "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
+   "template": "experience"
+  },
+  {
+   "query": "What did Firza build at IDstar Cipta Teknologi?",
+   "text": "Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi (Placement in PT XL Axiata Tbk.), July 2022 - March 2025. Location: Jakarta, Indonesia.\nBuilt telco-scale data platforms processing 1B+ daily records with Medallion architecture, plus partner-facing analytics products.\nDeveloped an end-to-end telco user behavior & credit scoring platform using a Medallion Architecture (Bronze/Silver/Gold) on Snowflake; built PySpark ETL pipelines on AWS (S3, EC2, Lambda) processing 1B+ daily records with schema evolution, partition pruning, and data quality gates enforced at each layer, plus slowly changing dimension (SCD) management across Types 0-6.\nStack: AWS, Snowflake, PySpark, Hadoop, Airflow, Cloudera, Kafka, Hive, Impala, Shell Script.",
+   "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
+   "template": "experience"
+  },
+  {
+   "query": "Firza ngerjain apa di IDstar Cipta Teknologi?",
+   "text": "Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi (Placement in PT XL Axiata Tbk.), July 2022 - March 2025. Location: Jakarta, Indonesia.\nBuilt telco-scale data platforms processing 1B+ daily records with Medallion architecture, plus partner-facing analytics products.\nDeveloped an end-to-end telco user behavior & credit scoring platform using a Medallion Architecture (Bronze/Silver/Gold) on Snowflake; built PySpark ETL pipelines on AWS (S3, EC2, Lambda) processing 1B+ daily records with schema evolution, partition pruning, and data quality gates enforced at each layer, plus slowly changing dimension (SCD) management across Types 0-6.\nStack: AWS, Snowflake, PySpark, Hadoop, Airflow, Cloudera, Kafka, Hive, Impala, Shell Script.",
+   "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
+   "template": "experience"
+  },
+  {
+   "query": "Apa tanggung jawab Firza di IDstar Cipta Teknologi?",
+   "text": "Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi (Placement in PT XL Axiata Tbk.), July 2022 - March 2025. Location: Jakarta, Indonesia.\nBuilt telco-scale data platforms processing 1B+ daily records with Medallion architecture, plus partner-facing analytics products.\nDeveloped an end-to-end telco user behavior & credit scoring platform using a Medallion Architecture (Bronze/Silver/Gold) on Snowflake; built PySpark ETL pipelines on AWS (S3, EC2, Lambda) processing 1B+ daily records with schema evolution, partition pruning, and data quality gates enforced at each layer, plus slowly changing dimension (SCD) management across Types 0-6.\nStack: AWS, Snowflake, PySpark, Hadoop, Airflow, Cloudera, Kafka, Hive, Impala, Shell Script.",
+   "source": "Experience: Data Engineer and Analytics / ETL Developer at IDstar Cipta Teknologi",
+   "template": "experience"
+  },
+  {
+   "query": "What did Firza do at Telkom Indonesia?",
+   "text": "Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021. Location: Jakarta, Indonesia.\nSupported exploratory data analysis and product modeling for digital products including T-Money and KALISA blockchain waqf platform.\nPerformed data cleansing and exploratory data analysis on T-Money data within 1 month, reporting and interpreting results to support data-driven decisions.\nStack: Python, pandas, Business Modeling.",
+   "source": "Experience: Data Scientist Internship at Telkom Indonesia",
+   "template": "experience"
+  },
+  {
+   "query": "Tell me about Firza's work at Telkom Indonesia.",
+   "text": "Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021. Location: Jakarta, Indonesia.\nSupported exploratory data analysis and product modeling for digital products including T-Money and KALISA blockchain waqf platform.\nPerformed data cleansing and exploratory data analysis on T-Money data within 1 month, reporting and interpreting results to support data-driven decisions.\nStack: Python, pandas, Business Modeling.",
+   "source": "Experience: Data Scientist Internship at Telkom Indonesia",
+   "template": "experience"
+  },
+  {
+   "query": "What was Firza's role at Telkom Indonesia?",
+   "text": "Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021. Location: Jakarta, Indonesia.\nSupported exploratory data analysis and product modeling for digital products including T-Money and KALISA blockchain waqf platform.\nPerformed data cleansing and exploratory data analysis on T-Money data within 1 month, reporting and interpreting results to support data-driven decisions.\nStack: Python, pandas, Business Modeling.",
+   "source": "Experience: Data Scientist Internship at Telkom Indonesia",
+   "template": "experience"
+  },
+  {
+   "query": "What did Firza build at Telkom Indonesia?",
+   "text": "Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021. Location: Jakarta, Indonesia.\nSupported exploratory data analysis and product modeling for digital products including T-Money and KALISA blockchain waqf platform.\nPerformed data cleansing and exploratory data analysis on T-Money data within 1 month, reporting and interpreting results to support data-driven decisions.\nStack: Python, pandas, Business Modeling.",
+   "source": "Experience: Data Scientist Internship at Telkom Indonesia",
+   "template": "experience"
+  },
+  {
+   "query": "Firza ngerjain apa di Telkom Indonesia?",
+   "text": "Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021. Location: Jakarta, Indonesia.\nSupported exploratory data analysis and product modeling for digital products including T-Money and KALISA blockchain waqf platform.\nPerformed data cleansing and exploratory data analysis on T-Money data within 1 month, reporting and interpreting results to support data-driven decisions.\nStack: Python, pandas, Business Modeling.",
+   "source": "Experience: Data Scientist Internship at Telkom Indonesia",
+   "template": "experience"
+  },
+  {
+   "query": "Apa tanggung jawab Firza di Telkom Indonesia?",
+   "text": "Data Scientist Internship at Telkom Indonesia, February 2021 - August 2021. Location: Jakarta, Indonesia.\nSupported exploratory data analysis and product modeling for digital products including T-Money and KALISA blockchain waqf platform.\nPerformed data cleansing and exploratory data analysis on T-Money data within 1 month, reporting and interpreting results to support data-driven decisions.\nStack: Python, pandas, Business Modeling.",
+   "source": "Experience: Data Scientist Internship at Telkom Indonesia",
+   "template": "experience"
+  },
+  {
+   "query": "What did Firza do at PT Arindo Cipta Perkasa?",
+   "text": "Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021. Location: Bogor Regency, Indonesia.\nProduction operations analysis and scheduling optimization for manufacturing operations.\nAnalyzed production data to identify root causes of operational problems and recommend improvements to management.\nStack: Production Scheduling, Heuristic Algorithm, Manufacturing, Data Analysis.",
+   "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
+   "template": "experience"
+  },
+  {
+   "query": "Tell me about Firza's work at PT Arindo Cipta Perkasa.",
+   "text": "Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021. Location: Bogor Regency, Indonesia.\nProduction operations analysis and scheduling optimization for manufacturing operations.\nAnalyzed production data to identify root causes of operational problems and recommend improvements to management.\nStack: Production Scheduling, Heuristic Algorithm, Manufacturing, Data Analysis.",
+   "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
+   "template": "experience"
+  },
+  {
+   "query": "What was Firza's role at PT Arindo Cipta Perkasa?",
+   "text": "Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021. Location: Bogor Regency, Indonesia.\nProduction operations analysis and scheduling optimization for manufacturing operations.\nAnalyzed production data to identify root causes of operational problems and recommend improvements to management.\nStack: Production Scheduling, Heuristic Algorithm, Manufacturing, Data Analysis.",
+   "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
+   "template": "experience"
+  },
+  {
+   "query": "What did Firza build at PT Arindo Cipta Perkasa?",
+   "text": "Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021. Location: Bogor Regency, Indonesia.\nProduction operations analysis and scheduling optimization for manufacturing operations.\nAnalyzed production data to identify root causes of operational problems and recommend improvements to management.\nStack: Production Scheduling, Heuristic Algorithm, Manufacturing, Data Analysis.",
+   "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
+   "template": "experience"
+  },
+  {
+   "query": "Firza ngerjain apa di PT Arindo Cipta Perkasa?",
+   "text": "Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021. Location: Bogor Regency, Indonesia.\nProduction operations analysis and scheduling optimization for manufacturing operations.\nAnalyzed production data to identify root causes of operational problems and recommend improvements to management.\nStack: Production Scheduling, Heuristic Algorithm, Manufacturing, Data Analysis.",
+   "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
+   "template": "experience"
+  },
+  {
+   "query": "Apa tanggung jawab Firza di PT Arindo Cipta Perkasa?",
+   "text": "Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa, November 2020 - April 2021. Location: Bogor Regency, Indonesia.\nProduction operations analysis and scheduling optimization for manufacturing operations.\nAnalyzed production data to identify root causes of operational problems and recommend improvements to management.\nStack: Production Scheduling, Heuristic Algorithm, Manufacturing, Data Analysis.",
+   "source": "Experience: Production Systems and Business Analyst Internship at PT Arindo Cipta Perkasa",
+   "template": "experience"
+  },
+  {
+   "query": "What did Firza do at Banopolis Inovasi Kendara?",
+   "text": "Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020. Location: Bandung, Indonesia.\nBusiness development for GETBIKE ride sharing product. Proposed B2B and B2B2G models, designed partnership scheme with PT Telkom Indonesia.\nProposed a new business model of GETBIKE B2B and B2B2G ride sharing using 3 tools (Business Model Canvas, Value Proposition Canvas, Lean Canvas). Management implemented the ideas for the product within 1 month.\nStack: Business Model Canvas, Value Proposition Canvas, Lean Canvas, Agile.",
+   "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
+   "template": "experience"
+  },
+  {
+   "query": "Tell me about Firza's work at Banopolis Inovasi Kendara.",
+   "text": "Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020. Location: Bandung, Indonesia.\nBusiness development for GETBIKE ride sharing product. Proposed B2B and B2B2G models, designed partnership scheme with PT Telkom Indonesia.\nProposed a new business model of GETBIKE B2B and B2B2G ride sharing using 3 tools (Business Model Canvas, Value Proposition Canvas, Lean Canvas). Management implemented the ideas for the product within 1 month.\nStack: Business Model Canvas, Value Proposition Canvas, Lean Canvas, Agile.",
+   "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
+   "template": "experience"
+  },
+  {
+   "query": "What was Firza's role at Banopolis Inovasi Kendara?",
+   "text": "Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020. Location: Bandung, Indonesia.\nBusiness development for GETBIKE ride sharing product. Proposed B2B and B2B2G models, designed partnership scheme with PT Telkom Indonesia.\nProposed a new business model of GETBIKE B2B and B2B2G ride sharing using 3 tools (Business Model Canvas, Value Proposition Canvas, Lean Canvas). Management implemented the ideas for the product within 1 month.\nStack: Business Model Canvas, Value Proposition Canvas, Lean Canvas, Agile.",
+   "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
+   "template": "experience"
+  },
+  {
+   "query": "What did Firza build at Banopolis Inovasi Kendara?",
+   "text": "Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020. Location: Bandung, Indonesia.\nBusiness development for GETBIKE ride sharing product. Proposed B2B and B2B2G models, designed partnership scheme with PT Telkom Indonesia.\nProposed a new business model of GETBIKE B2B and B2B2G ride sharing using 3 tools (Business Model Canvas, Value Proposition Canvas, Lean Canvas). Management implemented the ideas for the product within 1 month.\nStack: Business Model Canvas, Value Proposition Canvas, Lean Canvas, Agile.",
+   "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
+   "template": "experience"
+  },
+  {
+   "query": "Firza ngerjain apa di Banopolis Inovasi Kendara?",
+   "text": "Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020. Location: Bandung, Indonesia.\nBusiness development for GETBIKE ride sharing product. Proposed B2B and B2B2G models, designed partnership scheme with PT Telkom Indonesia.\nProposed a new business model of GETBIKE B2B and B2B2G ride sharing using 3 tools (Business Model Canvas, Value Proposition Canvas, Lean Canvas). Management implemented the ideas for the product within 1 month.\nStack: Business Model Canvas, Value Proposition Canvas, Lean Canvas, Agile.",
+   "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
+   "template": "experience"
+  },
+  {
+   "query": "Apa tanggung jawab Firza di Banopolis Inovasi Kendara?",
+   "text": "Business Development Internship at Banopolis Inovasi Kendara, June 2020 - August 2020. Location: Bandung, Indonesia.\nBusiness development for GETBIKE ride sharing product. Proposed B2B and B2B2G models, designed partnership scheme with PT Telkom Indonesia.\nProposed a new business model of GETBIKE B2B and B2B2G ride sharing using 3 tools (Business Model Canvas, Value Proposition Canvas, Lean Canvas). Management implemented the ideas for the product within 1 month.\nStack: Business Model Canvas, Value Proposition Canvas, Lean Canvas, Agile.",
+   "source": "Experience: Business Development Internship at Banopolis Inovasi Kendara",
+   "template": "experience"
+  },
+  {
+   "query": "Tell me about Video Platform Data Analysis.",
+   "text": "Video Platform Data Analysis (2025) for AI gaming clip platform. Behavior and growth deep dive for an AI gaming clip platform: activation levers that move retention and clip output.\n\nCategories: Data Analyst, Dashboard. Stack: SQL, Python, Tableau, Pitch Deck.",
+   "source": "Project: Video Platform Data Analysis",
+   "template": "project"
+  },
+  {
+   "query": "What was Video Platform Data Analysis about?",
+   "text": "Video Platform Data Analysis (2025) for AI gaming clip platform. Behavior and growth deep dive for an AI gaming clip platform: activation levers that move retention and clip output.\n\nCategories: Data Analyst, Dashboard. Stack: SQL, Python, Tableau, Pitch Deck.",
+   "source": "Project: Video Platform Data Analysis",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Video Platform Data Analysis?",
+   "text": "Video Platform Data Analysis (2025) for AI gaming clip platform. Behavior and growth deep dive for an AI gaming clip platform: activation levers that move retention and clip output.\n\nCategories: Data Analyst, Dashboard. Stack: SQL, Python, Tableau, Pitch Deck.",
+   "source": "Project: Video Platform Data Analysis",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Video Platform Data Analysis solve?",
+   "text": "Video Platform Data Analysis (2025) for AI gaming clip platform. Behavior and growth deep dive for an AI gaming clip platform: activation levers that move retention and clip output.\n\nCategories: Data Analyst, Dashboard. Stack: SQL, Python, Tableau, Pitch Deck.",
+   "source": "Project: Video Platform Data Analysis",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Video Platform Data Analysis.",
+   "text": "Video Platform Data Analysis (2025) for AI gaming clip platform. Behavior and growth deep dive for an AI gaming clip platform: activation levers that move retention and clip output.\n\nCategories: Data Analyst, Dashboard. Stack: SQL, Python, Tableau, Pitch Deck.",
+   "source": "Project: Video Platform Data Analysis",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Video Platform Data Analysis?",
+   "text": "Video Platform Data Analysis (2025) for AI gaming clip platform. Behavior and growth deep dive for an AI gaming clip platform: activation levers that move retention and clip output.\n\nCategories: Data Analyst, Dashboard. Stack: SQL, Python, Tableau, Pitch Deck.",
+   "source": "Project: Video Platform Data Analysis",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Affiliate Commission Performance Review & Recovery Plan.",
+   "text": "Affiliate Commission Performance Review & Recovery Plan (2026) for E-commerce affiliate platform. Root-cause analysis of a 34% commission revenue decline: funnel diagnosis, cohort retention, and a two-track recovery playbook for leadership.",
+   "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
+   "template": "project"
+  },
+  {
+   "query": "What was Affiliate Commission Performance Review & Recovery Plan about?",
+   "text": "Affiliate Commission Performance Review & Recovery Plan (2026) for E-commerce affiliate platform. Root-cause analysis of a 34% commission revenue decline: funnel diagnosis, cohort retention, and a two-track recovery playbook for leadership.",
+   "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Affiliate Commission Performance Review & Recovery Plan?",
+   "text": "Affiliate Commission Performance Review & Recovery Plan (2026) for E-commerce affiliate platform. Root-cause analysis of a 34% commission revenue decline: funnel diagnosis, cohort retention, and a two-track recovery playbook for leadership.",
+   "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Affiliate Commission Performance Review & Recovery Plan solve?",
+   "text": "Affiliate Commission Performance Review & Recovery Plan (2026) for E-commerce affiliate platform. Root-cause analysis of a 34% commission revenue decline: funnel diagnosis, cohort retention, and a two-track recovery playbook for leadership.",
+   "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Affiliate Commission Performance Review & Recovery Plan.",
+   "text": "Affiliate Commission Performance Review & Recovery Plan (2026) for E-commerce affiliate platform. Root-cause analysis of a 34% commission revenue decline: funnel diagnosis, cohort retention, and a two-track recovery playbook for leadership.",
+   "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Affiliate Commission Performance Review & Recovery Plan?",
+   "text": "Affiliate Commission Performance Review & Recovery Plan (2026) for E-commerce affiliate platform. Root-cause analysis of a 34% commission revenue decline: funnel diagnosis, cohort retention, and a two-track recovery playbook for leadership.",
+   "source": "Project: Affiliate Commission Performance Review & Recovery Plan",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Content Strategy & Revenue Projection Pitch Deck.",
+   "text": "Content Strategy & Revenue Projection Pitch Deck (2026) for Agency X. Market gap analysis, podcast-to-workshop funnel strategy, and 3-month financial projection for a social media influencer's relationship content platform.",
+   "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
+   "template": "project"
+  },
+  {
+   "query": "What was Content Strategy & Revenue Projection Pitch Deck about?",
+   "text": "Content Strategy & Revenue Projection Pitch Deck (2026) for Agency X. Market gap analysis, podcast-to-workshop funnel strategy, and 3-month financial projection for a social media influencer's relationship content platform.",
+   "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Content Strategy & Revenue Projection Pitch Deck?",
+   "text": "Content Strategy & Revenue Projection Pitch Deck (2026) for Agency X. Market gap analysis, podcast-to-workshop funnel strategy, and 3-month financial projection for a social media influencer's relationship content platform.",
+   "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Content Strategy & Revenue Projection Pitch Deck solve?",
+   "text": "Content Strategy & Revenue Projection Pitch Deck (2026) for Agency X. Market gap analysis, podcast-to-workshop funnel strategy, and 3-month financial projection for a social media influencer's relationship content platform.",
+   "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Content Strategy & Revenue Projection Pitch Deck.",
+   "text": "Content Strategy & Revenue Projection Pitch Deck (2026) for Agency X. Market gap analysis, podcast-to-workshop funnel strategy, and 3-month financial projection for a social media influencer's relationship content platform.",
+   "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Content Strategy & Revenue Projection Pitch Deck?",
+   "text": "Content Strategy & Revenue Projection Pitch Deck (2026) for Agency X. Market gap analysis, podcast-to-workshop funnel strategy, and 3-month financial projection for a social media influencer's relationship content platform.",
+   "source": "Project: Content Strategy & Revenue Projection Pitch Deck",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about E-commerce Strategic Valuation & Growth Outlook.",
+   "text": "E-commerce Strategic Valuation & Growth Outlook (2025) for Indonesian e-commerce platform. Financial-analyst-led 5-year forecast, DCF, and regional comparable valuation framing the margin re-rating thesis.",
+   "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
+   "template": "project"
+  },
+  {
+   "query": "What was E-commerce Strategic Valuation & Growth Outlook about?",
+   "text": "E-commerce Strategic Valuation & Growth Outlook (2025) for Indonesian e-commerce platform. Financial-analyst-led 5-year forecast, DCF, and regional comparable valuation framing the margin re-rating thesis.",
+   "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build E-commerce Strategic Valuation & Growth Outlook?",
+   "text": "E-commerce Strategic Valuation & Growth Outlook (2025) for Indonesian e-commerce platform. Financial-analyst-led 5-year forecast, DCF, and regional comparable valuation framing the margin re-rating thesis.",
+   "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
+   "template": "project"
+  },
+  {
+   "query": "What problem did E-commerce Strategic Valuation & Growth Outlook solve?",
+   "text": "E-commerce Strategic Valuation & Growth Outlook (2025) for Indonesian e-commerce platform. Financial-analyst-led 5-year forecast, DCF, and regional comparable valuation framing the margin re-rating thesis.",
+   "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang E-commerce Strategic Valuation & Growth Outlook.",
+   "text": "E-commerce Strategic Valuation & Growth Outlook (2025) for Indonesian e-commerce platform. Financial-analyst-led 5-year forecast, DCF, and regional comparable valuation framing the margin re-rating thesis.",
+   "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu E-commerce Strategic Valuation & Growth Outlook?",
+   "text": "E-commerce Strategic Valuation & Growth Outlook (2025) for Indonesian e-commerce platform. Financial-analyst-led 5-year forecast, DCF, and regional comparable valuation framing the margin re-rating thesis.",
+   "source": "Project: E-commerce Strategic Valuation & Growth Outlook",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Nuclear Energy Policy Discourse Network Analysis.",
+   "text": "Nuclear Energy Policy Discourse Network Analysis (2025) for Policy Research Initiative. Scraping news + social media on Indonesia's nuclear policy, then Gemini-powered DNA + SNA + sentiment analysis dashboard.",
+   "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
+   "template": "project"
+  },
+  {
+   "query": "What was Nuclear Energy Policy Discourse Network Analysis about?",
+   "text": "Nuclear Energy Policy Discourse Network Analysis (2025) for Policy Research Initiative. Scraping news + social media on Indonesia's nuclear policy, then Gemini-powered DNA + SNA + sentiment analysis dashboard.",
+   "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Nuclear Energy Policy Discourse Network Analysis?",
+   "text": "Nuclear Energy Policy Discourse Network Analysis (2025) for Policy Research Initiative. Scraping news + social media on Indonesia's nuclear policy, then Gemini-powered DNA + SNA + sentiment analysis dashboard.",
+   "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Nuclear Energy Policy Discourse Network Analysis solve?",
+   "text": "Nuclear Energy Policy Discourse Network Analysis (2025) for Policy Research Initiative. Scraping news + social media on Indonesia's nuclear policy, then Gemini-powered DNA + SNA + sentiment analysis dashboard.",
+   "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Nuclear Energy Policy Discourse Network Analysis.",
+   "text": "Nuclear Energy Policy Discourse Network Analysis (2025) for Policy Research Initiative. Scraping news + social media on Indonesia's nuclear policy, then Gemini-powered DNA + SNA + sentiment analysis dashboard.",
+   "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Nuclear Energy Policy Discourse Network Analysis?",
+   "text": "Nuclear Energy Policy Discourse Network Analysis (2025) for Policy Research Initiative. Scraping news + social media on Indonesia's nuclear policy, then Gemini-powered DNA + SNA + sentiment analysis dashboard.",
+   "source": "Project: Nuclear Energy Policy Discourse Network Analysis",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Regional Writing Ecosystem Index (PCA).",
+   "text": "Regional Writing Ecosystem Index (PCA) (2024) for Cultural Policy Think Tank. PCA-based composite model (68.2% variance) analyzing regional writing ecosystem strength across Indonesia.\n\nCategories: Data Scientist, Data Analyst. Stack: scikit-learn, PCA, Looker Studio, Statistical Analysis.",
+   "source": "Project: Regional Writing Ecosystem Index (PCA)",
+   "template": "project"
+  },
+  {
+   "query": "What was Regional Writing Ecosystem Index (PCA) about?",
+   "text": "Regional Writing Ecosystem Index (PCA) (2024) for Cultural Policy Think Tank. PCA-based composite model (68.2% variance) analyzing regional writing ecosystem strength across Indonesia.\n\nCategories: Data Scientist, Data Analyst. Stack: scikit-learn, PCA, Looker Studio, Statistical Analysis.",
+   "source": "Project: Regional Writing Ecosystem Index (PCA)",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Regional Writing Ecosystem Index (PCA)?",
+   "text": "Regional Writing Ecosystem Index (PCA) (2024) for Cultural Policy Think Tank. PCA-based composite model (68.2% variance) analyzing regional writing ecosystem strength across Indonesia.\n\nCategories: Data Scientist, Data Analyst. Stack: scikit-learn, PCA, Looker Studio, Statistical Analysis.",
+   "source": "Project: Regional Writing Ecosystem Index (PCA)",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Regional Writing Ecosystem Index (PCA) solve?",
+   "text": "Regional Writing Ecosystem Index (PCA) (2024) for Cultural Policy Think Tank. PCA-based composite model (68.2% variance) analyzing regional writing ecosystem strength across Indonesia.\n\nCategories: Data Scientist, Data Analyst. Stack: scikit-learn, PCA, Looker Studio, Statistical Analysis.",
+   "source": "Project: Regional Writing Ecosystem Index (PCA)",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Regional Writing Ecosystem Index (PCA).",
+   "text": "Regional Writing Ecosystem Index (PCA) (2024) for Cultural Policy Think Tank. PCA-based composite model (68.2% variance) analyzing regional writing ecosystem strength across Indonesia.\n\nCategories: Data Scientist, Data Analyst. Stack: scikit-learn, PCA, Looker Studio, Statistical Analysis.",
+   "source": "Project: Regional Writing Ecosystem Index (PCA)",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Regional Writing Ecosystem Index (PCA)?",
+   "text": "Regional Writing Ecosystem Index (PCA) (2024) for Cultural Policy Think Tank. PCA-based composite model (68.2% variance) analyzing regional writing ecosystem strength across Indonesia.\n\nCategories: Data Scientist, Data Analyst. Stack: scikit-learn, PCA, Looker Studio, Statistical Analysis.",
+   "source": "Project: Regional Writing Ecosystem Index (PCA)",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Social Media Scraping Integration.",
+   "text": "Social Media Scraping Integration (2025) for Marketing research agency. Unified scraper for 5 platforms (YouTube, TikTok, Instagram, Facebook, X) on Cloud Run with resumable batches.\n\nCategories: Data Engineer. Stack: Python, Cloud Run, GCS, APIFY, Flask, Docker.",
+   "source": "Project: Social Media Scraping Integration",
+   "template": "project"
+  },
+  {
+   "query": "What was Social Media Scraping Integration about?",
+   "text": "Social Media Scraping Integration (2025) for Marketing research agency. Unified scraper for 5 platforms (YouTube, TikTok, Instagram, Facebook, X) on Cloud Run with resumable batches.\n\nCategories: Data Engineer. Stack: Python, Cloud Run, GCS, APIFY, Flask, Docker.",
+   "source": "Project: Social Media Scraping Integration",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Social Media Scraping Integration?",
+   "text": "Social Media Scraping Integration (2025) for Marketing research agency. Unified scraper for 5 platforms (YouTube, TikTok, Instagram, Facebook, X) on Cloud Run with resumable batches.\n\nCategories: Data Engineer. Stack: Python, Cloud Run, GCS, APIFY, Flask, Docker.",
+   "source": "Project: Social Media Scraping Integration",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Social Media Scraping Integration solve?",
+   "text": "Social Media Scraping Integration (2025) for Marketing research agency. Unified scraper for 5 platforms (YouTube, TikTok, Instagram, Facebook, X) on Cloud Run with resumable batches.\n\nCategories: Data Engineer. Stack: Python, Cloud Run, GCS, APIFY, Flask, Docker.",
+   "source": "Project: Social Media Scraping Integration",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Social Media Scraping Integration.",
+   "text": "Social Media Scraping Integration (2025) for Marketing research agency. Unified scraper for 5 platforms (YouTube, TikTok, Instagram, Facebook, X) on Cloud Run with resumable batches.\n\nCategories: Data Engineer. Stack: Python, Cloud Run, GCS, APIFY, Flask, Docker.",
+   "source": "Project: Social Media Scraping Integration",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Social Media Scraping Integration?",
+   "text": "Social Media Scraping Integration (2025) for Marketing research agency. Unified scraper for 5 platforms (YouTube, TikTok, Instagram, Facebook, X) on Cloud Run with resumable batches.\n\nCategories: Data Engineer. Stack: Python, Cloud Run, GCS, APIFY, Flask, Docker.",
+   "source": "Project: Social Media Scraping Integration",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Google News Scraping + Gemini AI Aggregation.",
+   "text": "Google News Scraping + Gemini AI Aggregation (2025) for Macro research desk. Always-on macro news scraping pipeline on Cloud Run combining Google CSE, APIFY, and Gemini parsing.\n\nCategories: AI Engineer, Data Engineer. Stack: Gemini API, LLM Extraction, Prompt Engineering, Python, Cloud Run, Google CSE, APIFY, Web Scraping.",
+   "source": "Project: Google News Scraping + Gemini AI Aggregation",
+   "template": "project"
+  },
+  {
+   "query": "What was Google News Scraping + Gemini AI Aggregation about?",
+   "text": "Google News Scraping + Gemini AI Aggregation (2025) for Macro research desk. Always-on macro news scraping pipeline on Cloud Run combining Google CSE, APIFY, and Gemini parsing.\n\nCategories: AI Engineer, Data Engineer. Stack: Gemini API, LLM Extraction, Prompt Engineering, Python, Cloud Run, Google CSE, APIFY, Web Scraping.",
+   "source": "Project: Google News Scraping + Gemini AI Aggregation",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Google News Scraping + Gemini AI Aggregation?",
+   "text": "Google News Scraping + Gemini AI Aggregation (2025) for Macro research desk. Always-on macro news scraping pipeline on Cloud Run combining Google CSE, APIFY, and Gemini parsing.\n\nCategories: AI Engineer, Data Engineer. Stack: Gemini API, LLM Extraction, Prompt Engineering, Python, Cloud Run, Google CSE, APIFY, Web Scraping.",
+   "source": "Project: Google News Scraping + Gemini AI Aggregation",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Google News Scraping + Gemini AI Aggregation solve?",
+   "text": "Google News Scraping + Gemini AI Aggregation (2025) for Macro research desk. Always-on macro news scraping pipeline on Cloud Run combining Google CSE, APIFY, and Gemini parsing.\n\nCategories: AI Engineer, Data Engineer. Stack: Gemini API, LLM Extraction, Prompt Engineering, Python, Cloud Run, Google CSE, APIFY, Web Scraping.",
+   "source": "Project: Google News Scraping + Gemini AI Aggregation",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Google News Scraping + Gemini AI Aggregation.",
+   "text": "Google News Scraping + Gemini AI Aggregation (2025) for Macro research desk. Always-on macro news scraping pipeline on Cloud Run combining Google CSE, APIFY, and Gemini parsing.\n\nCategories: AI Engineer, Data Engineer. Stack: Gemini API, LLM Extraction, Prompt Engineering, Python, Cloud Run, Google CSE, APIFY, Web Scraping.",
+   "source": "Project: Google News Scraping + Gemini AI Aggregation",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Google News Scraping + Gemini AI Aggregation?",
+   "text": "Google News Scraping + Gemini AI Aggregation (2025) for Macro research desk. Always-on macro news scraping pipeline on Cloud Run combining Google CSE, APIFY, and Gemini parsing.\n\nCategories: AI Engineer, Data Engineer. Stack: Gemini API, LLM Extraction, Prompt Engineering, Python, Cloud Run, Google CSE, APIFY, Web Scraping.",
+   "source": "Project: Google News Scraping + Gemini AI Aggregation",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Debt Collection Analytics & Agent Productivity.",
+   "text": "Debt Collection Analytics & Agent Productivity (2025) for Banking collections agency. Ten months of call center data turned into a dashboard + narrative report that reframed a data-quality issue as the real performance lever.",
+   "source": "Project: Debt Collection Analytics & Agent Productivity",
+   "template": "project"
+  },
+  {
+   "query": "What was Debt Collection Analytics & Agent Productivity about?",
+   "text": "Debt Collection Analytics & Agent Productivity (2025) for Banking collections agency. Ten months of call center data turned into a dashboard + narrative report that reframed a data-quality issue as the real performance lever.",
+   "source": "Project: Debt Collection Analytics & Agent Productivity",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Debt Collection Analytics & Agent Productivity?",
+   "text": "Debt Collection Analytics & Agent Productivity (2025) for Banking collections agency. Ten months of call center data turned into a dashboard + narrative report that reframed a data-quality issue as the real performance lever.",
+   "source": "Project: Debt Collection Analytics & Agent Productivity",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Debt Collection Analytics & Agent Productivity solve?",
+   "text": "Debt Collection Analytics & Agent Productivity (2025) for Banking collections agency. Ten months of call center data turned into a dashboard + narrative report that reframed a data-quality issue as the real performance lever.",
+   "source": "Project: Debt Collection Analytics & Agent Productivity",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Debt Collection Analytics & Agent Productivity.",
+   "text": "Debt Collection Analytics & Agent Productivity (2025) for Banking collections agency. Ten months of call center data turned into a dashboard + narrative report that reframed a data-quality issue as the real performance lever.",
+   "source": "Project: Debt Collection Analytics & Agent Productivity",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Debt Collection Analytics & Agent Productivity?",
+   "text": "Debt Collection Analytics & Agent Productivity (2025) for Banking collections agency. Ten months of call center data turned into a dashboard + narrative report that reframed a data-quality issue as the real performance lever.",
+   "source": "Project: Debt Collection Analytics & Agent Productivity",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Heavy Equipment Preventive Maintenance Dashboard.",
+   "text": "Heavy Equipment Preventive Maintenance Dashboard (2025) for Mining contractor. Cylinder and hose lifecycle dashboard for a mining contractor's Komatsu excavator fleet.\n\nCategories: Dashboard, Data Analyst. Stack: Looker Studio, Google Sheets, Excel, Python.",
+   "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
+   "template": "project"
+  },
+  {
+   "query": "What was Heavy Equipment Preventive Maintenance Dashboard about?",
+   "text": "Heavy Equipment Preventive Maintenance Dashboard (2025) for Mining contractor. Cylinder and hose lifecycle dashboard for a mining contractor's Komatsu excavator fleet.\n\nCategories: Dashboard, Data Analyst. Stack: Looker Studio, Google Sheets, Excel, Python.",
+   "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Heavy Equipment Preventive Maintenance Dashboard?",
+   "text": "Heavy Equipment Preventive Maintenance Dashboard (2025) for Mining contractor. Cylinder and hose lifecycle dashboard for a mining contractor's Komatsu excavator fleet.\n\nCategories: Dashboard, Data Analyst. Stack: Looker Studio, Google Sheets, Excel, Python.",
+   "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Heavy Equipment Preventive Maintenance Dashboard solve?",
+   "text": "Heavy Equipment Preventive Maintenance Dashboard (2025) for Mining contractor. Cylinder and hose lifecycle dashboard for a mining contractor's Komatsu excavator fleet.\n\nCategories: Dashboard, Data Analyst. Stack: Looker Studio, Google Sheets, Excel, Python.",
+   "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Heavy Equipment Preventive Maintenance Dashboard.",
+   "text": "Heavy Equipment Preventive Maintenance Dashboard (2025) for Mining contractor. Cylinder and hose lifecycle dashboard for a mining contractor's Komatsu excavator fleet.\n\nCategories: Dashboard, Data Analyst. Stack: Looker Studio, Google Sheets, Excel, Python.",
+   "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Heavy Equipment Preventive Maintenance Dashboard?",
+   "text": "Heavy Equipment Preventive Maintenance Dashboard (2025) for Mining contractor. Cylinder and hose lifecycle dashboard for a mining contractor's Komatsu excavator fleet.\n\nCategories: Dashboard, Data Analyst. Stack: Looker Studio, Google Sheets, Excel, Python.",
+   "source": "Project: Heavy Equipment Preventive Maintenance Dashboard",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Tableau for Data Analysis 101 Course.",
+   "text": "Tableau for Data Analysis 101 Course (2025) for Indonesian EdTech platform. Instructor-built Tableau curriculum with a single retail case study (VoraStore) as the project arc.\n\nCategories: Data Analyst, Dashboard. Stack: Tableau, PowerPoint, Curriculum Design.",
+   "source": "Project: Tableau for Data Analysis 101 Course",
+   "template": "project"
+  },
+  {
+   "query": "What was Tableau for Data Analysis 101 Course about?",
+   "text": "Tableau for Data Analysis 101 Course (2025) for Indonesian EdTech platform. Instructor-built Tableau curriculum with a single retail case study (VoraStore) as the project arc.\n\nCategories: Data Analyst, Dashboard. Stack: Tableau, PowerPoint, Curriculum Design.",
+   "source": "Project: Tableau for Data Analysis 101 Course",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Tableau for Data Analysis 101 Course?",
+   "text": "Tableau for Data Analysis 101 Course (2025) for Indonesian EdTech platform. Instructor-built Tableau curriculum with a single retail case study (VoraStore) as the project arc.\n\nCategories: Data Analyst, Dashboard. Stack: Tableau, PowerPoint, Curriculum Design.",
+   "source": "Project: Tableau for Data Analysis 101 Course",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Tableau for Data Analysis 101 Course solve?",
+   "text": "Tableau for Data Analysis 101 Course (2025) for Indonesian EdTech platform. Instructor-built Tableau curriculum with a single retail case study (VoraStore) as the project arc.\n\nCategories: Data Analyst, Dashboard. Stack: Tableau, PowerPoint, Curriculum Design.",
+   "source": "Project: Tableau for Data Analysis 101 Course",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Tableau for Data Analysis 101 Course.",
+   "text": "Tableau for Data Analysis 101 Course (2025) for Indonesian EdTech platform. Instructor-built Tableau curriculum with a single retail case study (VoraStore) as the project arc.\n\nCategories: Data Analyst, Dashboard. Stack: Tableau, PowerPoint, Curriculum Design.",
+   "source": "Project: Tableau for Data Analysis 101 Course",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Tableau for Data Analysis 101 Course?",
+   "text": "Tableau for Data Analysis 101 Course (2025) for Indonesian EdTech platform. Instructor-built Tableau curriculum with a single retail case study (VoraStore) as the project arc.\n\nCategories: Data Analyst, Dashboard. Stack: Tableau, PowerPoint, Curriculum Design.",
+   "source": "Project: Tableau for Data Analysis 101 Course",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Government Statistics Data Platform Implementation.",
+   "text": "Government Statistics Data Platform Implementation (2025) for Indonesian coordinating ministry. Reference catalog and ingestion layer mapping all 549 BPS office domains for a coordinating ministry.\n\nCategories: Data Engineer. Stack: Python, BPS Web API, JavaScript, CSV, JSON.",
+   "source": "Project: Government Statistics Data Platform Implementation",
+   "template": "project"
+  },
+  {
+   "query": "What was Government Statistics Data Platform Implementation about?",
+   "text": "Government Statistics Data Platform Implementation (2025) for Indonesian coordinating ministry. Reference catalog and ingestion layer mapping all 549 BPS office domains for a coordinating ministry.\n\nCategories: Data Engineer. Stack: Python, BPS Web API, JavaScript, CSV, JSON.",
+   "source": "Project: Government Statistics Data Platform Implementation",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Government Statistics Data Platform Implementation?",
+   "text": "Government Statistics Data Platform Implementation (2025) for Indonesian coordinating ministry. Reference catalog and ingestion layer mapping all 549 BPS office domains for a coordinating ministry.\n\nCategories: Data Engineer. Stack: Python, BPS Web API, JavaScript, CSV, JSON.",
+   "source": "Project: Government Statistics Data Platform Implementation",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Government Statistics Data Platform Implementation solve?",
+   "text": "Government Statistics Data Platform Implementation (2025) for Indonesian coordinating ministry. Reference catalog and ingestion layer mapping all 549 BPS office domains for a coordinating ministry.\n\nCategories: Data Engineer. Stack: Python, BPS Web API, JavaScript, CSV, JSON.",
+   "source": "Project: Government Statistics Data Platform Implementation",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Government Statistics Data Platform Implementation.",
+   "text": "Government Statistics Data Platform Implementation (2025) for Indonesian coordinating ministry. Reference catalog and ingestion layer mapping all 549 BPS office domains for a coordinating ministry.\n\nCategories: Data Engineer. Stack: Python, BPS Web API, JavaScript, CSV, JSON.",
+   "source": "Project: Government Statistics Data Platform Implementation",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Government Statistics Data Platform Implementation?",
+   "text": "Government Statistics Data Platform Implementation (2025) for Indonesian coordinating ministry. Reference catalog and ingestion layer mapping all 549 BPS office domains for a coordinating ministry.\n\nCategories: Data Engineer. Stack: Python, BPS Web API, JavaScript, CSV, JSON.",
+   "source": "Project: Government Statistics Data Platform Implementation",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Mobile App Analytics Data Pipeline.",
+   "text": "Mobile App Analytics Data Pipeline (2026) for Digital financial services app. Multi-source ingestion pipeline unifying AppsFlyer, MoEngage, Google Play Console, and App Store Connect into BigQuery for a Looker Studio monitoring dashboard.",
+   "source": "Project: Mobile App Analytics Data Pipeline",
+   "template": "project"
+  },
+  {
+   "query": "What was Mobile App Analytics Data Pipeline about?",
+   "text": "Mobile App Analytics Data Pipeline (2026) for Digital financial services app. Multi-source ingestion pipeline unifying AppsFlyer, MoEngage, Google Play Console, and App Store Connect into BigQuery for a Looker Studio monitoring dashboard.",
+   "source": "Project: Mobile App Analytics Data Pipeline",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Mobile App Analytics Data Pipeline?",
+   "text": "Mobile App Analytics Data Pipeline (2026) for Digital financial services app. Multi-source ingestion pipeline unifying AppsFlyer, MoEngage, Google Play Console, and App Store Connect into BigQuery for a Looker Studio monitoring dashboard.",
+   "source": "Project: Mobile App Analytics Data Pipeline",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Mobile App Analytics Data Pipeline solve?",
+   "text": "Mobile App Analytics Data Pipeline (2026) for Digital financial services app. Multi-source ingestion pipeline unifying AppsFlyer, MoEngage, Google Play Console, and App Store Connect into BigQuery for a Looker Studio monitoring dashboard.",
+   "source": "Project: Mobile App Analytics Data Pipeline",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Mobile App Analytics Data Pipeline.",
+   "text": "Mobile App Analytics Data Pipeline (2026) for Digital financial services app. Multi-source ingestion pipeline unifying AppsFlyer, MoEngage, Google Play Console, and App Store Connect into BigQuery for a Looker Studio monitoring dashboard.",
+   "source": "Project: Mobile App Analytics Data Pipeline",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Mobile App Analytics Data Pipeline?",
+   "text": "Mobile App Analytics Data Pipeline (2026) for Digital financial services app. Multi-source ingestion pipeline unifying AppsFlyer, MoEngage, Google Play Console, and App Store Connect into BigQuery for a Looker Studio monitoring dashboard.",
+   "source": "Project: Mobile App Analytics Data Pipeline",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Personal Portfolio Website with RAG Chat.",
+   "text": "Personal Portfolio Website with RAG Chat (2026) for Self-initiated. A personal portfolio with an agentic RAG chat assistant powered by Gemini, combining semantic retrieval, tool calling, and guardrails to answer grounded questions about my projects, experience, and skills.",
+   "source": "Project: Personal Portfolio Website with RAG Chat",
+   "template": "project"
+  },
+  {
+   "query": "What was Personal Portfolio Website with RAG Chat about?",
+   "text": "Personal Portfolio Website with RAG Chat (2026) for Self-initiated. A personal portfolio with an agentic RAG chat assistant powered by Gemini, combining semantic retrieval, tool calling, and guardrails to answer grounded questions about my projects, experience, and skills.",
+   "source": "Project: Personal Portfolio Website with RAG Chat",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Personal Portfolio Website with RAG Chat?",
+   "text": "Personal Portfolio Website with RAG Chat (2026) for Self-initiated. A personal portfolio with an agentic RAG chat assistant powered by Gemini, combining semantic retrieval, tool calling, and guardrails to answer grounded questions about my projects, experience, and skills.",
+   "source": "Project: Personal Portfolio Website with RAG Chat",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Personal Portfolio Website with RAG Chat solve?",
+   "text": "Personal Portfolio Website with RAG Chat (2026) for Self-initiated. A personal portfolio with an agentic RAG chat assistant powered by Gemini, combining semantic retrieval, tool calling, and guardrails to answer grounded questions about my projects, experience, and skills.",
+   "source": "Project: Personal Portfolio Website with RAG Chat",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Personal Portfolio Website with RAG Chat.",
+   "text": "Personal Portfolio Website with RAG Chat (2026) for Self-initiated. A personal portfolio with an agentic RAG chat assistant powered by Gemini, combining semantic retrieval, tool calling, and guardrails to answer grounded questions about my projects, experience, and skills.",
+   "source": "Project: Personal Portfolio Website with RAG Chat",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Personal Portfolio Website with RAG Chat?",
+   "text": "Personal Portfolio Website with RAG Chat (2026) for Self-initiated. A personal portfolio with an agentic RAG chat assistant powered by Gemini, combining semantic retrieval, tool calling, and guardrails to answer grounded questions about my projects, experience, and skills.",
+   "source": "Project: Personal Portfolio Website with RAG Chat",
+   "template": "project"
+  },
+  {
+   "query": "Tell me about Telco Customer Churn Prediction (Streamlit).",
+   "text": "Telco Customer Churn Prediction (Streamlit) (2022) for Self-initiated portfolio project. End-to-end ML app benchmarking Logistic Regression, Random Forest, and Gradient Boosting on telco subscriber data, deployed live on Streamlit.",
+   "source": "Project: Telco Customer Churn Prediction (Streamlit)",
+   "template": "project"
+  },
+  {
+   "query": "What was Telco Customer Churn Prediction (Streamlit) about?",
+   "text": "Telco Customer Churn Prediction (Streamlit) (2022) for Self-initiated portfolio project. End-to-end ML app benchmarking Logistic Regression, Random Forest, and Gradient Boosting on telco subscriber data, deployed live on Streamlit.",
+   "source": "Project: Telco Customer Churn Prediction (Streamlit)",
+   "template": "project"
+  },
+  {
+   "query": "How did Firza build Telco Customer Churn Prediction (Streamlit)?",
+   "text": "Telco Customer Churn Prediction (Streamlit) (2022) for Self-initiated portfolio project. End-to-end ML app benchmarking Logistic Regression, Random Forest, and Gradient Boosting on telco subscriber data, deployed live on Streamlit.",
+   "source": "Project: Telco Customer Churn Prediction (Streamlit)",
+   "template": "project"
+  },
+  {
+   "query": "What problem did Telco Customer Churn Prediction (Streamlit) solve?",
+   "text": "Telco Customer Churn Prediction (Streamlit) (2022) for Self-initiated portfolio project. End-to-end ML app benchmarking Logistic Regression, Random Forest, and Gradient Boosting on telco subscriber data, deployed live on Streamlit.",
+   "source": "Project: Telco Customer Churn Prediction (Streamlit)",
+   "template": "project"
+  },
+  {
+   "query": "Ceritakan tentang Telco Customer Churn Prediction (Streamlit).",
+   "text": "Telco Customer Churn Prediction (Streamlit) (2022) for Self-initiated portfolio project. End-to-end ML app benchmarking Logistic Regression, Random Forest, and Gradient Boosting on telco subscriber data, deployed live on Streamlit.",
+   "source": "Project: Telco Customer Churn Prediction (Streamlit)",
+   "template": "project"
+  },
+  {
+   "query": "Apa itu Telco Customer Churn Prediction (Streamlit)?",
+   "text": "Telco Customer Churn Prediction (Streamlit) (2022) for Self-initiated portfolio project. End-to-end ML app benchmarking Logistic Regression, Random Forest, and Gradient Boosting on telco subscriber data, deployed live on Streamlit.",
+   "source": "Project: Telco Customer Churn Prediction (Streamlit)",
+   "template": "project"
+  }
+ ]
+}
