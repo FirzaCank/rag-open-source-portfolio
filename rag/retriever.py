@@ -18,6 +18,14 @@ identical. See D27.
 41 golden set questions, top1 spans 0.7824 to 0.8573 and the off-topic category outscores half the
 factual one, so no absolute floor separates a real question from a question that should be refused.
 The floor that mattered under Gemini, 0.4, passes the entire index here. See D57.
+
+**What retrieval cannot fix here, measured.** `fact-education` fails because the ITB chunk ranks
+15th on "Where did Firza study?". Three arms were measured and all three rejected: `top_k=16`
+reaches it and scores 33 of 41 against 36, MMR reranking cannot promote a candidate that sits at
+15 of 16, and paragraph aware chunking isolates the education entry into a clean 255 character
+chunk that still ranks 15th at 0.7298, losing to `Career Timeline` at 0.8386 which contains no
+education text at all. The e5 `query:` and `passage:` prefixes were verified correct. The limit is
+the embedding model, which is what Phase 5c fine-tunes. See D89.
 """
 
 import json

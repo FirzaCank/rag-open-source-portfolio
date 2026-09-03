@@ -148,9 +148,7 @@ def health():
     except Exception as e:
         return JSONResponse(status_code=503, content={"error": f"ollama unreachable: {e}"[:200], **detail})
 
-    # What context length the loaded model actually serves. The truncation guard in llm.py compares
-    # against the number this process believes, so a server serving less would truncate every
-    # prompt while the guard stayed quiet. Reported, not assumed. See D64.
+    # Served context length, reported not assumed: a shorter one truncates silently. See D64.
     try:
         ps_url = os.environ.get("OLLAMA_PS_URL", "http://localhost:11434/api/ps")
         with urllib.request.urlopen(ps_url, timeout=5) as resp:

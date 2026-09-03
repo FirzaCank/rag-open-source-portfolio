@@ -47,9 +47,7 @@ OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/chat")
 # qwen2.5:3b and score an arm against the wrong model with no error. See D88.
 MODEL = os.environ.get("MODEL", "qwen3:8b")
 
-# 8192 covers the measured worst case: 3.5k tokens of system prompt plus 2.8k of retrieved context.
-# A long 12 message history can still exceed it, which is why every response records its
-# prompt token count and run_chat warns when the count lands near the ceiling.
+# 8192 covers the measured worst case, 3.5k prompt plus 2.8k context. Every response records its token count.
 NUM_CTX = int(os.environ.get("OLLAMA_NUM_CTX", "8192"))
 
 MAX_HISTORY = 12
@@ -100,10 +98,7 @@ OFF_TOPIC_REFUSAL = (
     "skills, or experience instead."
 )
 
-# Every marker that ends the answer, with the event it logs and the sentence it finishes with.
-# A code fence is the marker because a word list is not usable: `import ` matches "data import
-# pipeline", which is ordinary phrasing on a data engineer's portfolio. Both forbidden patterns in
-# the measured off-code-help answer sit inside the fence, so cutting there removes both.
+# Answer-ending markers. Fence, not a word list: `import ` matches ordinary portfolio prose.
 _CUTS = [(n, "tool_name_redacted", TOOL_DISCLOSURE_REFUSAL) for n in _TOOL_NAMES]
 _CUTS.append(("```", "code_block_redacted", OFF_TOPIC_REFUSAL))
 # A marker arrives split across stream chunks, so the tail that could still be the start of one is
@@ -270,11 +265,7 @@ def _parse_args(raw):
         return {}
 
 
-# What the model is told when a send is blocked. It names the missing thing so the model has
-# something to ask for, instead of reporting the send as done.
-# One error per reason. Each names the missing thing, so the model has something to ask for instead
-# of reporting the send as done. The wording steers the answer too: `send-confirms-before-sending`
-# needs the model to offer, and `send-refuses-second-send` forbids offering again. See D86.
+# One error per blocked-send reason, each naming the missing thing so the model asks instead of claiming success. See D86.
 SEND_BLOCKED_ERRORS = {
     "no_email_from_visitor": (
         "Not sent. That email address did not come from the visitor. Ask for their own name and "
@@ -308,10 +299,7 @@ _NEGATE = re.compile(
     re.I,
 )
 
-# The only signal that a send already happened in an earlier request. `_sent_this_request` in
-# tools.py covers one request, and this conversation's history is all that survives across them.
-# ponytail: matches the model's own past wording, so a paraphrase slips through and lands on the
-# no_confirmation branch instead, which refuses the send either way.
+# ponytail: cross-request send signal, matched on past wording. A paraphrase falls through to no_confirmation, which also refuses.
 _CLAIMED_SENT = re.compile(
     r"\b(?:message|email|it)\b(?:(?!\bnot\b|\bnever\b|\bbelum\b).){0,24}\b(?:sent|delivered)\b",
     re.I | re.S,

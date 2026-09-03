@@ -135,9 +135,7 @@ if __name__ == "__main__":
         "<<<RETRIEVED_CONTEXT",                                         # the delimiter contract
         "search_projects, get_project_detail",                          # kept on purpose, see the docstring
     ]
-    # Matched case insensitively, because compaction moves a rule to the start of a bullet and
-    # changes its first letter. The second assert is aimed at this test's own mistakes: a literal
-    # absent from the full prompt means the test is wrong, not the prompt.
+    # Case insensitive: compaction moves a rule to a bullet start. Second assert catches this test's own errors.
     for lit in required:
         assert lit.lower() in compact.lower(), f"load bearing literal dropped: {lit!r}"
         assert lit.lower() in full.lower(), f"literal is not in the full prompt either, fix the test: {lit!r}"

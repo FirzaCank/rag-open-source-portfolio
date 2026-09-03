@@ -135,17 +135,12 @@ def get_skills(domain=""):
 
 # ---- write tool ------------------------------------------------------------
 
-# One email per request, enforced in code. The model is told to confirm before
-# calling, but a prompt rule is not a guarantee: a confused model that calls the
-# tool twice in one conversation would otherwise send Firza two emails. This set
-# is reset per request by reset_send_guard(), called from api/chat.py.
+# One email per request, enforced in code since a prompt rule is no guarantee. Reset by reset_send_guard().
 _sent_this_request = set()
 
 _EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
 
-# The website's own contact route already does rate limiting, sanitizing, the Resend call, and the
-# HTML template. Posting to it keeps one code path for outbound mail.
-# Unset means dry run: validate and guard exactly as in production, then stop before the network.
+# Posts to the website's contact route, one code path for outbound mail. Unset means dry run.
 _CONTACT_ENDPOINT = os.environ.get("CONTACT_ENDPOINT", "").strip()
 
 

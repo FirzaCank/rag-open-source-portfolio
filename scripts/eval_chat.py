@@ -80,10 +80,7 @@ def messages_of(case):
     return [{"role": m["role"], "content": m["content"], "time": "00:00"} for m in msgs]
 
 
-# The server allows RATE_PER_MIN requests per instance per 60 s window, 20 by default. The compact
-# prompt arm answered fast enough that 41 sequential cases tripped it at case 20, and 18 cases came
-# back as HTTP 429 in a run that still printed a score. A 429 is congestion, not a verdict, so it
-# is waited out rather than recorded. See D71.
+# A 429 is congestion, not a verdict, so it is waited out rather than recorded. See D71.
 RATE_RETRIES = 5
 RATE_WAIT_S = 15
 
@@ -233,9 +230,7 @@ def summarise(records, label, elapsed):
     ttfts = [r["ttft_s"] for r in records if r.get("ttft_s")]
     prompts = [r["prompt_tokens"] for r in records if r.get("prompt_tokens")]
 
-    # A run with any errored case is not a run. The compact prompt arm printed "16/41 passed" over
-    # 18 rate-limited cases, and that number reads like a score next to a real one. Say invalid
-    # first, before any per-category table, and mark the file so compare_runs.py refuses it.
+    # A run with any errored case is not a run: say invalid first, and mark the file so compare_runs.py refuses it.
     if errored:
         print(f"\nRUN INVALID: {len(errored)} of {len(records)} cases errored. "
               f"The {len(passed)} passes below are not a score and must not be compared.")
