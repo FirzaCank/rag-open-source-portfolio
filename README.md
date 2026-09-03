@@ -3,23 +3,16 @@
 A portfolio chat assistant that answers questions about me from my own data, rebuilt on fully
 open source models and served from a GPU that scales to zero.
 
-### Live demo
-
-**https://portfolio-web-121020284283.asia-southeast1.run.app**
-
-The chat widget is bottom right. First question after an idle period takes about 92 seconds,
-because the GPU service scales to zero and has to cold start. Every question after that answers
-in about 3 seconds.
-
 | | |
 | :--- | :--- |
 | Demo, open source models on Cloud Run GPU | https://portfolio-web-121020284283.asia-southeast1.run.app |
 | API, Swagger UI | `https://rag-api-121020284283.asia-southeast1.run.app/docs` |
 | The production site this was ported from, the more stable one | https://firzacank.vercel.app |
 
-The Vercel site is the comparison anchor, not the deliverable. It scores 30 of 41 on the same
-frozen test set. This repository replaces every closed model in it with an open one and measures
-what that costs.
+The chat widget is bottom right. First question after an idle period takes about 92 seconds,
+because the GPU service scales to zero and has to cold start. Every question after that answers
+in about 3 seconds.
+
 
 ## What is inside
 
