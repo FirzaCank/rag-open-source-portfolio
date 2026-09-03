@@ -1,0 +1,29 @@
+rag/llm.py
+  s_aa22a7319babf4::t_d551d05789e2d4 250-251
+  s_aa22a7319babf4::t_2f3e6fef4338d0 82-113,119-130
+  s_aa22a7319babf4::t_0116908f1afe76 114-118
+  s_aa22a7319babf4::t_a965bd113e7b09 355,357-361
+  s_aa22a7319babf4::t_06d50b390faae2 343-354,356,362-378
+  s_aa22a7319babf4::t_3722044dee5dfd 326-338
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "9a05f94b46129df73d624db0ecc1255d4c9e9fbe",
+  "prompts": {},
+  "humans": {
+    "h_6146201214d51c": {
+      "author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
