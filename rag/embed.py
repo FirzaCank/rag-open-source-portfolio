@@ -12,6 +12,14 @@ Staying on base rather than switching to the built in large is deliberate. D27 c
 fine-tunes base, and swapping now would change two things at once with no way to attribute a
 difference to either. See D47.
 
+**`EMBED_MODEL_PATH` loads a local ONNX directory instead of the HuggingFace copy.** Phase 5c
+fine-tunes this model in Colab and exports ONNX, and a fine-tuned model has no HuggingFace repo to
+pull from. Verified before it was written: loading the cached snapshot through this path returns a
+vector with cosine 1.0 against the normal load, so the mechanism itself changes nothing. Empty by
+default, so production and the frozen baseline are untouched until the variable is set. The index
+records `model` and `dim` but not the path, so `_load_index()` cannot catch a fine-tuned model
+serving a baseline index: rebuild the index whenever this changes. See D47 and D90.
+
 The `query:` and `passage:` prefixes are mandatory, not decoration. e5 was trained with them, and
 dropping them silently changes the task the model thinks it is doing. See D27.
 
@@ -38,6 +46,9 @@ MODEL_FILE = "onnx/model.onnx"
 # fastembed caches to temp, which macOS and Cloud Run clear. 1.1 GB lands in git ignored `models/`.
 _HERE = os.path.dirname(os.path.abspath(__file__))
 CACHE_DIR = os.environ.get("FASTEMBED_CACHE", os.path.join(_HERE, "..", "models", "fastembed"))
+
+# A local ONNX directory to load instead of the HuggingFace copy, for the Phase 5c fine-tune.
+EMBED_PATH = os.environ.get("EMBED_MODEL_PATH", "").strip()
 
 _model: TextEmbedding | None = None
 _registered = False
@@ -84,7 +95,8 @@ def get_model() -> TextEmbedding:
     if _model is None:
         _register()
         os.makedirs(CACHE_DIR, exist_ok=True)
-        _model = TextEmbedding(model_name=MODEL_NAME, cache_dir=CACHE_DIR)
+        kwargs = {"specific_model_path": EMBED_PATH} if EMBED_PATH else {}
+        _model = TextEmbedding(model_name=MODEL_NAME, cache_dir=CACHE_DIR, **kwargs)
     return _model
 
 
@@ -137,4 +149,10 @@ if __name__ == "__main__":
     print(f"scores: employment {scores[0]:.4f}, churn project {scores[1]:.4f}")
     print(f"prefix drift between query and passage encoding: {drift:.4f}")
     print(f"vector norms: {norms.round(6)}")
+    # A wrong EMBED_MODEL_PATH must fail loudly, not fall back to the baseline model silently.
+    if EMBED_PATH:
+        assert os.path.isdir(EMBED_PATH), f"EMBED_MODEL_PATH is not a directory: {EMBED_PATH}"
+        assert os.path.isfile(os.path.join(EMBED_PATH, MODEL_FILE)), f"no {MODEL_FILE} under {EMBED_PATH}"
+        print(f"loaded from EMBED_MODEL_PATH: {EMBED_PATH}")
+
     print("all checks passed")
