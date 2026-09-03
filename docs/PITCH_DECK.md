@@ -410,7 +410,7 @@ number. With the analysis it is a work plan.
 3. **The best score does not win by itself.** The highest scoring model is the one I refused to promote, twice, because of one behaviour a pass rate does not price. It went live only after that behaviour was closed in code, and then it scored 36 of 41 at both seeds with the same five failures at each
 
 **Links:**
-- Live assistant: `PENDING` the portfolio-web URL
+- Live assistant: `https://portfolio-web-121020284283.asia-southeast1.run.app`
 - API and Swagger UI: `https://rag-api-121020284283.asia-southeast1.run.app/docs`
 - Code: `github.com/FirzaCank/rag-open-source-portfolio`
 
