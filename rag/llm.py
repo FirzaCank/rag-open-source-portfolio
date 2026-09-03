@@ -177,10 +177,13 @@ def _build_messages(messages, context):
 
 
 def _chat_body(convo, tools, max_tokens):
+    # `think` is top level in the Ollama API, not inside `options`. Ollama ignores it for a model
+    # with no thinking mode, so qwen2.5 is unaffected and no per model branch is needed.
     body = {
         "model": MODEL,
         "messages": convo,
         "stream": True,
+        "think": False,
         "options": {"temperature": TEMPERATURE, "num_ctx": NUM_CTX, "num_predict": max_tokens},
     }
     if OLLAMA_SEED:
@@ -413,6 +416,13 @@ if __name__ == "__main__":
 
     # Neither substitute may trip the other marker, or a second pass would eat its own answer.
     assert _red([OFF_TOPIC_REFUSAL]) == OFF_TOPIC_REFUSAL
+
+    # `think` sits at the top level and stays off in every request, or a reasoning model streams its
+    # scratchpad straight to the visitor. Both call sites go through _chat_body, so one check covers.
+    for _tools in (OLLAMA_TOOLS, None):
+        _b = _chat_body([{"role": "user", "content": "hi"}], _tools, 100)
+        assert _b["think"] is False, _b
+        assert "think" not in _b["options"], _b
 
     q = "Where does Firza work right now?"
     stats = {}
