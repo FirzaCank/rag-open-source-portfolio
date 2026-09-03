@@ -1,0 +1,25 @@
+docs/LINKEDIN.md
+  s_aa22a7319babf4::t_b29fb4b975dfee 1-80
+docs/PITCH_DECK.md
+  s_aa22a7319babf4::t_7d8aea94871e2c 1-407
+docs/diagrams/rag-flow.drawio
+  s_aa22a7319babf4::t_ef4777bb4b2b09 1-61
+docs/diagrams/architecture.drawio
+  s_aa22a7319babf4::t_c00bef8d4d4e4b 1-104
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "3b48485281c74f0c3b031bbfcf86fda4cf234a97",
+  "prompts": {},
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
