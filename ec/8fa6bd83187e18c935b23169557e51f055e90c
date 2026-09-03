@@ -1,0 +1,24 @@
+eval_runs/1788419644_remote_qwen2.5-7b-instruct-q4_K_M.json
+  s_142c07adbd0534::t_875c4c166e3d22 1-90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "ec8fa6bd83187e18c935b23169557e51f055e90c",
+  "prompts": {},
+  "humans": {
+    "h_6146201214d51c": {
+      "author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_142c07adbd0534": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f60d49a4-76b0-42f0-ae69-30c7f7d26b3d",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
