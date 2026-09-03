@@ -1,0 +1,14 @@
+eval_runs/1788450102_remote_qwen3-8b.json
+  h_6146201214d51c 1-488
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "b21e453052beb4d58e52ace694a62bf42e3e6f24",
+  "prompts": {},
+  "humans": {
+    "h_6146201214d51c": {
+      "author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
