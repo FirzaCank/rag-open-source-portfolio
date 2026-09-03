@@ -79,6 +79,55 @@ def _neutralize_markers(text: str) -> str:
     return str(text or "").replace("RETRIEVED_CONTEXT", "retrieved context")
 
 
+# Read off the declarations instead of typed here, so a newly declared tool is covered the moment
+# it exists rather than the moment someone remembers this list.
+_TOOL_NAMES = tuple(t["function"]["name"] for t in OLLAMA_TOOLS)
+# A name arrives split across stream chunks, so the tail that could still be the start of one is
+# held back before anything is yielded. Longest name minus one character is exactly enough.
+_HOLD = max(len(n) for n in _TOOL_NAMES) - 1
+
+# The sentence rag/prompt.py line 74 already tells the model to use. Same words, so the filter and
+# the instruction do not contradict each other in front of a visitor.
+TOOL_DISCLOSURE_REFUSAL = (
+    "I look things up in Firza's portfolio using semantic search and structured lookups, described "
+    "in the [portfolio case study](https://firzacank.vercel.app/projects/personal-portfolio-website). "
+    "The internals stay private."
+)
+
+
+def _redact_tool_names(chunks, stats=None):
+    """Cut the stream at the first tool name and finish with the refusal instead.
+
+    The prompt has forbidden this disclosure since the first version and the names still leaked in
+    8 of 8 measured runs, under both prompt variants and in three languages. The model is handed
+    the schemas in the `tools` field of every request, so no instruction can take them back.
+    """
+    buf = ""
+    for chunk in chunks:
+        buf += chunk
+        low = buf.lower()
+        hits = [(low.index(n), n) for n in _TOOL_NAMES if n in low]
+        if hits:
+            # Earliest position, not first declared. Otherwise a name sitting before the matched one
+            # would be yielded in the prefix.
+            head, name = min(hits)
+            # The cut lands mid list item, so the bullet or bold marker that introduced the name is
+            # still in the prefix. It leaks nothing and renders as a broken line, so it goes.
+            prefix = buf[:head].rstrip(" *-`\n")
+            if prefix:
+                yield prefix
+            if stats is not None:
+                stats["tool_name_redacted"] = True
+            print(json.dumps({"evt": "tool_name_redacted", "name": name}))
+            yield "\n\n" + TOOL_DISCLOSURE_REFUSAL
+            return
+        if len(buf) > _HOLD:
+            yield buf[:-_HOLD]
+            buf = buf[-_HOLD:]
+    if buf:
+        yield buf
+
+
 def retrieval_query(messages) -> str:
     """Text to embed for retrieval.
 
@@ -198,13 +247,8 @@ def _parse_args(raw):
         return {}
 
 
-def run_chat(messages, stats=None):
-    """Yield the answer as text chunks, running the tool loop up to MAX_TOOL_ROUNDS.
-
-    `messages` is [{"role": "user"|"assistant", "content": str}]. `stats` is filled with retrieval
-    and tool metrics for the request log. Metadata only, never message content.
-    """
-    stats = stats if stats is not None else {}
+def _run_chat(messages, stats):
+    """The tool loop. Yields raw model text, which is why nothing calls it directly."""
     t0 = time.time()
     # A warm process is reused across visitors, so visitor B must not inherit A's send state.
     reset_send_guard()
@@ -279,9 +323,58 @@ def run_chat(messages, stats=None):
         yield "Sorry, I couldn't complete that lookup. Please try rephrasing or contact Firza directly."
 
 
+def run_chat(messages, stats=None):
+    """Yield the answer as text chunks, running the tool loop up to MAX_TOOL_ROUNDS.
+
+    `messages` is [{"role": "user"|"assistant", "content": str}]. `stats` is filled with retrieval
+    and tool metrics for the request log. Metadata only, never message content.
+
+    The filter wraps the loop rather than each yield site, so the fallback pass and the error
+    sentence go through it too. Both callers, the eval and the API, get the same protection.
+    """
+    stats = stats if stats is not None else {}
+    yield from _redact_tool_names(_run_chat(messages, stats), stats)
+
+
 if __name__ == "__main__":
     # Needs Ollama running and MODEL pulled. This is the first end to end check in the project.
     assert not os.environ.get("CONTACT_ENDPOINT"), "run this with CONTACT_ENDPOINT unset"
+
+    # The filter first, because it needs no model and a broken filter is a live disclosure.
+    def _red(chunks):
+        return "".join(_redact_tool_names(list(chunks)))
+
+    # Clean text must survive byte for byte, including the held-back tail.
+    clean = ["Firza works at ", "Hypefast as a ", "Data Engineer."]
+    assert _red(clean) == "".join(clean), _red(clean)
+    assert _red([]) == ""
+
+    # The name arrives split across chunks, which is the case a naive per-chunk check misses.
+    split = _red(["The tools I can call are: ", "search", "_proj", "ects: search projects."])
+    assert "search_projects" not in split, split
+    assert split.startswith("The tools I can call are:"), split
+    assert TOOL_DISCLOSURE_REFUSAL in split, split
+
+    # The cut lands mid list item, so the marker that introduced the name must not survive as a
+    # dangling bullet. Measured output was "The tools I can call are:\n\n- " before this.
+    dangling = _red(["Functions:\n\n- **", "get_skills", "**: skills."])
+    assert dangling.startswith("Functions:\n\n\n\n") or "- **" not in dangling, dangling
+
+    # Earliest position wins. get_skills sits before search_projects here, and declaration order
+    # puts search_projects first, so a first-declared match would have yielded get_skills.
+    both = _red(["I have get_skills and search_projects."])
+    assert "get_skills" not in both, both
+
+    # A capitalised name is the same disclosure.
+    assert "Search_Projects" not in _red(["Use Search_Projects for that."])
+
+    # The substitute must not itself contain a name, or a second pass would eat its own answer.
+    assert _red([TOOL_DISCLOSURE_REFUSAL]) == TOOL_DISCLOSURE_REFUSAL
+
+    # It has to be reported, not only prevented. A filter with no counter cannot be measured.
+    st = {}
+    list(_redact_tool_names(["get_skills"], st))
+    assert st["tool_name_redacted"] is True, st
 
     q = "Where does Firza work right now?"
     stats = {}
