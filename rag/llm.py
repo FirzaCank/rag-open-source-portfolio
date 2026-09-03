@@ -43,7 +43,9 @@ from .tools import OLLAMA_TOOLS, reset_send_guard, run_tool
 
 # Same address on the laptop and inside the Cloud Run container, so no branch on environment.
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/chat")
-MODEL = os.environ.get("MODEL", "qwen2.5:3b")
+# Default matches the promoted model and the Dockerfile. An unset MODEL used to run
+# qwen2.5:3b and score an arm against the wrong model with no error. See D88.
+MODEL = os.environ.get("MODEL", "qwen3:8b")
 
 # 8192 covers the measured worst case: 3.5k tokens of system prompt plus 2.8k of retrieved context.
 # A long 12 message history can still exceed it, which is why every response records its

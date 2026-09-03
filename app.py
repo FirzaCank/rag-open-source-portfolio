@@ -25,7 +25,7 @@ from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
 from rag.llm import MAX_TOOL_ROUNDS, MODEL, NUM_CTX, OLLAMA_SEED, PROMPT_VARIANT, TEMPERATURE, run_chat
-from rag.retriever import _load_index
+from rag.retriever import TOP_K, _load_index
 
 MAX_MSGS = 40
 MAX_MSG_CHARS = 2000
@@ -45,7 +45,7 @@ _hits = {}
 
 api = FastAPI(
     title="Portfolio RAG Chat",
-    description="Open source RAG assistant over Firza's portfolio. Qwen2.5 via Ollama, multilingual e5 base embeddings, numpy cosine retrieval.",
+    description="Open source RAG assistant over Firza's portfolio. Qwen3 via Ollama, multilingual e5 base embeddings, numpy cosine retrieval.",
     version="1.0.0",
 )
 
@@ -129,6 +129,7 @@ def health():
         "temperature": TEMPERATURE,
         "seed": OLLAMA_SEED or None,
         "prompt_variant": PROMPT_VARIANT,
+        "top_k": TOP_K,
     }
     try:
         sources, texts, vectors = _load_index()

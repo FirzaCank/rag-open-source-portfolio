@@ -20,6 +20,7 @@ models/
 
 # Experiment output. MLflow runs live on GCS, see D9.
 mlruns.db
+mlruns/
 mlartifacts/
 mlflow.db
 

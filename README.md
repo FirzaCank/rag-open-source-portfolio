@@ -15,13 +15,11 @@ in about 3 seconds.
 | :--- | :--- |
 | Demo, open source models on Cloud Run GPU | https://portfolio-web-121020284283.asia-southeast1.run.app |
 | API, Swagger UI | `https://rag-api-121020284283.asia-southeast1.run.app/docs` |
-| The production site this was ported from, runs Gemini | https://firzacank.vercel.app |
+| The production site this was ported from, the more stable one | https://firzacank.vercel.app |
 
 The Vercel site is the comparison anchor, not the deliverable. It scores 30 of 41 on the same
 frozen test set. This repository replaces every closed model in it with an open one and measures
 what that costs.
-
-Final project, AI Super Class.
 
 ## What is inside
 
@@ -48,7 +46,7 @@ progress: data and experiment versioning are done, canary rollout is next.
 | :--- | :--- |
 | Corpus | 39 documents, 76 chunks, 22 sources, 721 KB index |
 | Retrieval, 66 hand-written queries | Hit Rate@1 68.2, Hit Rate@8 86.4, MRR@8 0.7497 |
-| Answer quality, 41 frozen cases | **36 of 41**, against 30 for the Gemini version |
+| Answer quality, 41 frozen cases | **36 of 41**, against 30 for the closed model version |
 | Hallucination rate | 1 of 41, hand classified |
 | Latency, warm, measured on the frozen 7B baseline | first token 0.88 s p50, full answer 2.57 s p50 |
 | Cold start, from zero | 92 s, the designed cost of scaling to zero |

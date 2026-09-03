@@ -31,6 +31,7 @@ from .embed import DIM, MODEL_FILE, MODEL_NAME, embed_query
 _INDEX_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "embeddings.json")
 
 TOP_K = 8
+# 16 was measured and rejected: it fixed fact-education but broke 5 cases, 33 of 41 against 36.
 # Calibrated to no floor. Off-topic questions score as high as factual ones. See D57.
 MIN_SCORE = 0.0
 
