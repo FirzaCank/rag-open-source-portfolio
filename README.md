@@ -41,8 +41,8 @@ numbers, and the rejected options live in the project decision log, kept outside
 
 ## Status
 
-Phases 0 through 3d are done. Both services are deployed and scale to zero. The remaining phases
-are measurement, not plumbing.
+Phases 0 through 3d are done. Both services are deployed and scale to zero. Phase 4 is in
+progress: data and experiment versioning are done, canary rollout is next.
 
 | Measured | Value |
 | :--- | :--- |
@@ -52,6 +52,18 @@ are measurement, not plumbing.
 | Hallucination rate | 1 of 41, hand classified |
 | Latency, warm, measured on the frozen 7B baseline | first token 0.88 s p50, full answer 2.57 s p50 |
 | Cold start, from zero | 92 s, the designed cost of scaling to zero |
+
+## Versioning
+
+| What | Where |
+| :--- | :--- |
+| Corpus and index | DVC, snapshot at `data/versions/v1-variant-a/`, GCS remote |
+| Experiment runs | MLflow, sqlite backend, pushed to GCS |
+| Promoted config | Vertex AI Model Registry, `rag-portfolio-qwen3-v13` |
+| Container images | Artifact Registry, tagged per Cloud Build run |
+
+The RAG config, not the model, is what gets registered. `qwen3:8b` is used as is, no fine-tune.
+What is versioned is the prompt variant, the guard set, and the eval score that came with them.
 
 Three of the guards were added because the prompt could not do the job. Tool names leaked in 8 of
 8 runs while the prompt forbade it, so a filter now cuts the stream at the first tool name. The
