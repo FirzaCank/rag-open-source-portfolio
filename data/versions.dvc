@@ -1,0 +1,6 @@
+outs:
+- md5: f78e3bdcb1593f9d64145101098b5e1e.dir
+  size: 800586
+  nfiles: 2
+  hash: md5
+  path: versions
