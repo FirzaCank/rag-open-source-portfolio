@@ -1,0 +1,46 @@
+scripts/compare_runs.py
+  s_aa22a7319babf4::t_b83513b954c1d3 55
+rag/retriever.py
+  s_aa22a7319babf4::t_595cc1fe977920 43
+  s_aa22a7319babf4::t_b83513b954c1d3 41,78
+scripts/check_retrieval_set.py
+  s_aa22a7319babf4::t_b83513b954c1d3 35
+scripts/eval_chat.py
+  s_aa22a7319babf4::t_b83513b954c1d3 109,178,295
+rag/llm.py
+  s_aa22a7319babf4::t_b83513b954c1d3 32,45,52,54,57,77,80,87,96,117,119,166,273,281,312,343,395,445,449,464,483,489,544,548
+rag/sources.py
+  s_aa22a7319babf4::t_b83513b954c1d3 150
+scripts/build_index.py
+  s_aa22a7319babf4::t_b83513b954c1d3 60
+scripts/log_baseline_mlflow.py
+  s_aa22a7319babf4::t_b83513b954c1d3 17
+rag/chunk.py
+  s_aa22a7319babf4::t_b83513b954c1d3 90,96,99,108
+rag/prompt_compact.py
+  s_aa22a7319babf4::t_b83513b954c1d3 102,118
+app.py
+  s_aa22a7319babf4::t_b83513b954c1d3 37,55,121,190
+rag/tools.py
+  s_aa22a7319babf4::t_b83513b954c1d3 130,173,327
+scripts/calibrate_threshold.py
+  s_aa22a7319babf4::t_b83513b954c1d3 73,86
+rag/embed.py
+  s_aa22a7319babf4::t_b83513b954c1d3 35,120,128,132
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "c0f6793b78023faaa05822c83f97223199af4d76",
+  "prompts": {},
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
