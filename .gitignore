@@ -19,7 +19,8 @@ venv/
 models/
 
 # Experiment output. MLflow runs live on GCS, see D9.
-mlruns/
+mlruns.db
+mlartifacts/
 mlflow.db
 
 # DVC cache. Data remote is GCS, see D8.
