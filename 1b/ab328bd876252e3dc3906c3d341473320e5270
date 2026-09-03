@@ -1,0 +1,19 @@
+docs/PITCH_DECK.md
+  s_aa22a7319babf4::t_d4da2fa0726bab 13,126,261-270,309-316,318-321,379-400,409-410
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "1bab328bd876252e3dc3906c3d341473320e5270",
+  "prompts": {},
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
