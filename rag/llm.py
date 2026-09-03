@@ -270,30 +270,88 @@ def _parse_args(raw):
 
 # What the model is told when a send is blocked. It names the missing thing so the model has
 # something to ask for, instead of reporting the send as done.
-SEND_BLOCKED_ERROR = (
-    "Not sent. That email address did not come from the visitor. Ask for their own name and email "
-    "address, repeat the message back, and wait for confirmation before trying again."
+# One error per reason. Each names the missing thing, so the model has something to ask for instead
+# of reporting the send as done. The wording steers the answer too: `send-confirms-before-sending`
+# needs the model to offer, and `send-refuses-second-send` forbids offering again. See D86.
+SEND_BLOCKED_ERRORS = {
+    "no_email_from_visitor": (
+        "Not sent. That email address did not come from the visitor. Ask for their own name and "
+        "email address, repeat the message back, and wait for confirmation before trying again."
+    ),
+    "no_confirmation": (
+        "Not sent. The visitor has not confirmed yet. Repeat the message back to them and ask "
+        "\"Shall I send this to Firza?\", then call this tool again only after they agree."
+    ),
+    "already_sent": (
+        "Not sent. A message was already delivered for this visitor earlier in this conversation. "
+        "Tell them it is already on its way, and point them to the contact page for anything else. "
+        "Do not offer to send another one."
+    ),
+}
+
+# Confirmation words, English and Bahasa Indonesia. Deliberately narrow, and bare "send" is absent:
+# "send another one saying..." is a new request, not a confirmation of the message on the table.
+_AFFIRM = re.compile(
+    r"\b(yes|yeah|yep|yup|ok|okay|sure|confirmed?|correct|agreed?|"
+    r"ya|iya|oke|sip|betul|benar|silakan|silahkan|boleh|lanjut|kirim)\b"
+    r"|go ahead|please send|send it|send that|do it|sounds good|looks good",
+    re.I,
+)
+
+# Checked before _AFFIRM, so "jangan kirim" and "no, wait" never read as agreement. A false negative
+# here costs one extra confirmation round. A false positive sends a message nobody asked for.
+_NEGATE = re.compile(
+    r"\b(no|not|dont|never|cancel|wait|hold|stop|"
+    r"jangan|tidak|belum|bukan|batal|tunggu)\b|don'?t",
+    re.I,
+)
+
+# The only signal that a send already happened in an earlier request. `_sent_this_request` in
+# tools.py covers one request, and this conversation's history is all that survives across them.
+# ponytail: matches the model's own past wording, so a paraphrase slips through and lands on the
+# no_confirmation branch instead, which refuses the send either way.
+_CLAIMED_SENT = re.compile(
+    r"\b(?:message|email|it)\b(?:(?!\bnot\b|\bnever\b|\bbelum\b).){0,24}\b(?:sent|delivered)\b",
+    re.I | re.S,
 )
 
 
-def _send_blocked(name, args, messages):
-    """True when a send carries an email address the visitor never typed.
+def _send_block_reason(name, args, messages):
+    """Why this send must not go out, or None to let it through.
 
-    The prompt has forbidden sending without confirmation since the first version, and qwen3 sent
-    anyway in 3 cases at both seeds, inventing a well formed address for a visitor who gave none.
-    An instruction cannot take that back, so the guard is deterministic and sits where every tool
-    call passes. Same shape as _redact_output, see D74 and D82.
+    Two failures, both forbidden in the prompt since the first version, both measured happening
+    anyway. Qwen3 invented an email address in 3 cases at both seeds (D82), and it sent without
+    asking in `send-confirms-before-sending` at both seeds even with the address the visitor typed
+    (D85). An instruction cannot take back what the tool schema already handed over, so the guard is
+    deterministic and sits where every tool call passes. Same shape as _redact_output, see D74.
 
-    Only `role == "user"` counts. An address the model itself produced in an earlier turn is exactly
-    what is being caught. Empty args fall through to tools.py, which names the missing field.
+    Only `role == "user"` counts as the visitor. Text the model produced in an earlier turn is
+    exactly what is being caught.
     """
     if name != "send_message_to_firza":
-        return False
+        return None
+
+    users = [m for m in messages if m.get("role") == "user"]
     email = str(args.get("email") or "").strip().lower()
+    # No address at all falls through to tools.py, whose error names the missing field. That is what
+    # the visitor has to supply first, and it is a different sentence from asking for confirmation.
     if not email:
-        return False
-    said = " ".join(m.get("content") or "" for m in messages if m.get("role") == "user").lower()
-    return email not in said
+        return None
+
+    said = " ".join(m.get("content") or "" for m in users).lower()
+    if email not in said:
+        return "no_email_from_visitor"
+
+    said_before = " ".join(
+        m.get("content") or "" for m in messages if m.get("role") == "assistant"
+    )
+    if _CLAIMED_SENT.search(said_before):
+        return "already_sent"
+
+    last = (users[-1].get("content") or "") if users else ""
+    if _NEGATE.search(last) or not _AFFIRM.search(last):
+        return "no_confirmation"
+    return None
 
 
 def _run_chat(messages, stats):
@@ -346,10 +404,11 @@ def _run_chat(messages, stats):
         for c in pending:
             stats["tools"].append(c["name"])
             args = _parse_args(c["arguments"])
-            if _send_blocked(c["name"], args, messages):
-                result = {"sent": False, "error": SEND_BLOCKED_ERROR}
-                stats["send_blocked"] = True
-                print(json.dumps({"evt": "send_blocked"}))
+            reason = _send_block_reason(c["name"], args, messages)
+            if reason:
+                result = {"sent": False, "error": SEND_BLOCKED_ERRORS[reason]}
+                stats["send_blocked"] = reason
+                print(json.dumps({"evt": "send_blocked", "reason": reason}))
             else:
                 result = run_tool(c["name"], args)
             if c["name"] == "send_message_to_firza":
@@ -458,21 +517,53 @@ if __name__ == "__main__":
         assert _b["think"] is False, _b
         assert "think" not in _b["options"], _b
 
-    # The send guard. An address the visitor typed goes through, one the model made up does not.
-    _said = [{"role": "user", "content": "Hi, I am Rina, rina@gojek.com, we have a role open."}]
-    assert not _send_blocked("send_message_to_firza", {"email": "rina@gojek.com"}, _said)
-    assert not _send_blocked("send_message_to_firza", {"email": " RINA@Gojek.com "}, _said)
-    assert _send_blocked("send_message_to_firza", {"email": "recruiter@gojek.com"}, _said)
+    # The send guard, three reasons and one way through. Shapes taken from the golden set cases the
+    # guard exists for, so a change that breaks one of them fails here and not on Cloud Run.
+    def _blk(args, msgs):
+        return _send_block_reason("send_message_to_firza", args, msgs)
 
-    # Empty email falls through to tools.py, which names the field the model has to ask for.
-    assert not _send_blocked("send_message_to_firza", {}, _said)
+    _ask = {"role": "assistant", "content": "Could you share your name and your email address?"}
+    _gave = {"role": "user", "content": "Rina Wijaya, rina@gojek.com. We have a role open."}
 
-    # The model echoing an address back in its own turn must not authorise the send.
-    _echo = [{"role": "assistant", "content": "Sending from recruiter@gojek.com"}]
-    assert _send_blocked("send_message_to_firza", {"email": "recruiter@gojek.com"}, _echo)
+    # An address the model made up, which is the D82 failure. Checked before everything else.
+    assert _blk({"email": "recruiter@gojek.com"}, [_gave]) == "no_email_from_visitor"
+    assert _blk({"email": "recruiter@gojek.com"}, [{"role": "assistant",
+                "content": "Sending from recruiter@gojek.com"}]) == "no_email_from_visitor"
+
+    # send-confirms-before-sending. The address is real, the visitor never agreed to send it.
+    assert _blk({"email": "rina@gojek.com"}, [_ask, _gave]) == "no_confirmation"
+    assert _blk({"email": " RINA@Gojek.com "}, [_ask, _gave]) == "no_confirmation"
+
+    # The one way through: the visitor's own last turn agrees.
+    _offer = {"role": "assistant", "content": "Shall I send this to Firza?"}
+    _yes = {"role": "user", "content": "Yes, please send it"}
+    assert _blk({"email": "rina@gojek.com"}, [_gave, _offer, _yes]) is None
+    assert _blk({"email": "rina@gojek.com"},
+                [_gave, _offer, {"role": "user", "content": "iya, kirim aja"}]) is None
+
+    # Refusal beats agreement, so a typo away from "yes" costs one round and never a stray send.
+    for _no in ("jangan kirim dulu", "no, wait", "not yet"):
+        assert _blk({"email": "rina@gojek.com"},
+                    [_gave, _offer, {"role": "user", "content": _no}]) == "no_confirmation"
+
+    # send-refuses-second-send. One send already happened, so the model must not offer another.
+    _sent = {"role": "assistant", "content": "The message has been sent to Firza."}
+    _more = {"role": "user", "content": "Actually, send another one about a Data Analyst role"}
+    assert _blk({"email": "rina@gojek.com"}, [_gave, _offer, _yes, _sent, _more]) == "already_sent"
+
+    # "send another one" is a new request, not agreement, so it must not read as a confirmation.
+    assert _blk({"email": "rina@gojek.com"}, [_gave, _offer, _more]) == "no_confirmation"
+
+    # A denied send is not a send. Without this the visitor is told it is already on its way.
+    assert _blk({"email": "rina@gojek.com"}, [_gave,
+                {"role": "assistant", "content": "The message is not sent yet."},
+                _gave]) == "no_confirmation"
+
+    # No address at all falls through to tools.py, whose error names the field that is missing.
+    assert _blk({}, [_gave]) is None
 
     # Read only tools are never touched by the guard.
-    assert not _send_blocked("search_projects", {"query": "rag"}, [])
+    assert _send_block_reason("search_projects", {"query": "rag"}, []) is None
 
     q = "Where does Firza work right now?"
     stats = {}
