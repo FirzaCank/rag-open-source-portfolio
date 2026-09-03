@@ -1,0 +1,22 @@
+.dvc/.gitignore
+  h_6146201214d51c 1
+.dvc/config
+  h_6146201214d51c 1-4
+.dvcignore
+  h_6146201214d51c 1-3
+data/.gitignore
+  h_6146201214d51c 1
+data/versions.dvc
+  h_6146201214d51c 1-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "5aeb4d687a9a44c3926239bcea972ee84df1cf02",
+  "prompts": {},
+  "humans": {
+    "h_6146201214d51c": {
+      "author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
