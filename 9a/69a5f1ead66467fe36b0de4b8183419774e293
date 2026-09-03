@@ -1,0 +1,20 @@
+README.md
+  s_aa22a7319babf4::t_83a419c536e8d9 44-45,56-66
+  s_aa22a7319babf4::t_3b7a16a066b65e 67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "9a69a5f1ead66467fe36b0de4b8183419774e293",
+  "prompts": {},
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
