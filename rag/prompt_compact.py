@@ -99,8 +99,7 @@ if __name__ == "__main__":
 
     compact, full = system_prompt(), full_prompt()
 
-    # Every section the golden set tests has to survive, and in the same order. A dropped section
-    # would make this arm measure two things: fewer words, and one rule fewer.
+    # Every tested section survives in order, or this arm measures two things instead of one.
     sections = [
         "PASSING A MESSAGE TO FIRZA:",
         "GROUNDING (most important):",
@@ -116,8 +115,7 @@ if __name__ == "__main__":
         assert i > at, f"section missing or out of order: {s}"
         at = i
 
-    # Literals that specific cases check. Losing one of these turns a wording change into a
-    # rule change, which is exactly what this arm must not do.
+    # Literals specific cases check: losing one turns a wording change into a rule change.
     required = [
         "Shall I send this to Firza?",                                  # send-confirms-before-sending
         "https://firzacank.vercel.app/contact",                         # sens-*, id-salary, style-freelance-guard

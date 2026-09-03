@@ -32,8 +32,7 @@ INDONESIAN_TARGET = 12
 NGRAM = 6
 CONTAINMENT_WARN = 0.7
 
-# Words too common to count as evidence of copying. Names stay in, since a query naturally repeats
-# a company name, and that is not the same as reusing a sentence.
+# Too common to be evidence of copying. Names stay in: repeating a company name is not reuse.
 STOP = {
     "a", "an", "and", "the", "of", "in", "on", "at", "for", "to", "with", "by", "from", "as", "is",
     "was", "were", "are", "his", "he", "it", "that", "this", "what", "which", "who", "how", "did",

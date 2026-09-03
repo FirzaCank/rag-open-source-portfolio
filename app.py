@@ -34,8 +34,7 @@ MAX_HISTORY = 12
 # Empty means open, which is what the demo deployment runs. See D37.
 API_KEY = os.environ.get("API_KEY", "").strip()
 
-# In process, per instance, and that limit is the honest description. Cloud Run can run several
-# instances, so this caps one instance's abuse, not the service's. Enough for a portfolio demo.
+# Per instance, not per service: Cloud Run can run several. Enough for a portfolio demo.
 CACHE_ON = os.environ.get("CACHE", "on").strip().lower() != "off"
 CACHE_MAX = 64
 _cache = OrderedDict()
@@ -53,8 +52,7 @@ api = FastAPI(
 class Message(BaseModel):
     role: str = Field(description="user or assistant. Anything else is read as user.")
     content: str = Field(description="The message text.")
-    # The widget sends a display timestamp on every message. Required here would 422 any client
-    # that omits it, so it is accepted and ignored. See D52.
+    # The widget sends a display timestamp. Required here would 422 any client omitting it. See D52.
     time: str | None = Field(default=None, description="Display timestamp. Accepted and ignored.")
 
 
@@ -120,8 +118,7 @@ def health():
     """
     import urllib.request
 
-    # The comparison knobs are reported here so a run file can record what it actually measured.
-    # Proving MAX_TOOL_ROUNDS=4 was live took two gcloud commands and log access once. See D69.
+    # Comparison knobs reported so a run file records what it actually measured. See D69.
     detail = {
         "model": MODEL,
         "num_ctx": NUM_CTX,
@@ -190,8 +187,7 @@ def chat(
     if not messages:
         return _err(400, "messages array required.")
 
-    # D36 requires the cache off while the eval runs. A header does that without two redeploys,
-    # and it is visible in the request log, so a cached number cannot be mistaken for a fresh one.
+    # D36 needs the cache off during eval. A header does it without redeploys, and shows in the log.
     use_cache = CACHE_ON and not x_bypass_cache
     key = _cache_key(messages) if use_cache else None
     if key and key in _cache:

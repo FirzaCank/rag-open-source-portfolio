@@ -52,8 +52,7 @@ def main():
     if diff:
         print("differing: " + ", ".join(diff))
 
-    # A pass count that moved while every answer stayed identical would mean the grader is unstable,
-    # which is a different bug from the model being unstable. Worth knowing which one you have.
+    # A moved score over identical answers means the grader is unstable, not the model.
     if len(same) == len(shared) and a["passed"] != b["passed"]:
         print("\nWARNING: identical answers but different scores. The grader moved, not the model.")
 

@@ -14,8 +14,7 @@ RUN_FILE = "eval_runs/1788453485_remote_qwen3-8b.json"
 def main():
     d = json.load(open(RUN_FILE))
 
-    # sqlite, not a folder store: recent mlflow refuses the filesystem
-    # backend outright. Still one file, still pushed to GCS whole.
+    # sqlite, not a folder store: recent mlflow refuses the filesystem backend outright.
     mlflow.set_tracking_uri("sqlite:///mlruns.db")
     mlflow.set_experiment("rag-eval")
 

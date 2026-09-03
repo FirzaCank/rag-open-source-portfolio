@@ -38,9 +38,9 @@ from .embed import DIM, MODEL_FILE, MODEL_NAME, embed_query
 
 _INDEX_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "embeddings.json")
 
+# 16 measured and rejected: fixed fact-education, broke 5 cases, 33 of 41 against 36.
 TOP_K = 8
-# 16 was measured and rejected: it fixed fact-education but broke 5 cases, 33 of 41 against 36.
-# Calibrated to no floor. Off-topic questions score as high as factual ones. See D57.
+# No floor: off-topic questions score as high as factual ones. See D57.
 MIN_SCORE = 0.0
 
 
@@ -75,8 +75,7 @@ def _load_index():
     return sources, texts, vectors / norms
 
 
-# The widget's suggestion chips send identical questions repeatedly. This caches the vector, never
-# the answer, so it cannot affect what the model says. The answer cache is separate, see D36.
+# Caches the vector, never the answer, so it cannot change what the model says. See D36.
 _query_cache: dict[str, np.ndarray] = {}
 _QUERY_CACHE_MAX = 64
 

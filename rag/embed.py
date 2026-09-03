@@ -32,8 +32,7 @@ from fastembed import TextEmbedding
 MODEL_NAME = "intfloat/multilingual-e5-base"
 DIM = 768
 
-# Recorded because the file changes the vectors while MODEL_NAME and DIM stay the same. The same
-# repo offers an int8 file at 279 MB against 1110 MB, a Phase 3 cold start lever. See D27.
+# Recorded because the file changes the vectors while MODEL_NAME and DIM stay the same. See D27.
 MODEL_FILE = "onnx/model.onnx"
 
 # fastembed caches to temp, which macOS and Cloud Run clear. 1.1 GB lands in git ignored `models/`.
@@ -118,8 +117,7 @@ if __name__ == "__main__":
     assert P.shape == (2, DIM), P.shape
     assert P.dtype == np.float32, P.dtype
 
-    # Unit length is what lets the retriever use a dot product as cosine. If this fails, pooling or
-    # normalisation is wrong, and every score downstream is wrong with it.
+    # Unit length is what makes a dot product cosine. If this fails, every score downstream is wrong.
     norms = np.linalg.norm(P, axis=1)
     assert np.allclose(norms, 1.0, atol=1e-3), norms
 
@@ -127,13 +125,11 @@ if __name__ == "__main__":
     assert q.shape == (DIM,), q.shape
     assert abs(float(np.linalg.norm(q)) - 1.0) < 1e-3
 
-    # The right passage must win. Smallest end to end statement that retrieval works at all: a
-    # question about the employer beats the churn project passage.
+    # Smallest end to end proof retrieval works: the employer question beats the churn passage.
     scores = P @ q
     assert scores[0] > scores[1], f"wrong passage won: {scores}"
 
-    # Embedding the same question as a passage must give a different vector. If it does not, the
-    # prefixes are ignored and D27 is violated silently.
+    # Same text as query and as passage must differ, or the prefixes are ignored. See D27.
     as_passage = embed_passages(["Where did Firza work as a data engineer?"])[0]
     drift = float(np.linalg.norm(q - as_passage))
     assert drift > 1e-3, f"query and passage prefixes produced the same vector, drift {drift}"

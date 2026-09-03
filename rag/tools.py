@@ -127,8 +127,7 @@ def get_skills(domain=""):
         return {"skills": all_groups}
     groups = [g for g in all_groups if _contains(g["group"], domain) or any(_contains(i, domain) for i in g["items"])]
     if not groups:
-        # a miss on the keyword shouldn't dead-end the model; hand it the full
-        # list so it can spot the relevant skill itself
+        # a keyword miss shouldn't dead-end the model, so hand it the full list
         return {"note": f"No skill group matched '{domain}'. Full skill list:", "skills": all_groups}
     return {"skills": groups}
 
@@ -171,8 +170,7 @@ def send_message_to_firza(name="", email="", message="", topic="Chat assistant")
     email = str(email or "").strip()
     message = str(message or "").strip()
 
-    # Validate before the guard: a rejected call is not a send, so the model
-    # should be free to retry with corrected arguments.
+    # Validate before the guard: a rejected call is not a send, so a retry stays allowed.
     missing = [f for f, v in (("name", name), ("email", email), ("message", message)) if not v]
     if missing:
         return {"sent": False, "error": f"Missing required field(s): {', '.join(missing)}. Ask the visitor for them."}
@@ -326,8 +324,7 @@ if __name__ == "__main__":
     assert get_skills(domain="data engineering")["skills"], "skill miss should fall back to full list"
     assert get_skills(domain="cloud")["skills"] != get_skills()["skills"], "matched domain should filter"
 
-    # send_message_to_firza: only the paths that reject before any network call.
-    # These must never reach the network, so a passing self check sends no email.
+    # Only the paths that reject before any network call, so a passing self check sends no email.
     assert not send_message_to_firza()["sent"], "empty args must not send"
     assert "name" in send_message_to_firza(email="a@b.co", message="hi")["error"], "should name the missing field"
     assert not send_message_to_firza(name="A", email="not-an-email", message="hi")["sent"], "bad email must not send"

@@ -70,8 +70,7 @@ def main() -> None:
     print(f"worst in index: min {worst.min():.4f}, max {worst.max():.4f}")
     print(f"top1 minus top8: min {(top1 - topk).min():.4f}, median {np.median(top1 - topk):.4f}")
 
-    # The question a threshold has to answer: does any single number keep the 8th hit of a good
-    # question while dropping the 8th hit of an off-topic one? Overlap here means the answer is no.
+    # Can one number keep a good question's 8th hit and drop an off-topic one's? Overlap means no.
     print("\nwhat an absolute floor would do, chunks kept per question out of 8:")
     for t in (0.0, 0.70, 0.72, 0.74, 0.76, 0.78, 0.80, 0.82):
         kept = []
@@ -84,8 +83,7 @@ def main() -> None:
         print(f"  floor {t:.2f}: mean {np.mean(kept):4.1f}, min {min(kept)}, "
               f"questions left with nothing {empty}")
 
-    # A relative floor asks a different question: keep a hit only if it is close to the best hit for
-    # this query. It survives the compression because it never compares across queries.
+    # A relative floor keeps a hit only if close to this query's best, so it never compares across.
     print("\nwhat a relative floor would do, keep hits within X of that query's top1:")
     for frac in (0.02, 0.03, 0.05, 0.08, 0.12):
         kept = []

@@ -29,8 +29,7 @@ import time
 import urllib.error
 import urllib.request
 
-# Which static prompt to use. "full" is production, "compact" is a Phase 3b arm. Both are plain
-# strings with no interpolation, so the invariant holds either way. See D25 and rag/prompt_compact.py.
+# "full" is production, "compact" a Phase 3b arm. Both static, no interpolation. See D25.
 PROMPT_VARIANT = os.environ.get("PROMPT_VARIANT", "full").strip().lower()
 if PROMPT_VARIANT == "compact":
     from .prompt_compact import system_prompt
@@ -43,23 +42,19 @@ from .tools import OLLAMA_TOOLS, reset_send_guard, run_tool
 
 # Same address on the laptop and inside the Cloud Run container, so no branch on environment.
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/chat")
-# Default matches the promoted model and the Dockerfile. An unset MODEL used to run
-# qwen2.5:3b and score an arm against the wrong model with no error. See D88.
+# Matches the Dockerfile: an unset MODEL once scored an arm against the wrong model. See D88.
 MODEL = os.environ.get("MODEL", "qwen3:8b")
 
 # 8192 covers the measured worst case, 3.5k prompt plus 2.8k context. Every response records its token count.
 NUM_CTX = int(os.environ.get("OLLAMA_NUM_CTX", "8192"))
 
 MAX_HISTORY = 12
-# Read from the environment so the Phase 3b comparison run is a revision update, not a rebuild.
-# The default stays 2, so the baseline is what you get without asking for anything.
+# From the environment so a comparison is a revision update, not a rebuild. Default 2 is the baseline.
 MAX_TOOL_ROUNDS = int(os.environ.get("MAX_TOOL_ROUNDS", "2"))
-# Was 30 on Vercel, which killed the function at 60 s. Cloud Run has no such ceiling, and a cold
-# 7b on an L4 needs the headroom. The rounds cap stays at 2, changing it is a Phase 3b run. See D25.
+# Was 30 on Vercel, which killed the function at 60 s. A cold 7b on an L4 needs the headroom. See D25.
 TIME_BUDGET_S = 120
 TEMPERATURE = float(os.environ.get("TEMPERATURE", "0.4"))
-# Unset in production, so visitors get real sampling. Set for a comparison run: two runs of the
-# same config scored 28 and 23 of 41, so without a fixed seed a comparison measures the dice.
+# Unset in production. Set for comparisons: the same config scored 28 and 23 without a fixed seed.
 OLLAMA_SEED = os.environ.get("OLLAMA_SEED", "").strip()
 MAX_TOKENS = 1024
 MAX_TOKENS_FINAL = 2048
@@ -79,20 +74,17 @@ def _neutralize_markers(text: str) -> str:
     return str(text or "").replace("RETRIEVED_CONTEXT", "retrieved context")
 
 
-# Read off the declarations instead of typed here, so a newly declared tool is covered the moment
-# it exists rather than the moment someone remembers this list.
+# Read off the declarations, so a new tool is covered when it exists, not when someone updates a list.
 _TOOL_NAMES = tuple(t["function"]["name"] for t in OLLAMA_TOOLS)
 
-# The sentence rag/prompt.py line 74 already tells the model to use. Same words, so the filter and
-# the instruction do not contradict each other in front of a visitor.
+# The sentence prompt.py already tells the model to use, so filter and instruction agree.
 TOOL_DISCLOSURE_REFUSAL = (
     "I look things up in Firza's portfolio using semantic search and structured lookups, described "
     "in the [portfolio case study](https://firzacank.vercel.app/projects/personal-portfolio-website). "
     "The internals stay private."
 )
 
-# rag/prompt.py line 68 asks for one short declining sentence and does not fix the words, so these
-# are chosen to satisfy it: no code, and the scope named rather than only refused.
+# prompt.py asks for one short declining sentence without fixing the words. These satisfy it.
 OFF_TOPIC_REFUSAL = (
     "I only answer questions about Firza, so I can't write code here. Ask me about his projects, "
     "skills, or experience instead."
@@ -101,8 +93,7 @@ OFF_TOPIC_REFUSAL = (
 # Answer-ending markers. Fence, not a word list: `import ` matches ordinary portfolio prose.
 _CUTS = [(n, "tool_name_redacted", TOOL_DISCLOSURE_REFUSAL) for n in _TOOL_NAMES]
 _CUTS.append(("```", "code_block_redacted", OFF_TOPIC_REFUSAL))
-# A marker arrives split across stream chunks, so the tail that could still be the start of one is
-# held back before anything is yielded. Longest marker minus one character is exactly enough.
+# A marker can split across chunks, so hold back the longest marker minus one character.
 _HOLD = max(len(m) for m, _, _ in _CUTS) - 1
 
 
@@ -123,11 +114,9 @@ def _redact_output(chunks, stats=None):
         low = buf.lower()
         hits = [(low.index(m), m, evt, sub) for m, evt, sub in _CUTS if m in low]
         if hits:
-            # Earliest position, not first declared. Otherwise a marker sitting before the matched
-            # one would be yielded in the prefix.
+            # Earliest position, not first declared, or an earlier marker leaks in the prefix.
             head, marker, evt, sub = min(hits)
-            # The cut lands mid list item, so the bullet or bold marker that introduced the name is
-            # still in the prefix. It leaks nothing and renders as a broken line, so it goes.
+            # The cut lands mid list item, so the dangling bullet renders broken and goes.
             prefix = buf[:head].rstrip(" *-`\n")
             if prefix:
                 yield prefix
@@ -174,8 +163,7 @@ def _build_messages(messages, context):
 
 
 def _chat_body(convo, tools, max_tokens):
-    # `think` is top level in the Ollama API, not inside `options`. Ollama ignores it for a model
-    # with no thinking mode, so qwen2.5 is unaffected and no per model branch is needed.
+    # `think` is top level, not inside `options`. Ignored by models without thinking mode.
     body = {
         "model": MODEL,
         "messages": convo,
@@ -282,8 +270,7 @@ SEND_BLOCKED_ERRORS = {
     ),
 }
 
-# Confirmation words, English and Bahasa Indonesia. Deliberately narrow, and bare "send" is absent:
-# "send another one saying..." is a new request, not a confirmation of the message on the table.
+# Narrow on purpose, and bare "send" is absent: "send another one saying..." is a new request.
 _AFFIRM = re.compile(
     r"\b(yes|yeah|yep|yup|ok|okay|sure|confirmed?|correct|agreed?|"
     r"ya|iya|oke|sip|betul|benar|silakan|silahkan|boleh|lanjut|kirim)\b"
@@ -291,8 +278,7 @@ _AFFIRM = re.compile(
     re.I,
 )
 
-# Checked before _AFFIRM, so "jangan kirim" and "no, wait" never read as agreement. A false negative
-# here costs one extra confirmation round. A false positive sends a message nobody asked for.
+# Checked before _AFFIRM: a false negative costs a round, a false positive sends unasked mail.
 _NEGATE = re.compile(
     r"\b(no|not|dont|never|cancel|wait|hold|stop|"
     r"jangan|tidak|belum|bukan|batal|tunggu)\b|don'?t",
@@ -323,8 +309,7 @@ def _send_block_reason(name, args, messages):
 
     users = [m for m in messages if m.get("role") == "user"]
     email = str(args.get("email") or "").strip().lower()
-    # No address at all falls through to tools.py, whose error names the missing field. That is what
-    # the visitor has to supply first, and it is a different sentence from asking for confirmation.
+    # No address falls through to tools.py, whose error names the field the visitor must supply.
     if not email:
         return None
 
@@ -355,8 +340,7 @@ def _run_chat(messages, stats):
         context = format_context(hits)
         stats["chunks"] = len(hits)
         stats["top_score"] = round(hits[0]["score"], 3) if hits else None
-        # Which sources reached the model. Without this, a wrong answer cannot be told apart from
-        # a correct refusal over a context that never contained the fact. See D63.
+        # Which sources reached the model, or a wrong answer looks like a correct refusal. See D63.
         stats["sources"] = [h["source"] for h in hits]
     except Exception as e:
         # A retrieval failure must not take down the whole answer.
@@ -408,8 +392,7 @@ def _run_chat(messages, stats):
         if time.time() - t0 > TIME_BUDGET_S:
             break
 
-    # Tool rounds ran out with no text answer. One last pass with `tools` omitted, so the model has
-    # to answer from what it already gathered. The tool history stays, only the offer is withdrawn.
+    # Rounds ran out with no answer. One pass with `tools` omitted, history kept, offer withdrawn.
     if not produced_text:
         convo.append({
             "role": "user",
@@ -459,13 +442,11 @@ if __name__ == "__main__":
     assert split.startswith("The tools I can call are:"), split
     assert TOOL_DISCLOSURE_REFUSAL in split, split
 
-    # The cut lands mid list item, so the marker that introduced the name must not survive as a
-    # dangling bullet. Measured output was "The tools I can call are:\n\n- " before this.
+    # The marker introducing the name must not survive as a dangling bullet.
     dangling = _red(["Functions:\n\n- **", "get_skills", "**: skills."])
     assert dangling.startswith("Functions:\n\n\n\n") or "- **" not in dangling, dangling
 
-    # Earliest position wins. get_skills sits before search_projects here, and declaration order
-    # puts search_projects first, so a first-declared match would have yielded get_skills.
+    # Earliest position wins, since declaration order would have yielded the wrong name here.
     both = _red(["I have get_skills and search_projects."])
     assert "get_skills" not in both, both
 
@@ -480,8 +461,7 @@ if __name__ == "__main__":
     list(_redact_output(["get_skills"], st))
     assert st["tool_name_redacted"] is True, st
 
-    # A code fence ends the answer too. Measured shape of off-code-help: prose, then the fence,
-    # then `import tweepy`. Cutting at the fence removes both forbidden patterns at once.
+    # A code fence ends the answer: cutting there removes both forbidden patterns at once.
     code = _red(["Here is a script:\n\n", "``", "`pyt", "hon\nimport tweepy\n```"])
     assert "```" not in code, code
     assert "import " not in code, code
@@ -500,15 +480,13 @@ if __name__ == "__main__":
     # Neither substitute may trip the other marker, or a second pass would eat its own answer.
     assert _red([OFF_TOPIC_REFUSAL]) == OFF_TOPIC_REFUSAL
 
-    # `think` sits at the top level and stays off in every request, or a reasoning model streams its
-    # scratchpad straight to the visitor. Both call sites go through _chat_body, so one check covers.
+    # `think` stays off, or a reasoning model streams its scratchpad to the visitor.
     for _tools in (OLLAMA_TOOLS, None):
         _b = _chat_body([{"role": "user", "content": "hi"}], _tools, 100)
         assert _b["think"] is False, _b
         assert "think" not in _b["options"], _b
 
-    # The send guard, three reasons and one way through. Shapes taken from the golden set cases the
-    # guard exists for, so a change that breaks one of them fails here and not on Cloud Run.
+    # Send guard, three reasons and one way through, shaped by the golden set cases it exists for.
     def _blk(args, msgs):
         return _send_block_reason("send_message_to_firza", args, msgs)
 
@@ -563,13 +541,11 @@ if __name__ == "__main__":
     assert answer.strip(), "no answer at all"
     assert "Hypefast" in answer, answer
     assert stats["chunks"] == 8, stats
-    # The whole prompt must actually be evaluated. This is the check that was missing when a
-    # 4096 token context silently truncated 5095 tokens down to 2050 and answered blank.
+    # The whole prompt must be evaluated: 4096 once truncated 5095 tokens and answered blank.
     assert stats["prompt_tokens"] > 4000, stats
     assert not stats.get("truncation_risk"), stats
 
-    # The context must reach the last user turn and nothing else. The system prompt names the
-    # delimiter on purpose, so the check is on the payload, not on the marker.
+    # Context reaches the last user turn only. Checked on the payload, not on the marker.
     built = _build_messages([{"role": "user", "content": "hi"}], "CTX-PAYLOAD")
     assert built[0]["role"] == "system", built[0]["role"]
     assert "CTX-PAYLOAD" not in built[0]["content"], "context leaked into the system prompt"

@@ -87,19 +87,16 @@ if __name__ == "__main__":
     assert chunk_text("S", "   \n\n  ") == []
     assert chunk_text("S", "short text") == [{"source": "S", "text": "short text"}]
 
-    # Hard split, pieces overlap. Without overlap a sentence on a seam is lost from both sides,
-    # which is the only thing the parameter is for, so it gets an explicit check.
+    # Hard split with overlap: without it a sentence on a seam is lost from both sides.
     hard = chunk_text("S", "x" * 2500, target=1000, overlap=100)
     assert len(hard) == 3, len(hard)
     assert all(len(c["text"]) <= 1000 for c in hard)
     seam = chunk_text("S", "a" * 700 + "\n\n" + "b" * 700, target=1000, overlap=100)
     assert len(seam) == 2, len(seam)
-    # The next chunk opens with the tail of the previous one. Written as "starts with the paragraph"
-    # it fails, since the blank line is already gone and the split lands mid paragraph.
+    # The next chunk opens with the previous one's tail, since the split lands mid paragraph.
     assert seam[1]["text"][:100] == seam[0]["text"][-100:], "the overlap did not carry across the seam"
 
-    # Blank lines must be gone after the first substitution. If a future edit "fixes" the regex,
-    # this fails and the fix becomes a deliberate new variant instead of a silent one.
+    # Blank lines must be gone, so a future regex fix becomes a deliberate variant, not a silent one.
     flattened = chunk_text("S", "p1\n\np2\n\np3")
     assert "\n\n" not in flattened[0]["text"], "blank lines survived, this is no longer variant A"
 
@@ -108,8 +105,7 @@ if __name__ == "__main__":
     sizes = sorted(len(c["text"]) for c in chunks)
     full = sum(1 for s in sizes if s == TARGET_CHARS)
 
-    # Matched against the Gemini index: 76 chunks, 22 sources, 37 at exactly 1200, shortest 220.
-    # Equal numbers are the evidence that sources.py and chunk.py reproduce the original.
+    # Matched against the original index: equal numbers are the evidence this reproduces it.
     assert len(chunks) == 76, f"expected 76 chunks, got {len(chunks)}"
     assert len(sources) == 22, f"expected 22 sources, got {len(sources)}"
     assert full == 37, f"expected 37 chunks of exactly {TARGET_CHARS} chars, got {full}"

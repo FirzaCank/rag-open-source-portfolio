@@ -147,8 +147,7 @@ if __name__ == "__main__":
     docs = get_docs()
     sources = sorted({d["source"] for d in docs})
 
-    # 1 about + 1 timeline + (17 highlights + 5 role overviews) + 15 projects = 39 over 22 sources.
-    # Asserted so a corpus edit that drops content fails here, not as a missing retrieval result.
+    # 39 docs over 22 sources, asserted so a corpus edit that drops content fails here.
     assert len(docs) == 39, f"expected 39 documents, got {len(docs)}"
     assert len(sources) == 22, f"expected 22 sources, got {len(sources)}"
     assert all(d["text"].strip() for d in docs), "a document came out empty"

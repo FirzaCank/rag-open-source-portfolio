@@ -106,8 +106,7 @@ def run_case_http(case, url, api_key=None):
         t0 = time.time()
         try:
             with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT_S) as resp:
-                # First byte then the rest, so time to first token is the real number and not the
-                # time to fill a read buffer.
+                # First byte then the rest, so TTFT is real and not the time to fill a buffer.
                 first = resp.read(1)
                 ttft = time.time() - t0
                 answer = (first + resp.read()).decode("utf-8", errors="replace")
@@ -176,8 +175,7 @@ def run_case(case):
     }
 
 
-# Every comparison knob /health reports. One list, so a new knob reaches the run file when it is
-# added here, not when someone remembers to update three call sites. See D69.
+# One list, so a new knob reaches the run file when added here, not across three call sites. See D69.
 KNOBS = ("max_tool_rounds", "temperature", "seed", "prompt_variant", "top_k")
 
 # Filled in main so the summary can name what was measured without threading it through.
@@ -294,8 +292,7 @@ def main():
     ap.add_argument("--api-key", help="sent as x-api-key when the service requires one, see D37")
     args = ap.parse_args()
 
-    # A configured endpoint means a real POST to the contact route, and the send cases feed the
-    # model real looking recruiter details. Refuse rather than risk mail in Firza's inbox.
+    # A configured endpoint means real mail, and send cases feed real looking details. Refuse.
     if os.environ.get("CONTACT_ENDPOINT", "").strip():
         print("ERROR: CONTACT_ENDPOINT is set. Unset it before running the eval, see D29.")
         sys.exit(1)

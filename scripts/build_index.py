@@ -57,8 +57,7 @@ def build() -> dict:
 if __name__ == "__main__":
     index = build()
 
-    # Rounding to 7 decimals halves the file and moves a norm by about 1e-7, below anything a
-    # ranking notices. Checked here rather than assumed.
+    # Rounding to 7 decimals halves the file and moves a norm by 1e-7. Checked, not assumed.
     import numpy as np
 
     V = np.array([c["vector"] for c in index["chunks"]], dtype=np.float32)
