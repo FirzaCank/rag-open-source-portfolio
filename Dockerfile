@@ -6,7 +6,7 @@ FROM ollama/ollama:0.33.0
 # Run that means request logs are lost when the container dies. Logs are the only observability
 # there, so this is a requirement.
 ENV PYTHONUNBUFFERED=1 \
-    MODEL=qwen2.5:7b-instruct-q4_K_M \
+    MODEL=qwen3:8b \
     OLLAMA_KEEP_ALIVE=-1 \
     FASTEMBED_CACHE=/app/models/fastembed \
     PORT=8080
@@ -33,7 +33,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Bake the weights into the image. Never pulled at startup, see D44. This runs before the code is
-# copied so that editing a Python file does not invalidate a 4.7 GB layer.
+# copied so that editing a Python file does not invalidate a 5 GB layer.
+# The manifest path is derived from MODEL, not spelled out. It used to hardcode `library/qwen2.5`,
+# which would fail the check after a successful pull the moment the model changed. See D81.
 # `ollama list` runs while the daemon is still up. An earlier version killed it first and the
 # build failed on "could not connect to ollama server" after a successful 4.7 GB pull.
 RUN sh -c 'set -e; \
@@ -42,7 +44,7 @@ RUN sh -c 'set -e; \
     ollama pull "$MODEL"; \
     ollama list; \
     kill $pid || true' \
-    && test -d /root/.ollama/models/manifests/registry.ollama.ai/library/qwen2.5 \
+    && test -d /root/.ollama/models/manifests/registry.ollama.ai/library/"${MODEL%%:*}" \
     && du -sh /root/.ollama/models
 
 COPY rag/ ./rag/
