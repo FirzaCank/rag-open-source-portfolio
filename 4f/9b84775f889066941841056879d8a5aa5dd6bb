@@ -1,0 +1,31 @@
+rag/llm.py
+  s_aa22a7319babf4::t_542d3ac6793534 46-48
+app.py
+  s_aa22a7319babf4::t_0492fad50c9f94 28,132
+  s_aa22a7319babf4::t_c0b7cce0684124 48
+README.md
+  s_aa22a7319babf4::t_f9d8dc9a005b7a 49
+  s_aa22a7319babf4::t_b380169dc7b1ac 18
+eval_runs/1788467374_remote_qwen3-8b.json
+  s_aa22a7319babf4::t_e7974f60316f20 1-493
+rag/retriever.py
+  s_aa22a7319babf4::t_5d8315bcfce6fe 34
+.gitignore
+  s_aa22a7319babf4::t_42ef16a8fcbd95 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "4f9b84775f889066941841056879d8a5aa5dd6bb",
+  "prompts": {},
+  "sessions": {
+    "s_aa22a7319babf4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24670962-99bb-436a-96a5-aa80991779fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Firza Chandra Sandjaya Putra <102524044+FirzaCank@users.noreply.github.com>"
+    }
+  }
+}
